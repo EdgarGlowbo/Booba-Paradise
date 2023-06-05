@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "booba-paradise-react-native",
+    "slug": "booba-paradise-react-native",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
