@@ -9,7 +9,7 @@ const Landing = () => {
   };
 
   return (
-    <View style={style.container}>
+    <View style={styles.container}>
       <TopBar />
     </View>
   );
