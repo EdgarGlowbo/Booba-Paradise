@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
-import style from "./style.scss";
-import TopBar from "../../components/TopBar/TopBar";
+import styles from "./styles";
+import TopBar from "../../components/TopBar";
 
 const Landing = () => {
   const handleGetStarted = () => {
