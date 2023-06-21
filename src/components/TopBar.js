@@ -8,7 +8,7 @@ import { faLocationDot } from "@fortawesome/free-solid-svg-icons/faLocationDot";
 
 const TopBar = () => {
   return (
-    <View>
+    <View style={styles.topBar}>
       <FontAwesomeIcon icon={faBars} />
       <Text style={styles.boobaText}>
         Booba
@@ -27,6 +27,12 @@ const styles = StyleSheet.create({
   },
   paradiseText: {
     color: colors.paradiseText,
+  },
+  topBar: {
+    flexDirection: "row",
+    alignItems: "space-between",
+    width: 100,
+    justifyContent: "top",
   },
 });
 
