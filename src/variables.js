@@ -9,7 +9,7 @@ export const colors = {
 };
 
 export const fonts = {
-  boobaText: "Allison-Regular",
-  headings: "'Damion', cursive",
-  body: "'Poppins', sans-serif",
+  boobaText: "Allison_400Regular",
+  headings: "Damion_400Regular",
+  body: "Poppins_400Regular",
 };
