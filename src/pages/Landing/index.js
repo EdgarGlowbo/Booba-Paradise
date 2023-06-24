@@ -3,10 +3,10 @@ import { View, Text, Image, TouchableOpacity } from "react-native";
 import styles from "./styles";
 import TopBar from "../../components/TopBar";
 
-const Landing = ({ navigation }) => {
+const Landing = () => {
   return (
     <View>
-      <TopBar navigation={navigation} />
+      <TopBar />
     </View>
   );
 };
