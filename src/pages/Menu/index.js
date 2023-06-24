@@ -3,11 +3,7 @@ import { View, Text, Image, TouchableOpacity } from "react-native";
 import styles from "./styles";
 
 const Menu = () => {
-  return (
-    <View style={styles.container}>
-      <Text>Menu</Text>
-    </View>
-  );
+  return <View style={styles.container}>{/* <TopBar /> */}</View>;
 };
 
 export default Menu;

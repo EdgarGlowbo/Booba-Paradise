@@ -35,6 +35,7 @@ const TopBar = () => {
   if (!fontsLoaded) {
     return null;
   }
+
   const handlePress = () => {
     setIsPressed(!isPressed);
   };
