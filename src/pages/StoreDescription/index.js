@@ -3,7 +3,7 @@ import { View, Text, Image, TouchableOpacity } from "react-native";
 import styles from "./styles";
 
 const StoreDescription = () => {
-  return <View style={styles.container}>{/* <TopBar /> */}</View>;
+  return <Text style={styles.container}>Store Description</Text>;
 };
 
 export default StoreDescription;
