@@ -1,19 +1,25 @@
 import React from "react";
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import { View, Text, Image } from "react-native";
 import styles from "./styles";
-import { Button } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+// Images
+import { LandingBackground } from "../../../assets/LandingBackground.jpg";
+import { CuteBooba } from "../../../assets/CuteBooba.png";
+import PrimaryButton from "../../components/PrimaryButton";
 
 const Landing = () => {
-  const navigation = useNavigation();
   return (
     <View>
-      <Button
-        title="Nuestro menú"
-        onPress={() => {
-          navigation.navigate("Menu");
-        }}
-      />
+      <Image source={LandingBackground} style={styles.backgroundImg} />
+      <View>
+        <View>
+          <Text>Especialistas en Bubble Tea</Text>
+          <Text>
+            Nos encanta alegrar tu día con nuestros Booba's y deliciosos Snacks.
+          </Text>
+          <PrimaryButton title="Nuestro Menú" screenName="Menu" />
+        </View>
+        <Image source={CuteBooba} style={styles.image} />
+      </View>
     </View>
   );
 };

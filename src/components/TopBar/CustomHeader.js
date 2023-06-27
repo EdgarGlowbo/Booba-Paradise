@@ -1,6 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, Dimensions, Pressable } from "react-native";
-import { colors } from "../../variables";
+import { View, Text, StyleSheet, Dimensions } from "react-native";
 import BurgerMenu from "./BurgerMenu";
 import BrandName from "./BrandName";
 import LocationPin from "./LocationPin";

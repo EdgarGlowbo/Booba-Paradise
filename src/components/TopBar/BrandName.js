@@ -1,14 +1,16 @@
 import React, { useCallback } from "react";
-import { View, Text, StyleSheet, Dimensions, Pressable } from "react-native";
+import { View, Text, StyleSheet, Pressable } from "react-native";
 import { colors, fonts } from "../../variables";
 import { useFonts } from "expo-font";
 import { Allison_400Regular } from "@expo-google-fonts/allison";
 
 import * as SplashScreen from "expo-splash-screen";
+import { useNavigation } from "@react-navigation/native";
 
 SplashScreen.preventAutoHideAsync();
 
 const BrandName = () => {
+  const navigation = useNavigation();
   const [fontsLoaded] = useFonts({
     Allison_400Regular,
   });
@@ -22,9 +24,12 @@ const BrandName = () => {
   if (!fontsLoaded) {
     return null;
   }
+  const handlePress = () => {
+    navigation.navigate("Landing");
+  };
 
   return (
-    <Pressable>
+    <Pressable onPress={handlePress}>
       <View>
         <Text style={styles.boobaText}>
           Booba
