@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
     width: Dimensions.get("window").width,
     justifyContent: "space-between",
     padding: 12,
+    backgroundColor: "transparent",
   },
 });
 

@@ -44,10 +44,13 @@ const Navigator = () => {
       <Drawer.Navigator
         drawerContent={(props) => <CustomDrawer {...props} />}
         screenOptions={{
+          headerTransparent: true,
           header: () => <CustomHeader />,
           drawerStyle: styles.drawerStyles,
           drawerItemStyle: styles.drawerItemStyles,
           drawerLabelStyle: styles.drawerLabelStyles,
+          drawerActiveBackgroundColor: colors.drawerBackground,
+          drawerActiveTintColor: colors.background,
         }}
       >
         <Drawer.Screen
@@ -92,10 +95,14 @@ const styles = StyleSheet.create({
   },
   drawerItemStyles: {
     padding: 12,
+    borderRadius: 0,
+    width: "100%",
+    marginHorizontal: 0,
+    marginVertical: 0,
   },
   drawerLabelStyles: {
     fontFamily: fonts.drawerItem,
-    fontSize: 32,
+    fontSize: 28,
     color: colors.background,
   },
 });
