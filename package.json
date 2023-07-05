@@ -14,12 +14,16 @@
     "@expo-google-fonts/poppins": "^0.2.3",
     "@expo/webpack-config": "^18.0.1",
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
+    "@fortawesome/free-brands-svg-icons": "^6.4.0",
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "@fortawesome/react-native-fontawesome": "^0.3.0",
     "@react-navigation/drawer": "^6.6.2",
     "@react-navigation/native": "^6.1.6",
     "@react-navigation/stack": "^6.3.17",
+    "@svgr/core": "^6.5.1",
+    "axios": "^1.4.0",
     "babel-plugin-macros": "^3.1.0",
+    "body-parser": "^1.20.2",
     "expo": "~48.0.18",
     "expo-font": "~11.1.1",
     "expo-splash-screen": "~0.18.2",
@@ -27,6 +31,8 @@
     "express": "^4.18.2",
     "link": "^1.5.1",
     "mysql": "^2.18.1",
+    "mysql2": "^3.4.3",
+    "path-dirname": "^1.0.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-native": "^0.71.8",
@@ -34,11 +40,14 @@
     "react-native-reanimated": "~2.14.4",
     "react-native-safe-area-context": "4.5.0",
     "react-native-screens": "~3.20.0",
-    "react-native-svg": "^13.9.0",
+    "react-native-svg": "13.4.0",
     "react-native-web": "~0.18.10"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.0"
+    "@babel/core": "^7.20.0",
+    "@svgr/plugin-svgo": "^8.0.1",
+    "react-native-svg-transformer": "^1.0.0"
   },
+  "proxy": "http://localhost:3000",
   "private": true
 }

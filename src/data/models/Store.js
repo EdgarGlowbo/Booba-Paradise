@@ -1,19 +1,14 @@
-// server/models/User.js
 const db = require("../db");
 
 class Store {
-  static getAll() {
-    return new Promise((resolve, reject) => {
-      const query = "SELECT * FROM store";
+  static async getAll() {
+    const query = "SELECT * FROM store";
 
-      db.query(query, (err, results) => {
-        if (err) {
-          reject(err);
-        } else {
-          resolve(results);
-        }
-      });
-    });
+    const [res] = await db
+      .query(query)
+      .catch((err) => console.log(err.message));
+
+    return res;
   }
 }
 

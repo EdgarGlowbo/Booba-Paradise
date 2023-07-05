@@ -1,8 +1,10 @@
 const db = require("../db");
 
-class MenuItem {
+class NewsArticle {
   static async getAll() {
-    const query = "SELECT * FROM menuitem";
+    const query = `SELECT * FROM news_feed
+      ORDER BY id DESC
+      LIMIT 3`;
 
     const [res] = await db
       .query(query)
@@ -12,4 +14,4 @@ class MenuItem {
   }
 }
 
-module.exports = MenuItem;
+module.exports = NewsArticle;

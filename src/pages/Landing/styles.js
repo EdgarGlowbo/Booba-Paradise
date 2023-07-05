@@ -7,15 +7,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  // backgroundImg: {
-  //   // zIndex: 1,
-  //   width: Dimensions.get("screen").width,
-  //   height: Dimensions.get("screen").height * (2 / 3),
-  //   resizeMode: "cover",
-  // },
   headerContent: {
-    // zIndex: 2
-
     width: Dimensions.get("screen").width,
     height: Dimensions.get("screen").height * (2 / 3),
     resizeMode: "cover",
@@ -44,6 +36,27 @@ const styles = StyleSheet.create({
     width: 400,
     height: 400,
     bottom: -50,
+  },
+  newsContainer: {
+    backgroundColor: colors.newsBackground,
+    width: Dimensions.get("screen").width,
+    minHeight: 400,
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 50,
+  },
+  transition: {
+    zIndex: 1,
+    marginTop: -40,
+  },
+  newsFeed: {
+    gap: 16,
+  },
+  newsFeedHeader: {
+    fontFamily: fonts.newsFeedHeader,
+    color: colors.primary,
+    fontSize: 24,
+    marginBottom: 50,
   },
 });
 
