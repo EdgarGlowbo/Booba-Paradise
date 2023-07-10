@@ -20,7 +20,7 @@ import { Poppins_400Regular } from "@expo-google-fonts/poppins";
 import { Poppins_600SemiBold } from "@expo-google-fonts/poppins";
 import * as SplashScreen from "expo-splash-screen";
 
-const Footer = () => {
+const Footer = ({ backgroundColor }) => {
   const [fontsLoaded] = useFonts({
     Poppins_400Regular,
     Poppins_600SemiBold,
@@ -42,7 +42,7 @@ const Footer = () => {
     wa2: "https://wa.link/hjm53f",
   };
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { backgroundColor: backgroundColor }]}>
       <Text style={styles.footerTitle}>¡Síguenos!</Text>
       <View style={styles.socialsContainer}>
         <TouchableOpacity
@@ -91,7 +91,6 @@ const styles = StyleSheet.create({
     width: Dimensions.get("screen").width,
     alignItems: "flex-start",
     justifyContent: "center",
-    backgroundColor: colors.footerBackground,
     paddingVertical: 32,
     paddingHorizontal: 16,
     rowGap: 12,

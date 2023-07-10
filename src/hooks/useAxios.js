@@ -13,9 +13,8 @@ const useAxios = (configObj) => {
           ...requestConfig,
           signal: controller.signal,
         });
-        setResponse(res);
+        setResponse(res.data);
       } catch (err) {
-        console.log(err.message);
         setError(err.message);
       } finally {
         setIsLoading(false);
@@ -25,7 +24,7 @@ const useAxios = (configObj) => {
     fetchData();
 
     return () => controller.abort();
-  }, []);
+  }, [configObj]);
   return { response, error, isLoading };
 };
 

@@ -1,5 +1,5 @@
 import React, { useCallback } from "react";
-import { View, Text, StyleSheet, Pressable } from "react-native";
+import { View, Text, StyleSheet, Pressable, Image } from "react-native";
 import { colors, fonts } from "../../variables";
 import { useFonts } from "expo-font";
 import { Allison_400Regular } from "@expo-google-fonts/allison";
@@ -35,6 +35,10 @@ const BrandName = () => {
           Booba
           <Text style={styles.paradiseText}>Paradise</Text>
         </Text>
+        {/* <Image
+          source={require("../../../assets/brandName.png")}
+          style={styles.boobaTextImage}
+        /> */}
       </View>
     </Pressable>
   );
@@ -53,6 +57,10 @@ const styles = StyleSheet.create({
   paradiseText: {
     color: colors.paradiseText,
     margin: -15,
+  },
+  boobaTextImage: {
+    width: 1890 / 17,
+    height: 1417 / 17,
   },
 });
 

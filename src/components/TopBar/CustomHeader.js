@@ -1,12 +1,19 @@
 import React from "react";
-import { View, Text, StyleSheet, Dimensions } from "react-native";
+import { View, StyleSheet, Dimensions } from "react-native";
 import BurgerMenu from "./BurgerMenu";
 import BrandName from "./BrandName";
 import LocationPin from "./LocationPin";
 
-const CustomHeader = () => {
+const CustomHeader = ({ backgroundColor = null }) => {
   return (
-    <View style={styles.topBar}>
+    <View
+      style={[
+        styles.topBar,
+        backgroundColor && {
+          backgroundColor: backgroundColor,
+        },
+      ]}
+    >
       <BurgerMenu />
       <BrandName />
       <LocationPin />
@@ -18,7 +25,7 @@ const styles = StyleSheet.create({
   topBar: {
     flexDirection: "row",
     alignItems: "center",
-    width: Dimensions.get("window").width,
+    width: Dimensions.get("screen").width,
     justifyContent: "space-between",
     padding: 12,
     backgroundColor: "transparent",

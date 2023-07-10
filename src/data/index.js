@@ -1,6 +1,7 @@
 const express = require("express");
 const db = require("./db");
-const menuItemsRouter = require("./routes/menuItems");
+const drinksRouter = require("./routes/drinks");
+const foodRouter = require("./routes/food");
 const locationRouter = require("./routes/location");
 const newsRouter = require("./routes/newsFeed");
 
@@ -25,6 +26,7 @@ app.use((req, res, next) => {
   res.header("Access-Control-Allow-Headers", "X-Requested-With");
   next();
 });
-app.use("/menu", menuItemsRouter);
+app.use("/drinks", drinksRouter);
+app.use("/food", foodRouter);
 app.use("/location", locationRouter);
 app.use("/", newsRouter);

@@ -1,5 +1,6 @@
 export const colors = {
   primary: "#e66060",
+  primaryShade1: "#a14343",
   secondary: "#9ce0f2",
   text: "#27232a",
   background: "#fffcf9",
@@ -8,11 +9,13 @@ export const colors = {
   newsBackground: "#e7d9ea",
   boobaText: "#0d06ff",
   paradiseText: "#ea8400",
-  articleBackground1: "#f58e90",
+  articleBackground1: "#e5f3b0",
   articleBackground2: "#fffcf9",
   articleBackground3: "#b0ddf5",
-  footerBackground: "#3c3346",
+  landingFooterBackground: "#3c3346",
+  menuFooterBackground: "#364b3d",
   hyperlink: "#c4ecf7",
+  headerBackground: "#100e11",
 };
 
 export const fonts = {
@@ -21,6 +24,7 @@ export const fonts = {
   body: "Poppins_400Regular",
   drawerItem: "Poppins_700Bold",
   newsFeedHeader: "Poppins_600SemiBold",
+  categoryTitle: "Poppins_600SemiBold",
   footerTitle: "Poppins_600SemiBold",
   primaryBtn: "Poppins_800ExtraBold",
 };

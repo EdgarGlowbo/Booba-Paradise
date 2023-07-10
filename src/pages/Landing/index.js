@@ -1,5 +1,5 @@
 import React, { useCallback } from "react";
-import { View, Text, Image, ImageBackground } from "react-native";
+import { View, Text, ImageBackground } from "react-native";
 import styles from "./styles";
 import PrimaryButton from "../../components/PrimaryButton";
 import { useFonts } from "expo-font";
@@ -11,7 +11,7 @@ import * as SplashScreen from "expo-splash-screen";
 import { colors } from "../../variables";
 import NewsArticle from "../../components/NewsArticle";
 import useAxios from "../../hooks/useAxios";
-import axiosInstance from "../../apis/newsFeed";
+import axiosInstance from "../../apis/api_instance";
 import Footer from "../../components/Footer";
 
 SplashScreen.preventAutoHideAsync();
@@ -50,21 +50,15 @@ const Landing = () => {
         source={require("../../../assets/LandingBackground.jpg")}
         style={styles.headerContent}
       >
+        {/* <View style={styles.presentationContainer}> */}
         <View style={styles.presentationContainer}>
-          <View style={styles.presentationContainer}>
-            <Text style={styles.presentationHeading}>
-              Especialistas en Bubble Tea
-            </Text>
-            <Text style={styles.presentationBody}>
-              Nos encanta alegrar tu día con nuestros Booba's y deliciosos
-              Snacks.
-            </Text>
-            <PrimaryButton title="Nuestro Menú" screenName="Menu" />
-          </View>
-          <Image
-            source={require("../../../assets/CuteBooba.png")}
-            style={styles.image}
-          />
+          <Text style={styles.presentationHeading}>
+            Especialistas en Bubble Tea
+          </Text>
+          <Text style={styles.presentationBody}>
+            Nos encanta alegrar tu día con nuestros Booba's y deliciosos snacks.
+          </Text>
+          <PrimaryButton title="Nuestro Menú" screenName="Menu" />
         </View>
       </ImageBackground>
       <NewsTransition style={styles.transition} />
@@ -74,20 +68,20 @@ const Landing = () => {
           <View style={styles.newsFeed}>
             <NewsArticle
               color={colors.articleBackground1}
-              article={response.data[0]}
+              article={response[0]}
             />
             <NewsArticle
               color={colors.articleBackground2}
-              article={response.data[1]}
+              article={response[1]}
             />
             <NewsArticle
               color={colors.articleBackground3}
-              article={response.data[2]}
+              article={response[2]}
             />
           </View>
         )}
       </View>
-      <Footer />
+      <Footer backgroundColor={colors.landingFooterBackground} />
     </View>
   );
 };

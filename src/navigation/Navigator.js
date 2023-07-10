@@ -70,12 +70,22 @@ const Navigator = () => {
         <Drawer.Screen
           name="StoreLocator"
           component={StoreLocator}
-          options={{ drawerLabel: "¡Encuéntranos!" }}
+          options={{
+            drawerLabel: "¡Encuéntranos!",
+            header: () => (
+              <CustomHeader backgroundColor={colors.headerBackground} />
+            ),
+          }}
         />
         <Drawer.Screen
           name="StoreDescription"
           component={StoreDescription}
-          options={{ drawerLabel: "Horario de Servicio" }}
+          options={{
+            drawerLabel: "Horario de Servicio",
+            header: () => (
+              <CustomHeader backgroundColor={colors.headerBackground} />
+            ),
+          }}
         />
       </Drawer.Navigator>
     );

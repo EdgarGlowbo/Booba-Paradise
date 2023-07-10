@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import styles from "./styles";
 import { ImageBackground } from "react-native";
@@ -7,8 +7,15 @@ import { Damion_400Regular } from "@expo-google-fonts/damion";
 import { Poppins_400Regular } from "@expo-google-fonts/poppins";
 import { Poppins_600SemiBold } from "@expo-google-fonts/poppins";
 import * as SplashScreen from "expo-splash-screen";
+import ControlPanel from "../../components/ControlPanel";
+import MenuGrid from "../../components/MenuGrid";
+import Footer from "../../components/Footer";
+import { colors } from "../../variables";
 
 const Menu = () => {
+  const [value, setValue] = useState(null);
+  const [type, setType] = useState("drinks");
+
   const [fontsLoaded] = useFonts({
     Damion_400Regular,
     Poppins_400Regular,
@@ -40,6 +47,16 @@ const Menu = () => {
           </View>
         </ImageBackground>
       </View>
+      <View style={styles.menuContainer}>
+        <ControlPanel
+          type={type}
+          setType={setType}
+          value={value}
+          setValue={setValue}
+        />
+        <MenuGrid selectedCategory={value} type={type} />
+      </View>
+      <Footer backgroundColor={colors.menuFooterBackground} />
     </View>
   );
 };

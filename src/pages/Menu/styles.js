@@ -42,6 +42,10 @@ const styles = StyleSheet.create({
     resizeMode: "cover",
     bottom: -130,
   },
+  menuContainer: {
+    backgroundColor: colors.background,
+    paddingHorizontal: 8,
+  },
 });
 
 export default styles;
