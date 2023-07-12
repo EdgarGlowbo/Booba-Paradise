@@ -31,14 +31,14 @@ const BrandName = () => {
   return (
     <Pressable onPress={handlePress}>
       <View>
-        <Text style={styles.boobaText}>
+        {/* <Text style={styles.boobaText}>
           Booba
           <Text style={styles.paradiseText}>Paradise</Text>
-        </Text>
-        {/* <Image
+        </Text> */}
+        <Image
           source={require("../../../assets/brandName.png")}
-          style={styles.boobaTextImage}
-        /> */}
+          style={styles.boobaTypo}
+        />
       </View>
     </Pressable>
   );
@@ -54,13 +54,13 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  paradiseText: {
-    color: colors.paradiseText,
-    margin: -15,
-  },
-  boobaTextImage: {
-    width: 1890 / 17,
-    height: 1417 / 17,
+  // paradiseText: {
+  //   color: colors.paradiseText,
+  //   margin: -15,
+  // },
+  boobaTypo: {
+    width: 131,
+    height: 50,
   },
 });
 
