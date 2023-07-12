@@ -13,7 +13,7 @@ export const colors = {
   articleBackground2: "#fffcf9",
   articleBackground3: "#b0ddf5",
   landingFooterBackground: "#3c3346",
-  menuFooterBackground: "#364b3d",
+  menuFooterBackground: "#74123d",
   hyperlink: "#c4ecf7",
   headerBackground: "#100e11",
 };
