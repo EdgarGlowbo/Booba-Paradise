@@ -5,7 +5,7 @@ import { colors, fonts } from "../variables";
 import { useFonts } from "expo-font";
 import { Poppins_400Regular } from "@expo-google-fonts/poppins";
 
-const CategoryDropdown = ({ type, value, setValue }) => {
+const CategoryDropdown = ({ type, selectedCategory, setSelectedCategory }) => {
   const [isFocus, setIsFocus] = useState(false);
   const [categories, setCategories] = useState([
     { label: "Todas las bebidas", value: "allDrinks" },
@@ -25,7 +25,7 @@ const CategoryDropdown = ({ type, value, setValue }) => {
         { label: "Sabores especiales", value: "special" },
         { label: "Sabores de agua", value: "water" },
       ]);
-      // setValue("allDrinks");
+      // setSelectedCategory("allDrinks");
     } else if (type === "food") {
       setCategories([
         { label: "Toda la comida", value: "allFood" },
@@ -33,7 +33,7 @@ const CategoryDropdown = ({ type, value, setValue }) => {
         { label: "Extras", value: "extras" },
         { label: "Nieves naturales", value: "iceCream" },
       ]);
-      // setValue("allFood");
+      // setSelectedCategory("allFood");
     }
   }, [type]);
 
@@ -51,11 +51,11 @@ const CategoryDropdown = ({ type, value, setValue }) => {
         valueField="value"
         placeholder={!isFocus ? "Select item" : "..."}
         // searchPlaceholder="Search..."
-        value={value}
+        value={selectedCategory}
         onFocus={() => setIsFocus(true)}
         onBlur={() => setIsFocus(false)}
         onChange={(item) => {
-          setValue(item.value);
+          setSelectedCategory(item.value);
           setIsFocus(false);
         }}
       />
