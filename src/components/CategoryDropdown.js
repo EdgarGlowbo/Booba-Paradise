@@ -25,7 +25,7 @@ const CategoryDropdown = ({ type, value, setValue }) => {
         { label: "Sabores especiales", value: "special" },
         { label: "Sabores de agua", value: "water" },
       ]);
-      setValue("allDrinks");
+      // setValue("allDrinks");
     } else if (type === "food") {
       setCategories([
         { label: "Toda la comida", value: "allFood" },
@@ -33,7 +33,7 @@ const CategoryDropdown = ({ type, value, setValue }) => {
         { label: "Extras", value: "extras" },
         { label: "Nieves naturales", value: "iceCream" },
       ]);
-      setValue("allFood");
+      // setValue("allFood");
     }
   }, [type]);
 

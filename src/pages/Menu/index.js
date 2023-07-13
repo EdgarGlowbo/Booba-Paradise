@@ -13,7 +13,7 @@ import Footer from "../../components/Footer";
 import { colors } from "../../variables";
 
 const Menu = () => {
-  const [value, setValue] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState("allDrinks");
   const [type, setType] = useState("drinks");
 
   const [fontsLoaded] = useFonts({
@@ -51,10 +51,10 @@ const Menu = () => {
         <ControlPanel
           type={type}
           setType={setType}
-          value={value}
-          setValue={setValue}
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
         />
-        <MenuGrid selectedCategory={value} type={type} />
+        <MenuGrid selectedCategory={selectedCategory} type={type} />
       </View>
       <Footer backgroundColor={colors.menuFooterBackground} />
     </View>

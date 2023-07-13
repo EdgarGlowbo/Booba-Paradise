@@ -10,7 +10,12 @@ import { Poppins_400Regular } from "@expo-google-fonts/poppins";
 import { Poppins_600SemiBold } from "@expo-google-fonts/poppins";
 import * as SplashScreen from "expo-splash-screen";
 
-const ControlPanel = ({ type, setType, value, setValue }) => {
+const ControlPanel = ({
+  type,
+  setType,
+  selectedCategory,
+  setSelectedCategory,
+}) => {
   const [fontsLoaded] = useFonts({
     Poppins_400Regular,
     Poppins_600SemiBold,
@@ -29,7 +34,10 @@ const ControlPanel = ({ type, setType, value, setValue }) => {
     <View style={styles.container}>
       <View style={styles.typeContainer}>
         <Pressable
-          onPress={() => setType("drinks")}
+          onPress={() => {
+            setType("drinks");
+            setSelectedCategory("allDrinks");
+          }}
           style={[styles.typeBtn, type === "drinks" && styles.activeBorder]}
         >
           <FontAwesomeIcon
@@ -41,7 +49,10 @@ const ControlPanel = ({ type, setType, value, setValue }) => {
           </Text>
         </Pressable>
         <Pressable
-          onPress={() => setType("food")}
+          onPress={() => {
+            setType("food");
+            setSelectedCategory("allFood");
+          }}
           style={[styles.typeBtn, type === "food" && styles.activeBorder]}
         >
           <FontAwesomeIcon
@@ -55,7 +66,11 @@ const ControlPanel = ({ type, setType, value, setValue }) => {
       </View>
 
       <Text style={styles.categoryTitle}>Categoría</Text>
-      <CategoryDropdown type={type} value={value} setValue={setValue} />
+      <CategoryDropdown
+        type={type}
+        selectedCategory={selectedCategory}
+        setSelectedCategory={setSelectedCategory}
+      />
     </View>
   );
 };

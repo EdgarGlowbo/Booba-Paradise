@@ -22,6 +22,7 @@ const StoreLocator = () => {
       },
     },
   });
+
   const center = useMemo(() => {
     if (response) {
       return {
@@ -33,7 +34,12 @@ const StoreLocator = () => {
   return (
     <View style={styles.container}>
       {isLoaded && response && (
-        <GoogleMap zoom={17} center={center} mapContainerStyle={styles.map}>
+        <GoogleMap
+          zoom={17}
+          center={center}
+          mapContainerStyle={styles.map}
+          streetView={false}
+        >
           <Marker position={center} />
         </GoogleMap>
       )}

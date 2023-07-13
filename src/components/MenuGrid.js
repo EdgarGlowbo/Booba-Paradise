@@ -38,10 +38,7 @@ const MenuGrid = ({ selectedCategory, type }) => {
             <View style={styles.productList}>
               {response &&
                 response.map((menuItem) => (
-                  <Pressable
-                    // style={styles.productItem}
-                    key={menuItem.idMenuItem}
-                  >
+                  <Pressable key={menuItem.idMenuItem}>
                     <View style={styles.productItem}>
                       <Image
                         source={require("../../assets/menu/boobaLogo.png")}
