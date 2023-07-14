@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import React, { useState, useCallback } from "react";
+import React, { useCallback } from "react";
 import { View, StyleSheet, Pressable, Text } from "react-native";
 import { faMugHot } from "@fortawesome/free-solid-svg-icons/faMugHot";
 import { faIceCream } from "@fortawesome/free-solid-svg-icons/faIceCream";

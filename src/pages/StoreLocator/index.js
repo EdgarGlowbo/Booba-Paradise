@@ -1,15 +1,13 @@
-import React, { useMemo, useState } from "react";
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import React, { useMemo } from "react";
+import { View } from "react-native";
 import styles from "./styles";
-// import { MapView, Marker } from "react-native-maps";
 import { useLoadScript, GoogleMap, Marker } from "@react-google-maps/api";
-import { GOOGLE_MAPS_API_KEY } from "../../apis/apiKey";
 import useAxios from "../../hooks/useAxios";
 import axiosInstance from "../../apis/api_instance";
 
 const StoreLocator = () => {
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: GOOGLE_MAPS_API_KEY,
+    googleMapsApiKey: process.env.GOOGLE_MAPS_API_KEY,
   });
 
   const { response } = useAxios({
@@ -35,10 +33,16 @@ const StoreLocator = () => {
     <View style={styles.container}>
       {isLoaded && response && (
         <GoogleMap
-          zoom={17}
+          zoom={19}
           center={center}
           mapContainerStyle={styles.map}
-          streetView={false}
+          mapTypeId="b02691dcbf5e47e6"
+          options={{
+            zoomControl: false,
+            streetViewControl: false,
+            mapTypeControl: false,
+            // clickableIcons: true,
+          }}
         >
           <Marker position={center} />
         </GoogleMap>

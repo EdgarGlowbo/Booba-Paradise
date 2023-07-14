@@ -9,7 +9,7 @@ const MenuGrid = ({ selectedCategory, type }) => {
   const { response, isLoading } = useAxios({
     axiosInstance: axiosInstance,
     method: "GET",
-    url: `${type}`,
+    url: "menu",
     requestConfig: {
       headers: {
         "Content-Language": "en-US",
@@ -28,29 +28,44 @@ const MenuGrid = ({ selectedCategory, type }) => {
       iceCream: "Nieves naturales",
     },
   };
+  const filterMenuItems = (data) => {
+    if (type === "drinks") {
+      return data.filter((item) => item.type === "Drink");
+    } else if (type === "food") {
+      return data.filter((item) => item.type === "Food");
+    }
+    return [];
+  };
+
+  const menuItems = response ? filterMenuItems(response) : [];
 
   if (selectedCategory === "allDrinks" || selectedCategory === "allFood") {
     return (
       <View style={styles.menuGrid}>
-        {Object.values(categories[type]).map((category) => (
-          <View style={styles.categoryList} key={category}>
-            <Text style={styles.categoryHeader}>{category}</Text>
-            <View style={styles.productList}>
-              {response &&
-                response.map((menuItem) => (
-                  <Pressable key={menuItem.idMenuItem}>
-                    <View style={styles.productItem}>
-                      <Image
-                        source={require("../../assets/menu/boobaLogo.png")}
-                        style={styles.productImage}
-                      />
-                      <Text style={styles.productName}>{menuItem.name}</Text>
-                    </View>
-                  </Pressable>
-                ))}
-            </View>
-          </View>
-        ))}
+        {!isLoading &&
+          Object.entries(categories[type]).map(
+            ([categoryKey, categoryValue]) => (
+              <View style={styles.categoryList} key={categoryKey}>
+                <Text style={styles.categoryHeader}>{categoryValue}</Text>
+                <View style={styles.productList}>
+                  {menuItems &&
+                    menuItems.map((menuItem) => (
+                      <Pressable key={menuItem.idMenuItem}>
+                        <View style={styles.productItem}>
+                          <Image
+                            source={require("../../assets/menu/boobaLogo.png")}
+                            style={styles.productImage}
+                          />
+                          <Text style={styles.productName}>
+                            {menuItem.name}
+                          </Text>
+                        </View>
+                      </Pressable>
+                    ))}
+                </View>
+              </View>
+            )
+          )}
       </View>
     );
   }
@@ -63,14 +78,11 @@ const MenuGrid = ({ selectedCategory, type }) => {
             {categories[type][selectedCategory]}
           </Text>
           <View style={styles.productList}>
-            {response &&
-              response
+            {menuItems &&
+              menuItems
                 .filter((menuItem) => menuItem.category === selectedCategory)
                 .map((menuItem) => (
-                  <Pressable
-                    // style={styles.productItem}
-                    key={menuItem.idMenuItem}
-                  >
+                  <Pressable key={menuItem.idMenuItem}>
                     <View style={styles.productItem}>
                       <Image
                         source={require("../../assets/menu/boobaLogo.png")}
