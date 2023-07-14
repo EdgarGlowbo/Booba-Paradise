@@ -15,7 +15,7 @@ export const colors = {
   landingFooterBackground: "#3c3346",
   menuFooterBackground: "#74123d",
   hyperlink: "#c4ecf7",
-  headerBackground: "#100e11",
+  headerBackground: "#27232a",
 };
 
 export const fonts = {
