@@ -4,8 +4,10 @@ import styles from "./styles";
 import PrimaryButton from "../../components/PrimaryButton";
 import { useFonts } from "expo-font";
 import { Damion_400Regular } from "@expo-google-fonts/damion";
-import { Poppins_400Regular } from "@expo-google-fonts/poppins";
-import { Poppins_600SemiBold } from "@expo-google-fonts/poppins";
+import {
+  Poppins_400Regular,
+  Poppins_600SemiBold,
+} from "@expo-google-fonts/poppins";
 import NewsTransition from "../../../assets/NewsTransition";
 import * as SplashScreen from "expo-splash-screen";
 import { colors } from "../../variables";

@@ -16,6 +16,9 @@ export const colors = {
   menuFooterBackground: "#74123d",
   hyperlink: "#c4ecf7",
   headerBackground: "#27232a",
+  open: "#377b48",
+  closed: "#ed1b24",
+  bottomTabIcon: "#ce4b27",
 };
 
 export const fonts = {
@@ -27,4 +30,6 @@ export const fonts = {
   categoryTitle: "Poppins_600SemiBold",
   footerTitle: "Poppins_600SemiBold",
   primaryBtn: "Poppins_800ExtraBold",
+  bottomTab: "Poppins_400Regular",
+  bottomTabBold: "Poppins_600SemiBold",
 };

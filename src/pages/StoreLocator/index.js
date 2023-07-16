@@ -5,6 +5,7 @@ import { useLoadScript, GoogleMap, MarkerF } from "@react-google-maps/api";
 import { GOOGLE_MAPS_API_KEY } from "../../apis/apiKeys";
 import useAxios from "../../hooks/useAxios";
 import axiosInstance from "../../apis/api_instance";
+import StoreDescBottomTab from "../../components/StoreDescBottomTab";
 
 const StoreLocator = () => {
   const { isLoaded } = useLoadScript({
@@ -33,25 +34,28 @@ const StoreLocator = () => {
   return (
     <View style={styles.container}>
       {isLoaded && response && (
-        <GoogleMap
-          zoom={19}
-          center={center}
-          mapContainerStyle={styles.map}
-          options={{
-            zoomControl: false,
-            streetViewControl: false,
-            mapTypeControl: false,
-            mapId: "7dc31171051eccc4",
-          }}
-        >
-          <MarkerF
-            position={center}
-            icon={{
-              url: require("../../../assets/boobaPin.png"),
-              scaledSize: new google.maps.Size(64, 64),
+        <View style={styles.container}>
+          <GoogleMap
+            zoom={19}
+            center={center}
+            mapContainerStyle={styles.map}
+            options={{
+              zoomControl: false,
+              streetViewControl: false,
+              mapTypeControl: false,
+              mapId: "7dc31171051eccc4",
             }}
-          />
-        </GoogleMap>
+          >
+            <MarkerF
+              position={center}
+              icon={{
+                url: require("../../../assets/boobaPin.png"),
+                scaledSize: new google.maps.Size(64, 64),
+              }}
+            />
+          </GoogleMap>
+          <StoreDescBottomTab details={response[0]} />
+        </View>
       )}
     </View>
   );

@@ -26,6 +26,14 @@ const Navigator = () => {
       </Stack.Navigator>
     );
   };
+  const LocationStack = () => {
+    return (
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="StoreLocator" component={StoreLocator} />
+        <Stack.Screen name="StoreDescription" component={StoreDescription} />
+      </Stack.Navigator>
+    );
+  };
   const DrawerNav = () => {
     const [fontsLoaded] = useFonts({
       Poppins_700Bold,
@@ -68,8 +76,8 @@ const Navigator = () => {
           options={{ drawerLabel: "Nuestro Menú" }}
         />
         <Drawer.Screen
-          name="StoreLocator"
-          component={StoreLocator}
+          name="LocationStack"
+          component={LocationStack}
           options={{
             drawerLabel: "¡Encuéntranos!",
             header: () => (
