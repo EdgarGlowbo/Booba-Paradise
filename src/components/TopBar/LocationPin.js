@@ -11,7 +11,7 @@ import { useNavigation } from "@react-navigation/native";
 const LocationPin = () => {
   const navigation = useNavigation();
   const handlePress = () => {
-    navigation.navigate("LocationStack");
+    navigation.navigate("LocationStack", { screen: "StoreLocator" });
   };
   return (
     <Pressable onPress={handlePress}>

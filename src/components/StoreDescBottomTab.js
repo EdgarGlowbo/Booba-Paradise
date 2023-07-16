@@ -14,7 +14,6 @@ import {
 import * as SplashScreen from "expo-splash-screen";
 import { useNavigation } from "@react-navigation/native";
 import useBusinessStatus from "../hooks/useBusinessStatus";
-import { setHours, setMinutes } from "date-fns";
 SplashScreen.preventAutoHideAsync();
 
 const StoreDescBottomTab = ({ details: { name, address, opening_hours } }) => {
