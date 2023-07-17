@@ -13,13 +13,13 @@ const useBusinessStatus = (userDate, businessHours) => {
     isOpen: false,
     status: "Cerrado",
     message: "Abre a las 03:30 p.m.",
+    weekdayIndex: 0,
   };
   businessHours.sort((a, b) => a.id - b.id);
   const weekdayIndex = getDay(userDate);
   const currHour = getHours(userDate);
   const currMin = getMinutes(userDate);
-  console.log(`${currHour}:${currMin}`);
-
+  currStatus.weekdayIndex = weekdayIndex; // Highlight day
   const parseHour = (timeString) => {
     const [hour, minutes] = timeString.split(":").map(Number);
     return [hour, minutes];
@@ -46,8 +46,7 @@ const useBusinessStatus = (userDate, businessHours) => {
       isAfter = true;
     }
   }
-  console.log({ isOpen: currStatus.isOpen, isAfter });
-  console.log(businessHours);
+
   if (currStatus.isOpen) {
     const closeTime = format12hr(parseHour(businessHours[weekdayIndex].close));
     currStatus.message = `Cierra a las ${closeTime}`;

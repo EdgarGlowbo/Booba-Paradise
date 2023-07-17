@@ -19,6 +19,11 @@ export const colors = {
   open: "#377b48",
   closed: "#ed1b24",
   bottomTabIcon: "#ce4b27",
+  location: {
+    primary: "#27232a",
+    secondary: "ce4b27",
+    bodyText: "#fffcf9",
+  },
 };
 
 export const fonts = {
@@ -27,9 +32,10 @@ export const fonts = {
   body: "Poppins_400Regular",
   drawerItem: "Poppins_700Bold",
   newsFeedHeader: "Poppins_600SemiBold",
+  newsHeader: "Poppins_500Medium",
   categoryTitle: "Poppins_600SemiBold",
   footerTitle: "Poppins_600SemiBold",
-  primaryBtn: "Poppins_800ExtraBold",
+  primaryBtn: "Poppins_600SemiBold",
   bottomTab: "Poppins_400Regular",
   bottomTabBold: "Poppins_600SemiBold",
 };

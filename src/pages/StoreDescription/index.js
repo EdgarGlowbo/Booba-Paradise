@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { View, Text, Pressable, Image } from "react-native";
+import React, { useState, useCallback } from "react";
+import { View, Text, Pressable, Image, Linking } from "react-native";
 import styles from "./styles";
 import useAxios from "../../hooks/useAxios";
 import axiosInstance from "../../apis/api_instance";
@@ -13,9 +13,19 @@ import { faBagShopping } from "@fortawesome/free-solid-svg-icons/faBagShopping";
 import { faCaretRight } from "@fortawesome/free-solid-svg-icons/faCaretRight";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons/faLocationDot";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons/faCaretDown";
+import { faCaretUp } from "@fortawesome/free-solid-svg-icons/faCaretUp";
 import { useNavigation } from "@react-navigation/native";
+import { useFonts } from "expo-font";
+import {
+  Poppins_400Regular,
+  Poppins_600SemiBold,
+} from "@expo-google-fonts/poppins";
+import * as SplashScreen from "expo-splash-screen";
+
+SplashScreen.preventAutoHideAsync();
 
 const StoreDescription = () => {
+  const [isShown, setIsShown] = useState(false);
   const { response } = useAxios({
     axiosInstance: axiosInstance,
     method: "GET",
@@ -32,12 +42,26 @@ const StoreDescription = () => {
 
     return response[0];
   };
+  const [fontsLoaded] = useFonts({
+    Poppins_400Regular,
+    Poppins_600SemiBold,
+  });
+
+  useCallback(async () => {
+    if (fontsLoaded) {
+      await SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded]);
+
+  if (!fontsLoaded) {
+    return null;
+  }
 
   const { name, address, opening_hours } = response
     ? storeDetails(response[0])
     : [];
 
-  const { isOpen, status, message } = opening_hours
+  const { isOpen, status, message, weekdayIndex } = opening_hours
     ? useBusinessStatus(new Date(), opening_hours)
     : {};
 
@@ -51,65 +75,109 @@ const StoreDescription = () => {
       >
         <FontAwesomeIcon
           icon={faXmark}
-          style={[styles.icon, { color: colors.headerBackground }]}
+          style={[styles.icon, { color: colors.headerBackground, margin: 0 }]}
         />
       </Pressable>
       <View style={[styles.businessNameContainer, styles.row]}>
         <Image
           source={require("../../../assets/boobaPin.png")}
-          style={styles.icon}
+          style={styles.boobaPin}
         />
         <Text style={styles.businessName}>Booba Paradise</Text>
       </View>
       <View style={[styles.addressContainer, styles.row]}>
         <FontAwesomeIcon icon={faLocationDot} style={styles.icon} />
-        <Text style={styles.address}>{address}</Text>
+        <Text style={[styles.address, styles.text]}>{address}</Text>
       </View>
-      <View style={[styles.businessHoursContainer, styles.row]}>
+      <View style={[styles.row, styles.businessHoursContainer]}>
+        <FontAwesomeIcon icon={faClock} style={[styles.icon, styles.clock]} />
+
         <View style={styles.headerContainer}>
-          <FontAwesomeIcon icon={faClock} style={styles.icon} />
-          <Text
-            style={[
-              styles.status,
-              isOpen ? { color: colors.open } : { color: colors.closed },
-            ]}
+          <Pressable
+            style={styles.statusContainer}
+            onPress={() => {
+              setIsShown(!isShown);
+            }}
           >
-            {status}: <Text style={styles.statusMessage}>{message}</Text>
-          </Text>
-          <FontAwesomeIcon
-            icon={faCaretDown}
-            style={[styles.icon, { color: colors.headerBackground }]}
-          />
-        </View>
-        <View style={styles.businessHoursTable}>
-          {name &&
-            opening_hours.map((weekday) => (
-              <View style={styles.row} key={weekday.id}>
-                <Text style={styles.weekday}>{weekday.name}</Text>
-                <Text style={styles.hours}>{weekday.businessHours}</Text>
-              </View>
-            ))}
-        </View>
-        <View style={[styles.servicesContainer, styles.row]}>
-          <Text style={styles.servicesTitle}>Servicios</Text>
-          <View style={styles.serviceItem}>
-            <FontAwesomeIcon icon={faStore} style={styles.icon} />
-            <Text style={styles.serviceLabel}>Para comer aquí</Text>
-          </View>
-          <View style={styles.serviceItem}>
-            <FontAwesomeIcon icon={faBagShopping} style={styles.icon} />
-            <Text style={styles.serviceLabel}>Para llevar</Text>
-          </View>
-        </View>
-        <View style={[styles.btnContainer, styles.row]}>
-          <Pressable style={styles.directionsBtn}>
-            <Text>Cómo llegar</Text>
+            <Text
+              style={[
+                styles.text,
+                isOpen ? { color: colors.open } : { color: colors.closed },
+              ]}
+            >
+              {status}:{" "}
+              <Text style={[styles.text, styles.statusMessage]}>{message}</Text>
+            </Text>
+
             <FontAwesomeIcon
-              icon={faCaretRight}
-              style={[styles.icon, { color: colors.headerBackground }]}
+              icon={isShown ? faCaretUp : faCaretDown}
+              style={[
+                styles.icon,
+                { color: colors.headerBackground, margin: 0 },
+              ]}
             />
           </Pressable>
+          {isShown && (
+            <View style={styles.businessHoursTable}>
+              {name &&
+                opening_hours.map((weekday) => (
+                  <View style={styles.businessRow} key={weekday.id}>
+                    <Text
+                      style={[
+                        styles.weekday,
+                        styles.text,
+                        weekdayIndex === weekday.id
+                          ? { fontFamily: fonts.bottomTabBold }
+                          : null,
+                      ]}
+                    >
+                      {weekday.name}
+                    </Text>
+                    <Text
+                      style={[
+                        styles.hours,
+                        styles.text,
+                        weekdayIndex === weekday.id
+                          ? { fontFamily: fonts.bottomTabBold }
+                          : null,
+                      ]}
+                    >
+                      {weekday.businessHours}
+                    </Text>
+                  </View>
+                ))}
+            </View>
+          )}
         </View>
+      </View>
+      <Text style={[styles.servicesTitle, styles.textBold, styles.row]}>
+        Servicios
+      </Text>
+      <View style={[styles.servicesContainer, styles.row]}>
+        <View style={styles.serviceItem}>
+          <FontAwesomeIcon icon={faStore} style={styles.icon} />
+          <Text style={[styles.serviceLabel, styles.text]}>
+            Para comer aquí
+          </Text>
+        </View>
+        <View style={styles.serviceItem}>
+          <FontAwesomeIcon icon={faBagShopping} style={styles.icon} />
+          <Text style={[styles.serviceLabel, styles.text]}>Para llevar</Text>
+        </View>
+      </View>
+      <View style={[styles.btnContainer, styles.row]}>
+        <Pressable
+          style={styles.directionsBtn}
+          onPress={() =>
+            Linking.openURL("https://goo.gl/maps/HWgoVRhekFdWE6sP7")
+          }
+        >
+          <Text style={styles.text}>Cómo llegar</Text>
+          <FontAwesomeIcon
+            icon={faCaretRight}
+            style={[styles.icon, { color: colors.headerBackground }]}
+          />
+        </Pressable>
       </View>
     </View>
   );

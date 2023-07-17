@@ -2,7 +2,7 @@ import React, { useCallback } from "react";
 import { View, StyleSheet, Pressable, Text } from "react-native";
 import { colors, fonts } from "../variables";
 import { useFonts } from "expo-font";
-import { Poppins_800ExtraBold } from "@expo-google-fonts/poppins";
+import { Poppins_600SemiBold } from "@expo-google-fonts/poppins";
 
 // Icons
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
@@ -16,7 +16,7 @@ SplashScreen.preventAutoHideAsync();
 const PrimaryButton = ({ title, screenName }) => {
   const navigation = useNavigation();
   const [fontsLoaded] = useFonts({
-    Poppins_800ExtraBold,
+    Poppins_600SemiBold,
   });
 
   const onLayoutRootView = useCallback(async () => {

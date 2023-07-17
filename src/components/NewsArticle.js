@@ -2,13 +2,17 @@ import React, { useCallback } from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
 import { useFonts } from "expo-font";
 import { Damion_400Regular } from "@expo-google-fonts/damion";
-import { Poppins_400Regular } from "@expo-google-fonts/poppins";
+import {
+  Poppins_400Regular,
+  Poppins_500Medium,
+} from "@expo-google-fonts/poppins";
 import * as SplashScreen from "expo-splash-screen";
 import { colors, fonts } from "../variables";
 
 const NewsArticle = ({ color, article }) => {
   const [fontsLoaded] = useFonts({
     Damion_400Regular,
+    Poppins_500Medium,
     Poppins_400Regular,
   });
 
@@ -52,8 +56,8 @@ const styles = StyleSheet.create({
   },
   title: {
     marginHorizontal: 12,
-    fontFamily: fonts.headings,
-    fontSize: 32,
+    fontFamily: fonts.newsHeader,
+    fontSize: 24,
     color: colors.primary,
     textAlign: "center",
   },
