@@ -5,7 +5,7 @@ export const colors = {
   text: "#27232a",
   background: "#fffcf9",
   accent: "#9680af",
-  drawerBackground: "#78668c",
+  drawerBackground: "#3c3346",
   newsBackground: "#e7d9ea",
   boobaText: "#0d06ff",
   paradiseText: "#ea8400",
