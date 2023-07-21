@@ -1,21 +1,28 @@
 import { useEffect, useState } from "react";
 
 const useAxios = (configObj) => {
-  const { axiosInstance, method, url, requestConfig } = configObj;
-  const [response, setResponse] = useState(null);
-  const [error, setError] = useState("");
+  const { axiosInstance, method, urls, requestConfig } = configObj;
+  const [responses, setResponses] = useState([]);
+  const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
-    const controller = new AbortController();
+    const controllers = urls.map((url) => new AbortController());
     const fetchData = async () => {
       try {
-        const res = await axiosInstance[method.toLowerCase()](url, {
-          ...requestConfig,
-          signal: controller.signal,
-        });
-        setResponse(res.data);
+        const results = await Promise.all(
+          urls.map(async (url) => {
+            const res = await axiosInstance[method.toLowerCase()](url, {
+              ...requestConfig,
+              signal: controllers[urls.indexOf(url)].signal,
+            });
+            return res.data;
+          })
+        );
+        console.log(results);
+        setResponses(results);
       } catch (err) {
-        setError(err.message);
+        setErrors([err.message]);
       } finally {
         setIsLoading(false);
       }
@@ -23,9 +30,10 @@ const useAxios = (configObj) => {
 
     fetchData();
 
-    return () => controller.abort();
+    return () => controllers.forEach((controller) => controller.abort());
   }, []);
-  return { response, error, isLoading };
+
+  return { responses, errors, isLoading };
 };
 
 export default useAxios;

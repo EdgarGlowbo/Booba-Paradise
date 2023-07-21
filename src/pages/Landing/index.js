@@ -19,10 +19,10 @@ import Footer from "../../components/Footer";
 SplashScreen.preventAutoHideAsync();
 
 const Landing = () => {
-  const { response, error, isLoading } = useAxios({
+  const { responses, errors, isLoading } = useAxios({
     axiosInstance: axiosInstance,
     method: "GET",
-    url: "/",
+    urls: ["/"],
     requestConfig: {
       headers: {
         "Content-Language": "en-US",
@@ -45,7 +45,7 @@ const Landing = () => {
   if (!fontsLoaded) {
     return null;
   }
-
+  const news = responses.length > 0 ? responses[0] : [];
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -66,20 +66,11 @@ const Landing = () => {
       <NewsTransition style={styles.transition} />
       <View style={styles.newsContainer}>
         <Text style={styles.newsFeedHeader}>Lo nuevo este verano</Text>
-        {response && (
+        {responses && (
           <View style={styles.newsFeed}>
-            <NewsArticle
-              color={colors.articleBackground1}
-              article={response[0]}
-            />
-            <NewsArticle
-              color={colors.articleBackground2}
-              article={response[1]}
-            />
-            <NewsArticle
-              color={colors.articleBackground3}
-              article={response[2]}
-            />
+            <NewsArticle color={colors.articleBackground1} article={news[0]} />
+            <NewsArticle color={colors.articleBackground2} article={news[1]} />
+            <NewsArticle color={colors.articleBackground3} article={news[2]} />
           </View>
         )}
       </View>

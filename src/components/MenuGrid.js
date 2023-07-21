@@ -7,28 +7,17 @@ import { Pressable } from "react-native";
 import ImageResponsive from "./ImageResponsive";
 
 const MenuGrid = ({ selectedCategory, type }) => {
-  const { response, isLoading } = useAxios({
+  const { responses, isLoading } = useAxios({
     axiosInstance: axiosInstance,
     method: "GET",
-    url: "menu",
+    urls: ["menu", "category"],
     requestConfig: {
       headers: {
         "Content-Language": "en-US",
       },
     },
   });
-  // const categories = {
-  //   drinks: {
-  //     classic: "Sabores clásicos",
-  //     special: "Sabores especiales",
-  //     water: "Sabores de agua",
-  //   },
-  //   food: {
-  //     waffles: "Waffles",
-  //     extras: "Extras",
-  //     iceCream: "Nieves naturales",
-  //   },
-  // };
+
   const filterMenuItems = (data) => {
     if (type === "drinks") {
       return data.filter((item) => item.type === "drink");
@@ -37,21 +26,30 @@ const MenuGrid = ({ selectedCategory, type }) => {
     }
     return [];
   };
+  const filterCategories = (categories) => {
+    if (type === "drinks") {
+      return categories.filter((category) => category.type === "drink");
+    } else if (type === "food") {
+      return categories.filter((category) => category.type === "food");
+    }
+    return [];
+  };
 
-  const menuItems = response ? filterMenuItems(response) : [];
-  // const categories = response ? filterMenuItems(response) : [];
+  const menuItems = responses.length > 0 ? filterMenuItems(responses[0]) : [];
+  const categories = responses.length > 0 ? filterCategories(responses[1]) : [];
 
   if (selectedCategory === "allDrinks" || selectedCategory === "allFood") {
     return (
       <View style={styles.menuGrid}>
         {!isLoading &&
-          Object.entries(categories[type]).map(
-            ([categoryKey, categoryValue]) => (
-              <View style={styles.categoryList} key={categoryKey}>
-                <Text style={styles.categoryHeader}>{categoryValue}</Text>
-                <View style={styles.productList}>
-                  {menuItems &&
-                    menuItems.map((menuItem) => (
+          categories.map((category) => (
+            <View style={styles.categoryList} key={category.id}>
+              <Text style={styles.categoryHeader}>{category.name}</Text>
+              <View style={styles.productList}>
+                {menuItems &&
+                  menuItems
+                    .filter((menuItem) => menuItem.categoryID === category.id)
+                    .map((menuItem) => (
                       <Pressable key={menuItem.id}>
                         <View style={styles.productItem}>
                           <ImageResponsive
@@ -67,10 +65,9 @@ const MenuGrid = ({ selectedCategory, type }) => {
                         </View>
                       </Pressable>
                     ))}
-                </View>
               </View>
-            )
-          )}
+            </View>
+          ))}
       </View>
     );
   }
