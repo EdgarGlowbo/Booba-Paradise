@@ -17,18 +17,18 @@ const MenuGrid = ({ selectedCategory, type }) => {
       },
     },
   });
-  const categories = {
-    drinks: {
-      classic: "Sabores clásicos",
-      special: "Sabores especiales",
-      water: "Sabores de agua",
-    },
-    food: {
-      waffles: "Waffles",
-      extras: "Extras",
-      iceCream: "Nieves naturales",
-    },
-  };
+  // const categories = {
+  //   drinks: {
+  //     classic: "Sabores clásicos",
+  //     special: "Sabores especiales",
+  //     water: "Sabores de agua",
+  //   },
+  //   food: {
+  //     waffles: "Waffles",
+  //     extras: "Extras",
+  //     iceCream: "Nieves naturales",
+  //   },
+  // };
   const filterMenuItems = (data) => {
     if (type === "drinks") {
       return data.filter((item) => item.type === "drink");
@@ -39,6 +39,7 @@ const MenuGrid = ({ selectedCategory, type }) => {
   };
 
   const menuItems = response ? filterMenuItems(response) : [];
+  // const categories = response ? filterMenuItems(response) : [];
 
   if (selectedCategory === "allDrinks" || selectedCategory === "allFood") {
     return (

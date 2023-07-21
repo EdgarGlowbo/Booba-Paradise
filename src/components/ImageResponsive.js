@@ -12,7 +12,6 @@ const ImageResponsive = ({ source: { sourceWidth, uri }, aspectRatio }) => {
 
   useEffect(() => {
     setWidth(sourceWidth);
-    console.log(calculateHeight());
     setHeight(calculateHeight());
   }, [sourceWidth]);
 

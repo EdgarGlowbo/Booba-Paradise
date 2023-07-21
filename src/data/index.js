@@ -1,6 +1,7 @@
 const express = require("express");
 const db = require("./db");
 const drinksRouter = require("./routes/drinks");
+const categoryRouter = require("./routes/category");
 const foodRouter = require("./routes/food");
 const menuRouter = require("./routes/menu");
 const locationRouter = require("./routes/location");
@@ -28,6 +29,7 @@ app.use((req, res, next) => {
   next();
 });
 app.use("/drinks", drinksRouter);
+app.use("/category", categoryRouter);
 app.use("/menu", menuRouter);
 app.use("/food", foodRouter);
 app.use("/location", locationRouter);
