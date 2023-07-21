@@ -9,7 +9,7 @@ export const colors = {
   newsBackground: "#e7d9ea",
   boobaText: "#0d06ff",
   paradiseText: "#ea8400",
-  articleBackground1: "#fed7e9",
+  articleBackground1: "#c9dad9",
   articleBackground2: "#fffcf9",
   articleBackground3: "#b0ddf5",
   landingFooterBackground: "#3c3346",

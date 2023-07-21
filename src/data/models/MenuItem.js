@@ -2,7 +2,7 @@ const db = require("../db");
 
 class MenuItem {
   static async getAll() {
-    const query = "SELECT * FROM menuitem";
+    const query = "SELECT * FROM product";
 
     const [res] = await db
       .query(query)
@@ -11,7 +11,7 @@ class MenuItem {
     return res;
   }
   static async getDrinks() {
-    const query = "SELECT * FROM menuitem WHERE type = 'Drink'";
+    const query = "SELECT * FROM product WHERE type = 'drink'";
 
     const [res] = await db
       .query(query)
@@ -20,7 +20,7 @@ class MenuItem {
     return res;
   }
   static async getFood() {
-    const query = "SELECT * FROM menuitem WHERE type = 'Food'";
+    const query = "SELECT * FROM product WHERE type = 'food'";
 
     const [res] = await db
       .query(query)

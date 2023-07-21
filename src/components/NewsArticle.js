@@ -9,7 +9,10 @@ import {
 import * as SplashScreen from "expo-splash-screen";
 import { colors, fonts } from "../variables";
 
-const NewsArticle = ({ color, article }) => {
+const NewsArticle = ({
+  color,
+  article: { id, title, content, background_color },
+}) => {
   const [fontsLoaded] = useFonts({
     Damion_400Regular,
     Poppins_500Medium,
@@ -27,14 +30,21 @@ const NewsArticle = ({ color, article }) => {
   }
 
   return (
-    <View style={[styles.container, { backgroundColor: color }]}>
+    <View
+      style={[
+        styles.container,
+        background_color
+          ? { backgroundColor: background_color }
+          : { backgroundColor: color },
+      ]}
+    >
       <Image
-        source={require(`../../assets/news/news${article.id}.jpg`)}
+        source={`https://storage.googleapis.com/booba_paradise/news_feed/${id}.jpg`}
         style={styles.headerImg}
       />
       <View style={styles.contentContainer}>
-        <Text style={styles.title}>{article.title}</Text>
-        <Text style={styles.content}>{article.content}</Text>
+        <Text style={styles.title}>{title}</Text>
+        <Text style={styles.content}>{content}</Text>
       </View>
     </View>
   );

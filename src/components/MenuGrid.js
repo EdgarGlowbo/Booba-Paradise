@@ -4,6 +4,7 @@ import axiosInstance from "../apis/api_instance";
 import useAxios from "../hooks/useAxios";
 import { colors, fonts } from "../variables";
 import { Pressable } from "react-native";
+import ImageResponsive from "./ImageResponsive";
 
 const MenuGrid = ({ selectedCategory, type }) => {
   const { response, isLoading } = useAxios({
@@ -30,9 +31,9 @@ const MenuGrid = ({ selectedCategory, type }) => {
   };
   const filterMenuItems = (data) => {
     if (type === "drinks") {
-      return data.filter((item) => item.type === "Drink");
+      return data.filter((item) => item.type === "drink");
     } else if (type === "food") {
-      return data.filter((item) => item.type === "Food");
+      return data.filter((item) => item.type === "food");
     }
     return [];
   };
@@ -50,11 +51,14 @@ const MenuGrid = ({ selectedCategory, type }) => {
                 <View style={styles.productList}>
                   {menuItems &&
                     menuItems.map((menuItem) => (
-                      <Pressable key={menuItem.idMenuItem}>
+                      <Pressable key={menuItem.id}>
                         <View style={styles.productItem}>
-                          <Image
-                            source={require("../../assets/menu/boobaLogo.png")}
-                            style={styles.productImage}
+                          <ImageResponsive
+                            source={{
+                              sourceWidth: 111,
+                              uri: `https://storage.googleapis.com/booba_paradise/menu_images/${menuItem.id}.png`,
+                            }}
+                            aspectRatio={37 / 40}
                           />
                           <Text style={styles.productName}>
                             {menuItem.name}
@@ -82,11 +86,14 @@ const MenuGrid = ({ selectedCategory, type }) => {
               menuItems
                 .filter((menuItem) => menuItem.category === selectedCategory)
                 .map((menuItem) => (
-                  <Pressable key={menuItem.idMenuItem}>
+                  <Pressable key={menuItem.id}>
                     <View style={styles.productItem}>
-                      <Image
-                        source={require("../../assets/menu/boobaLogo.png")}
-                        style={styles.productImage}
+                      <ImageResponsive
+                        source={{
+                          sourceWidth: 111,
+                          uri: `https://storage.googleapis.com/booba_paradise/menu_images/${menuItem.id}.png`,
+                        }}
+                        aspectRatio={37 / 40}
                       />
                       <Text style={styles.productName}>{menuItem.name}</Text>
                     </View>
@@ -119,11 +126,6 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     maxWidth: 304,
     alignSelf: "center",
-  },
-  productImage: {
-    height: 120,
-    width: 120,
-    marginVertical: 15,
   },
   productItem: {
     // flex: 1,

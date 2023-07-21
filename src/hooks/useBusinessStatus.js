@@ -1,4 +1,3 @@
-// import { useEffect, useState } from "react";
 import {
   getDay,
   getHours,
@@ -6,7 +5,7 @@ import {
   format,
   setHours,
   setMinutes,
-} from "date-fns";
+} from "date-fns/";
 
 const useBusinessStatus = (userDate, businessHours) => {
   const currStatus = {
@@ -35,12 +34,19 @@ const useBusinessStatus = (userDate, businessHours) => {
   const [closeHours, closeMinutes] = parseHour(
     businessHours[weekdayIndex].close
   );
+
   let isAfter = false; // condition for opening message same or next day
-  if (currHour >= openHours && currMin >= openMinutes) {
+  if (
+    currHour > openHours ||
+    (currHour === openHours && currMin >= openMinutes)
+  ) {
     currStatus.isOpen = true;
     currStatus.status = "Abierto";
 
-    if (currHour >= closeHours && currMin >= closeMinutes) {
+    if (
+      currHour > closeHours ||
+      (currHour === closeHours && currMin >= closeMinutes)
+    ) {
       currStatus.isOpen = false;
       currStatus.status = "Cerrado";
       isAfter = true;
