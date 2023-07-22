@@ -46,14 +46,13 @@ const Landing = () => {
     return null;
   }
   const news = responses.length > 0 ? responses[0] : [];
-  console.log(news);
+
   return (
     <View style={styles.container}>
       <ImageBackground
         source={require("../../../assets/LandingBackground.jpg")}
         style={styles.headerContent}
       >
-        {/* <View style={styles.presentationContainer}> */}
         <View style={styles.presentationContainer}>
           <Text style={styles.presentationHeading}>
             Especialistas en Bubble Tea

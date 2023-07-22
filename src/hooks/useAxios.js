@@ -19,7 +19,6 @@ const useAxios = (configObj) => {
             return res.data;
           })
         );
-        console.log(results);
         setResponses(results);
       } catch (err) {
         setErrors([err.message]);
