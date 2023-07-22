@@ -28,9 +28,21 @@ const MenuGrid = ({ selectedCategory, type }) => {
   };
   const filterCategories = (categories) => {
     if (type === "drinks") {
-      return categories.filter((category) => category.type === "drink");
+      const drinkCats = categories.filter(
+        (category) => category.type === "drink"
+      );
+      if (selectedCategory !== 0) {
+        return drinkCats.filter((category) => category.id === selectedCategory);
+      }
+      return drinkCats;
     } else if (type === "food") {
-      return categories.filter((category) => category.type === "food");
+      const foodCats = categories.filter(
+        (category) => category.type === "food"
+      );
+      if (selectedCategory !== 0) {
+        return foodCats.filter((category) => category.id === selectedCategory);
+      }
+      return foodCats;
     }
     return [];
   };
@@ -38,68 +50,37 @@ const MenuGrid = ({ selectedCategory, type }) => {
   const menuItems = responses.length > 0 ? filterMenuItems(responses[0]) : [];
   const categories = responses.length > 0 ? filterCategories(responses[1]) : [];
 
-  if (selectedCategory === "allDrinks" || selectedCategory === "allFood") {
-    return (
-      <View style={styles.menuGrid}>
-        {!isLoading &&
-          categories.map((category) => (
-            <View style={styles.categoryList} key={category.id}>
-              <Text style={styles.categoryHeader}>{category.name}</Text>
-              <View style={styles.productList}>
-                {menuItems &&
-                  menuItems
-                    .filter((menuItem) => menuItem.categoryID === category.id)
-                    .map((menuItem) => (
-                      <Pressable key={menuItem.id}>
-                        <View style={styles.productItem}>
-                          <ImageResponsive
-                            source={{
-                              sourceWidth: 111,
-                              uri: `https://storage.googleapis.com/booba_paradise/menu_images/${menuItem.id}.png`,
-                            }}
-                            aspectRatio={37 / 40}
-                          />
-                          <Text style={styles.productName}>
-                            {menuItem.name}
-                          </Text>
-                        </View>
-                      </Pressable>
-                    ))}
-              </View>
-            </View>
-          ))}
-      </View>
-    );
-  }
-
   return (
     <View style={styles.menuGrid}>
-      {selectedCategory && (
-        <View style={styles.categoryList}>
-          <Text style={styles.categoryHeader}>
-            {categories[type][selectedCategory]}
-          </Text>
-          <View style={styles.productList}>
-            {menuItems &&
-              menuItems
-                .filter((menuItem) => menuItem.category === selectedCategory)
-                .map((menuItem) => (
-                  <Pressable key={menuItem.id}>
-                    <View style={styles.productItem}>
-                      <ImageResponsive
-                        source={{
-                          sourceWidth: 111,
-                          uri: `https://storage.googleapis.com/booba_paradise/menu_images/${menuItem.id}.png`,
-                        }}
-                        aspectRatio={37 / 40}
-                      />
-                      <Text style={styles.productName}>{menuItem.name}</Text>
-                    </View>
-                  </Pressable>
-                ))}
+      {!isLoading &&
+        categories.map((category) => (
+          <View style={styles.categoryList} key={category.id}>
+            <Text style={styles.categoryHeader}>{category.name}</Text>
+            <View style={styles.productList}>
+              {menuItems &&
+                menuItems
+                  .filter((menuItem) =>
+                    selectedCategory === 0
+                      ? menuItem.categoryID === category.id
+                      : menuItem.categoryID === selectedCategory
+                  )
+                  .map((menuItem) => (
+                    <Pressable key={menuItem.id}>
+                      <View style={styles.productItem}>
+                        <ImageResponsive
+                          source={{
+                            sourceWidth: 111,
+                            uri: `https://storage.googleapis.com/booba_paradise/menu_images/${menuItem.id}.png`,
+                          }}
+                          aspectRatio={37 / 40}
+                        />
+                        <Text style={styles.productName}>{menuItem.name}</Text>
+                      </View>
+                    </Pressable>
+                  ))}
+            </View>
           </View>
-        </View>
-      )}
+        ))}
     </View>
   );
 };

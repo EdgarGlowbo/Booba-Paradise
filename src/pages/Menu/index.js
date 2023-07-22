@@ -13,7 +13,7 @@ import Footer from "../../components/Footer";
 import { colors } from "../../variables";
 
 const Menu = () => {
-  const [selectedCategory, setSelectedCategory] = useState("allDrinks");
+  const [selectedCategory, setSelectedCategory] = useState(0);
   const [type, setType] = useState("drinks");
 
   const [fontsLoaded] = useFonts({

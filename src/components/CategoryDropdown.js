@@ -8,10 +8,10 @@ import { Poppins_400Regular } from "@expo-google-fonts/poppins";
 const CategoryDropdown = ({ type, selectedCategory, setSelectedCategory }) => {
   const [isFocus, setIsFocus] = useState(false);
   const [categories, setCategories] = useState([
-    { label: "Todas las bebidas", value: "allDrinks" },
-    { label: "Sabores clásicos", value: "classic" },
-    { label: "Sabores especiales", value: "special" },
-    { label: "Sabores de agua", value: "water" },
+    { label: "Todas las bebidas", value: 0 },
+    { label: "Sabores clásicos", value: 1 },
+    { label: "Sabores especiales", value: 2 },
+    { label: "Sabores de agua", value: 3 },
   ]);
   const [fontsLoaded] = useFonts({
     Poppins_400Regular,
@@ -20,20 +20,18 @@ const CategoryDropdown = ({ type, selectedCategory, setSelectedCategory }) => {
   useEffect(() => {
     if (type === "drinks") {
       setCategories([
-        { label: "Todas las bebidas", value: "allDrinks" },
-        { label: "Sabores clásicos", value: "classic" },
-        { label: "Sabores especiales", value: "special" },
-        { label: "Sabores de agua", value: "water" },
+        { label: "Todas las bebidas", value: 0 },
+        { label: "Sabores clásicos", value: 1 },
+        { label: "Sabores especiales", value: 2 },
+        { label: "Sabores de agua", value: 3 },
       ]);
-      // setSelectedCategory("allDrinks");
     } else if (type === "food") {
       setCategories([
-        { label: "Toda la comida", value: "allFood" },
-        { label: "Waffles", value: "waffles" },
-        { label: "Extras", value: "extras" },
-        { label: "Nieves naturales", value: "iceCream" },
+        { label: "Toda la comida", value: 0 },
+        { label: "Waffles", value: 4 },
+        { label: "Extras", value: 5 },
+        { label: "Nieves naturales", value: 6 },
       ]);
-      // setSelectedCategory("allFood");
     }
   }, [type]);
 
@@ -45,12 +43,10 @@ const CategoryDropdown = ({ type, selectedCategory, setSelectedCategory }) => {
         selectedTextStyle={styles.selectedTextStyle}
         itemTextStyle={styles.selectedTextStyle}
         data={categories}
-        // search
         maxHeight={300}
         labelField="label"
         valueField="value"
         placeholder={!isFocus ? "Select item" : "..."}
-        // searchPlaceholder="Search..."
         value={selectedCategory}
         onFocus={() => setIsFocus(true)}
         onBlur={() => setIsFocus(false)}

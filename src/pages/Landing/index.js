@@ -46,6 +46,7 @@ const Landing = () => {
     return null;
   }
   const news = responses.length > 0 ? responses[0] : [];
+  console.log(news);
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -66,7 +67,7 @@ const Landing = () => {
       <NewsTransition style={styles.transition} />
       <View style={styles.newsContainer}>
         <Text style={styles.newsFeedHeader}>Lo nuevo este verano</Text>
-        {responses && (
+        {responses.length > 0 && (
           <View style={styles.newsFeed}>
             <NewsArticle color={colors.articleBackground1} article={news[0]} />
             <NewsArticle color={colors.articleBackground2} article={news[1]} />

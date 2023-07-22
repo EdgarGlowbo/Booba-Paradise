@@ -36,7 +36,7 @@ const ControlPanel = ({
         <Pressable
           onPress={() => {
             setType("drinks");
-            setSelectedCategory("allDrinks");
+            setSelectedCategory(0);
           }}
           style={[styles.typeBtn, type === "drinks" && styles.activeBorder]}
         >
@@ -51,7 +51,7 @@ const ControlPanel = ({
         <Pressable
           onPress={() => {
             setType("food");
-            setSelectedCategory("allFood");
+            setSelectedCategory(0);
           }}
           style={[styles.typeBtn, type === "food" && styles.activeBorder]}
         >
