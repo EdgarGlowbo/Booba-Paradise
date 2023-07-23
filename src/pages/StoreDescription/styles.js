@@ -77,7 +77,8 @@ const styles = StyleSheet.create({
   },
   serviceItem: {
     flexDirection: "row",
-    marginRight: 8,
+    alignItems: "center",
+    marginRight: 14,
   },
   directionsBtn: {
     flexDirection: "row",

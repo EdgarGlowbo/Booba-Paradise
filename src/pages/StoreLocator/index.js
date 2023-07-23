@@ -22,10 +22,10 @@ const StoreLocator = () => {
     googleMapsApiKey: GOOGLE_MAPS_API_KEY,
   });
 
-  const { response } = useAxios({
+  const { responses } = useAxios({
     axiosInstance: axiosInstance,
     method: "GET",
-    url: "location",
+    urls: ["location"],
     requestConfig: {
       headers: {
         "Content-Language": "en-US",
@@ -38,13 +38,14 @@ const StoreLocator = () => {
   });
 
   const center = useMemo(() => {
-    if (response) {
+    if (responses.length > 0) {
+      console.log(responses);
       return {
-        lat: parseFloat(response[0].latitude),
-        lng: parseFloat(response[0].longitude),
+        lat: parseFloat(responses[0][0].latitude),
+        lng: parseFloat(responses[0][0].longitude),
       };
     }
-  }, [response]);
+  }, [responses]);
   useCallback(async () => {
     if (fontsLoaded) {
       await SplashScreen.hideAsync();
@@ -56,7 +57,7 @@ const StoreLocator = () => {
   }
   return (
     <View style={styles.container}>
-      {isLoaded && response && (
+      {isLoaded && responses.length > 0 && (
         <View style={styles.container}>
           <Pressable
             style={styles.directionsBtn}
@@ -87,7 +88,7 @@ const StoreLocator = () => {
               }}
             />
           </GoogleMap>
-          <StoreDescBottomTab details={response[0]} />
+          <StoreDescBottomTab details={responses[0][0]} />
         </View>
       )}
     </View>

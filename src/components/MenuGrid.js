@@ -75,7 +75,14 @@ const MenuGrid = ({ selectedCategory, type }) => {
                       ]}
                       key={subcategory.id}
                     >
-                      <Text style={styles.subcategoryHeader}>
+                      <Text
+                        style={[
+                          styles.subcategoryHeader,
+                          subcategory.id === 3
+                            ? styles.limitedEditionSubcategoryHeader
+                            : {},
+                        ]}
+                      >
                         {subcategory.name}
                       </Text>
                       <View style={styles.productList}>
@@ -165,12 +172,18 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 24,
   },
-  subcategoryHeader: {
+  limitedEditionSubcategoryHeader: {
     fontFamily: fonts.categoryTitle,
     fontSize: 32,
     color: colors.limitedEditionText,
     marginHorizontal: 12,
     textAlign: "center",
+  },
+  subcategoryHeader: {
+    fontFamily: fonts.categoryTitle,
+    fontSize: 18,
+    color: colors.text,
+    marginHorizontal: 12,
   },
   productList: {
     flexDirection: "row",

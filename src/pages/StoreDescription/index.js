@@ -26,10 +26,10 @@ SplashScreen.preventAutoHideAsync();
 
 const StoreDescription = () => {
   const [isShown, setIsShown] = useState(false);
-  const { response } = useAxios({
+  const { responses } = useAxios({
     axiosInstance: axiosInstance,
     method: "GET",
-    url: "location",
+    urls: ["location"],
     requestConfig: {
       headers: {
         "Content-Language": "en-US",
@@ -40,7 +40,7 @@ const StoreDescription = () => {
   const storeDetails = (data) => {
     data.opening_hours.sort((a, b) => a.id - b.id);
 
-    return response[0];
+    return responses[0][0];
   };
   const [fontsLoaded] = useFonts({
     Poppins_400Regular,
@@ -57,9 +57,8 @@ const StoreDescription = () => {
     return null;
   }
 
-  const { name, address, opening_hours } = response
-    ? storeDetails(response[0])
-    : [];
+  const { name, address, opening_hours } =
+    responses.length > 0 ? storeDetails(responses[0][0]) : [];
 
   const { isOpen, status, message, weekdayIndex } = opening_hours
     ? useBusinessStatus(new Date(), opening_hours)
