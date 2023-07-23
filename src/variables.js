@@ -19,6 +19,8 @@ export const colors = {
   open: "#377b48",
   closed: "#ed1b24",
   bottomTabIcon: "#ce4b27",
+  limitedEditionBackground: "#d64951",
+  limitedEditionText: "#fffcf9",
   location: {
     primary: "#27232a",
     secondary: "ce4b27",

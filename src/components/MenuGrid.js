@@ -66,7 +66,15 @@ const MenuGrid = ({ selectedCategory, type }) => {
                 // Subcategory level
                 hasSubcategories &&
                   subcategories.map((subcategory) => (
-                    <View style={styles.subcategoryList} key={subcategory.id}>
+                    <View
+                      style={[
+                        styles.subcategoryList,
+                        /* limited edition products */ subcategory.id === 3
+                          ? styles.limitedEdition
+                          : {},
+                      ]}
+                      key={subcategory.id}
+                    >
                       <Text style={styles.subcategoryHeader}>
                         {subcategory.name}
                       </Text>
@@ -76,17 +84,19 @@ const MenuGrid = ({ selectedCategory, type }) => {
                           menuItems
                             .filter(
                               (menuItem) =>
-                                // Category filtering
-                                // selectedCategory === 0
-                                //   ? menuItem.categoryID === category.id
-                                //   : menuItem.categoryID === selectedCategory
-
-                                // Subcategory filtering
                                 menuItem.subcategoryID === subcategory.id
                             )
                             .map((menuItem) => (
                               <Pressable key={menuItem.id}>
-                                <View style={styles.productItem}>
+                                <View
+                                  style={[
+                                    styles.productItem,
+                                    /* limited edition product */ menuItem.subcategoryID ===
+                                    3
+                                      ? styles.limitedEditionProduct
+                                      : {},
+                                  ]}
+                                >
                                   <ImageResponsive
                                     source={{
                                       sourceWidth: 111,
@@ -149,10 +159,19 @@ const styles = StyleSheet.create({
     fontSize: 22,
     color: colors.primary,
   },
-  // categoryList: {
-  //   alignItems: "center",
-  //   justifyContent: "center",
-  // },
+  limitedEdition: {
+    backgroundColor: colors.limitedEditionBackground,
+    alignItems: "center",
+    paddingHorizontal: 16,
+    paddingVertical: 24,
+  },
+  subcategoryHeader: {
+    fontFamily: fonts.categoryTitle,
+    fontSize: 32,
+    color: colors.limitedEditionText,
+    marginHorizontal: 12,
+    textAlign: "center",
+  },
   productList: {
     flexDirection: "row",
     flexWrap: "wrap",
@@ -162,11 +181,16 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   productItem: {
-    // flex: 1,
     width: 144,
     minHeight: 244,
     justifyContent: "center",
     alignItems: "center",
+  },
+  limitedEditionProduct: {
+    backgroundColor: colors.background,
+    borderRadius: 16,
+    marginHorizontal: 12,
+    marginVertical: 5,
   },
   productName: {
     fontFamily: fonts.categoryTitle,
