@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { View, StyleSheet, Text, Image } from "react-native";
+import React from "react";
+import { View, StyleSheet, Text } from "react-native";
 import axiosInstance from "../apis/api_instance";
 import useAxios from "../hooks/useAxios";
 import { colors, fonts } from "../variables";
@@ -10,7 +10,7 @@ const MenuGrid = ({ selectedCategory, type }) => {
   const { responses, isLoading } = useAxios({
     axiosInstance: axiosInstance,
     method: "GET",
-    urls: ["menu", "category"],
+    urls: ["menu", "category", "subcategory"],
     requestConfig: {
       headers: {
         "Content-Language": "en-US",
@@ -53,34 +53,89 @@ const MenuGrid = ({ selectedCategory, type }) => {
   return (
     <View style={styles.menuGrid}>
       {!isLoading &&
-        categories.map((category) => (
-          <View style={styles.categoryList} key={category.id}>
-            <Text style={styles.categoryHeader}>{category.name}</Text>
-            <View style={styles.productList}>
-              {menuItems &&
-                menuItems
-                  .filter((menuItem) =>
-                    selectedCategory === 0
-                      ? menuItem.categoryID === category.id
-                      : menuItem.categoryID === selectedCategory
-                  )
-                  .map((menuItem) => (
-                    <Pressable key={menuItem.id}>
-                      <View style={styles.productItem}>
-                        <ImageResponsive
-                          source={{
-                            sourceWidth: 111,
-                            uri: `https://storage.googleapis.com/booba_paradise/menu_images/${menuItem.id}.png`,
-                          }}
-                          aspectRatio={37 / 40}
-                        />
-                        <Text style={styles.productName}>{menuItem.name}</Text>
+        // Category level
+        categories.map((category) => {
+          const subcategories = responses[2].filter(
+            (subcategory) => subcategory.categoryID === category.id
+          );
+          const hasSubcategories = subcategories.length > 0;
+          return (
+            <View style={styles.categoryList} key={category.id}>
+              <Text style={styles.categoryHeader}>{category.name}</Text>
+              {
+                // Subcategory level
+                hasSubcategories &&
+                  subcategories.map((subcategory) => (
+                    <View style={styles.subcategoryList} key={subcategory.id}>
+                      <Text style={styles.subcategoryHeader}>
+                        {subcategory.name}
+                      </Text>
+                      <View style={styles.productList}>
+                        {
+                          // Product level
+                          menuItems
+                            .filter(
+                              (menuItem) =>
+                                // Category filtering
+                                // selectedCategory === 0
+                                //   ? menuItem.categoryID === category.id
+                                //   : menuItem.categoryID === selectedCategory
+
+                                // Subcategory filtering
+                                menuItem.subcategoryID === subcategory.id
+                            )
+                            .map((menuItem) => (
+                              <Pressable key={menuItem.id}>
+                                <View style={styles.productItem}>
+                                  <ImageResponsive
+                                    source={{
+                                      sourceWidth: 111,
+                                      uri: `https://storage.googleapis.com/booba_paradise/menu_images/${menuItem.id}.png`,
+                                    }}
+                                    aspectRatio={37 / 40}
+                                  />
+                                  <Text style={styles.productName}>
+                                    {menuItem.name}
+                                  </Text>
+                                </View>
+                              </Pressable>
+                            ))
+                        }
                       </View>
-                    </Pressable>
-                  ))}
+                    </View>
+                  ))
+              }
+              <View style={styles.productList}>
+                {menuItems &&
+                  // Product level
+                  menuItems
+                    .filter((menuItem) =>
+                      selectedCategory === 0
+                        ? menuItem.categoryID === category.id &&
+                          menuItem.subcategoryID === null
+                        : menuItem.categoryID === selectedCategory &&
+                          menuItem.subcategoryID === null
+                    )
+                    .map((menuItem) => (
+                      <Pressable key={menuItem.id}>
+                        <View style={styles.productItem}>
+                          <ImageResponsive
+                            source={{
+                              sourceWidth: 111,
+                              uri: `https://storage.googleapis.com/booba_paradise/menu_images/${menuItem.id}.png`,
+                            }}
+                            aspectRatio={37 / 40}
+                          />
+                          <Text style={styles.productName}>
+                            {menuItem.name}
+                          </Text>
+                        </View>
+                      </Pressable>
+                    ))}
+              </View>
             </View>
-          </View>
-        ))}
+          );
+        })}
     </View>
   );
 };
