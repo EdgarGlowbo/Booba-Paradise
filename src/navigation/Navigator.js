@@ -1,8 +1,5 @@
 import { useCallback } from "react";
-import Landing from "../pages/Landing";
-import StoreLocator from "../pages/StoreLocator";
-import StoreDescription from "../pages/StoreDescription";
-import Menu from "../pages/Menu";
+import { Landing, StoreLocator, StoreDescription, Menu } from "../pages";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
