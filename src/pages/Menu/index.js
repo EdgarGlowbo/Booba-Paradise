@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from "react";
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import { View, Text } from "react-native";
 import styles from "./styles";
 import { ImageBackground } from "react-native";
 import { useFonts } from "expo-font";
@@ -10,7 +10,6 @@ import * as SplashScreen from "expo-splash-screen";
 import ControlPanel from "../../components/ControlPanel";
 import MenuGrid from "../../components/MenuGrid";
 import Footer from "../../components/Footer";
-import { colors } from "../../variables";
 
 const Menu = () => {
   const [selectedCategory, setSelectedCategory] = useState(0);
@@ -22,7 +21,7 @@ const Menu = () => {
     Poppins_600SemiBold,
   });
 
-  const onLayoutRootView = useCallback(async () => {
+  useCallback(async () => {
     if (fontsLoaded) {
       await SplashScreen.hideAsync();
     }
@@ -31,6 +30,7 @@ const Menu = () => {
   if (!fontsLoaded) {
     return null;
   }
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -41,7 +41,7 @@ const Menu = () => {
           <View style={styles.headerTextContainer}>
             <Text style={styles.headerTitle}>Menú</Text>
             <Text style={styles.headerDesc}>
-              Un booba frappé, un refresher, waffles, lo que sea que se te
+              Un boba frappé, un refresher, waffles, lo que sea que se te
               antoje, hay suficiente para escoger.
             </Text>
           </View>
@@ -56,7 +56,7 @@ const Menu = () => {
         />
         <MenuGrid selectedCategory={selectedCategory} type={type} />
       </View>
-      <Footer backgroundColor={colors.menuFooterBackground} />
+      <Footer containerBackground={styles.footer} />
     </View>
   );
 };

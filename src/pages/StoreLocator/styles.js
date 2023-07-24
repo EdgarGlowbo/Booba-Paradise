@@ -2,6 +2,7 @@ import { Dimensions } from "react-native";
 import { StyleSheet } from "react-native";
 import { colors, fonts } from "../../variables";
 
+const { background, text, primary } = colors.storeLocator;
 const styles = StyleSheet.create({
   container: {
     flexDirection: "column",
@@ -18,21 +19,21 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     top: 84,
-    backgroundColor: colors.location.primary,
+    backgroundColor: primary,
     borderRadius: 32,
     paddingVertical: 8,
     paddingHorizontal: 16,
     zIndex: 1,
   },
   icon: {
-    color: colors.background,
+    color: background,
     height: 32,
     width: 32,
   },
   text: {
     fontFamily: fonts.body,
     fontSize: 18,
-    color: colors.location.bodyText,
+    color: background,
   },
 });
 

@@ -1,4 +1,5 @@
-export { Landing as Landing } from "./Landing/index";
-export { Menu as Menu } from "./Menu/index";
-export { StoreDescription as StoreDescription } from "./StoreDescription/index";
-export { StoreLocator as StoreLocator } from "./StoreLocator/index";
+// Screens
+export { default as Landing } from "./Landing/index";
+export { default as Menu } from "./Menu/index";
+export { default as StoreDescription } from "./StoreDescription/index";
+export { default as StoreLocator } from "./StoreLocator/index";

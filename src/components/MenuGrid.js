@@ -157,6 +157,8 @@ const MenuGrid = ({ selectedCategory, type }) => {
   );
 };
 
+const { background, primary, accent, text } = colors.menu;
+
 const styles = StyleSheet.create({
   menuGrid: {
     marginHorizontal: "12%",
@@ -164,10 +166,10 @@ const styles = StyleSheet.create({
   categoryHeader: {
     fontFamily: fonts.categoryTitle,
     fontSize: 22,
-    color: colors.primary,
+    color: primary,
   },
   limitedEdition: {
-    backgroundColor: colors.limitedEditionBackground,
+    backgroundColor: accent,
     alignItems: "center",
     paddingHorizontal: 16,
     paddingVertical: 24,
@@ -175,14 +177,14 @@ const styles = StyleSheet.create({
   limitedEditionSubcategoryHeader: {
     fontFamily: fonts.categoryTitle,
     fontSize: 32,
-    color: colors.limitedEditionText,
+    color: background,
     marginHorizontal: 12,
     textAlign: "center",
   },
   subcategoryHeader: {
     fontFamily: fonts.categoryTitle,
     fontSize: 18,
-    color: colors.text,
+    color: text,
     marginHorizontal: 12,
   },
   productList: {
@@ -200,14 +202,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   limitedEditionProduct: {
-    backgroundColor: colors.background,
+    backgroundColor: background,
     borderRadius: 16,
     marginHorizontal: 12,
     marginVertical: 5,
   },
   productName: {
     fontFamily: fonts.categoryTitle,
-    color: colors.primary,
+    color: primary,
     textAlign: "center",
     marginBottom: 5,
     paddingHorizontal: 8,

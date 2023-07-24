@@ -13,7 +13,7 @@ import * as SplashScreen from "expo-splash-screen";
 import { useNavigation } from "@react-navigation/native";
 SplashScreen.preventAutoHideAsync();
 
-const PrimaryButton = ({ title, screenName }) => {
+const PrimaryButton = ({ title, screenName, backgroundColor, textColor }) => {
   const navigation = useNavigation();
   const [fontsLoaded] = useFonts({
     Poppins_600SemiBold,
@@ -34,9 +34,9 @@ const PrimaryButton = ({ title, screenName }) => {
   };
   return (
     <Pressable onPress={handlePress}>
-      <View style={styles.btn}>
-        <Text style={styles.txt}>{title}</Text>
-        <FontAwesomeIcon icon={faCaretRight} style={styles.icon} />
+      <View style={[styles.btn, backgroundColor]}>
+        <Text style={[styles.txt, textColor]}>{title}</Text>
+        <FontAwesomeIcon icon={faCaretRight} style={[styles.icon, textColor]} />
       </View>
     </Pressable>
   );
@@ -46,7 +46,6 @@ const styles = StyleSheet.create({
   btn: {
     flexDirection: "row",
     borderRadius: 30,
-    backgroundColor: colors.accent,
     paddingHorizontal: 12,
     paddingVertical: 14,
     width: "content",
@@ -57,10 +56,8 @@ const styles = StyleSheet.create({
   icon: {
     height: 24,
     width: 24,
-    color: colors.background,
   },
   txt: {
-    color: colors.background,
     fontFamily: fonts.primaryBtn,
     fontSize: 16,
   },

@@ -48,12 +48,7 @@ const StoreDescBottomTab = ({ details: { name, address, opening_hours } }) => {
         <View style={styles.detailsBody}>
           <Text style={styles.businessName}>{name}</Text>
           <Text style={styles.address}>{address}</Text>
-          <Text
-            style={[
-              styles.status,
-              isOpen ? { color: colors.open } : { color: colors.closed },
-            ]}
-          >
+          <Text style={[styles.status, isOpen ? styles.open : styles.closed]}>
             {status}: <Text style={styles.statusMessage}>{message}</Text>
           </Text>
           <View style={styles.services}>
@@ -76,6 +71,8 @@ const StoreDescBottomTab = ({ details: { name, address, opening_hours } }) => {
   );
 };
 
+const { background, secondary, text, open, closed } = colors.storeLocator;
+
 const styles = StyleSheet.create({
   container: {
     position: "absolute",
@@ -84,7 +81,7 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
     alignItems: "flex-start",
     justifyContent: "center",
-    backgroundColor: colors.background,
+    backgroundColor: background,
     width: Dimensions.get("screen").width,
   },
   detailsContainer: {
@@ -102,24 +99,31 @@ const styles = StyleSheet.create({
   businessName: {
     fontFamily: fonts.bottomTabBold,
     fontSize: 16,
-    color: colors.text,
+    color: text,
   },
   address: {
     fontFamily: fonts.bottomTab,
     fontSize: 16,
-    color: colors.text,
+    color: text,
   },
   status: {
     fontFamily: fonts.bottomTab,
     fontSize: 16,
   },
   statusMessage: {
-    color: colors.text,
+    color: text,
   },
+  open: {
+    color: open,
+  },
+  closed: {
+    color: closed,
+  },
+
   icon: {
     height: 16,
     width: 16,
-    color: colors.bottomTabIcon,
+    color: secondary,
   },
   services: {
     flexDirection: "row",

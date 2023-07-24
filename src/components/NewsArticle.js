@@ -10,8 +10,10 @@ import * as SplashScreen from "expo-splash-screen";
 import { colors, fonts } from "../variables";
 
 const NewsArticle = ({
-  color,
-  article: { id, title, content, background_color },
+  backgroundColor,
+  textColor,
+  headerColor,
+  article: { id, title, content, background_color, header_color, text_color },
 }) => {
   const [fontsLoaded] = useFonts({
     Damion_400Regular,
@@ -19,7 +21,7 @@ const NewsArticle = ({
     Poppins_400Regular,
   });
 
-  const onLayoutRootView = useCallback(async () => {
+  useCallback(async () => {
     if (fontsLoaded) {
       await SplashScreen.hideAsync();
     }
@@ -35,7 +37,7 @@ const NewsArticle = ({
         styles.container,
         background_color
           ? { backgroundColor: background_color }
-          : { backgroundColor: color },
+          : backgroundColor,
       ]}
     >
       <Image
@@ -43,13 +45,28 @@ const NewsArticle = ({
         style={styles.headerImg}
       />
       <View style={styles.contentContainer}>
-        <Text style={styles.title}>{title}</Text>
-        <Text style={styles.content}>{content}</Text>
+        <Text
+          style={[
+            styles.title,
+            header_color ? { color: header_color } : headerColor,
+          ]}
+        >
+          {title}
+        </Text>
+        <Text
+          style={[
+            styles.content,
+            text_color ? { color: text_color } : textColor,
+          ]}
+        >
+          {content}
+        </Text>
       </View>
     </View>
   );
 };
 
+const { background, primary, secondary, text, accent } = colors.landing;
 const styles = StyleSheet.create({
   container: {
     flexBasis: 550.5,
@@ -68,7 +85,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 12,
     fontFamily: fonts.newsHeader,
     fontSize: 24,
-    color: colors.primary,
+    color: primary,
     textAlign: "center",
   },
   content: {
@@ -76,7 +93,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 32,
     fontFamily: fonts.body,
     fontSize: 18,
-    color: colors.text,
+    color: text,
     textAlign: "center",
   },
   headerImg: {

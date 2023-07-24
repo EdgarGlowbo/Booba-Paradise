@@ -78,7 +78,7 @@ const Navigator = () => {
           options={{
             drawerLabel: "¡Encuéntranos!",
             header: () => (
-              <CustomHeader backgroundColor={colors.headerBackground} />
+              <CustomHeader backgroundColor={styles.storeLocatorHeaderColor} />
             ),
           }}
         />
@@ -88,7 +88,7 @@ const Navigator = () => {
           options={{
             drawerLabel: "Horario de Servicio",
             header: () => (
-              <CustomHeader backgroundColor={colors.headerBackground} />
+              <CustomHeader backgroundColor={styles.storeDescHeaderColor} />
             ),
           }}
         />
@@ -103,10 +103,14 @@ const Navigator = () => {
   );
 };
 
+const { background, text } = colors.drawer;
+const storeLocatorColors = colors.storeLocator;
+const storeDescColors = colors.storeDesc;
+
 const styles = StyleSheet.create({
   drawerStyles: {
     width: Dimensions.get("window").width,
-    backgroundColor: colors.drawerBackground,
+    backgroundColor: background,
   },
   drawerItemStyles: {
     padding: 12,
@@ -118,7 +122,13 @@ const styles = StyleSheet.create({
   drawerLabelStyles: {
     fontFamily: fonts.drawerItem,
     fontSize: 28,
-    color: colors.background,
+    color: text,
+  },
+  storeLocatorHeaderColor: {
+    backgroundColor: storeLocatorColors.primary,
+  },
+  storeDescHeaderColor: {
+    backgroundColor: storeDescColors.primary,
   },
 });
 export default Navigator;

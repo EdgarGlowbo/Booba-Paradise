@@ -18,6 +18,4 @@ const CustomDrawer = (props) => {
   );
 };
 
-const styles = StyleSheet.create({});
-
 export default CustomDrawer;

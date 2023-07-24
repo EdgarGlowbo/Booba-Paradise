@@ -31,11 +31,12 @@ const BurgerMenu = () => {
   );
 };
 
+const { text } = colors.topBar;
 const styles = StyleSheet.create({
   icon: {
     height: 24,
     width: 24,
-    color: colors.background,
+    color: text,
   },
 });
 

@@ -10,7 +10,6 @@ import {
 } from "@expo-google-fonts/poppins";
 import NewsTransition from "../../../assets/NewsTransition";
 import * as SplashScreen from "expo-splash-screen";
-import { colors } from "../../variables";
 import NewsArticle from "../../components/NewsArticle";
 import useAxios from "../../hooks/useAxios";
 import axiosInstance from "../../apis/api_instance";
@@ -36,7 +35,7 @@ const Landing = () => {
     Poppins_600SemiBold,
   });
 
-  const onLayoutRootView = useCallback(async () => {
+  useCallback(async () => {
     if (fontsLoaded) {
       await SplashScreen.hideAsync();
     }
@@ -58,9 +57,14 @@ const Landing = () => {
             Especialistas en Bubble Tea
           </Text>
           <Text style={styles.presentationBody}>
-            Nos encanta alegrar tu día con nuestros Booba's y deliciosos snacks.
+            Nos encanta alegrar tu día con nuestros Boba's y deliciosos snacks.
           </Text>
-          <PrimaryButton title="Nuestro Menú" screenName="Menu" />
+          <PrimaryButton
+            title="Nuestro Menú"
+            screenName="Menu"
+            backgroundColor={styles.primaryBtnBackground}
+            textColor={styles.primaryBtnTextColor}
+          />
         </View>
       </ImageBackground>
       <NewsTransition style={styles.transition} />
@@ -68,13 +72,28 @@ const Landing = () => {
         <Text style={styles.newsFeedHeader}>Lo nuevo este verano</Text>
         {responses.length > 0 && (
           <View style={styles.newsFeed}>
-            <NewsArticle color={colors.articleBackground1} article={news[0]} />
-            <NewsArticle color={colors.articleBackground2} article={news[1]} />
-            <NewsArticle color={colors.articleBackground3} article={news[2]} />
+            <NewsArticle
+              backgroundColor={styles.newsPanelBackground1}
+              textColor={styles.newsPanelText1}
+              headerColor={styles.newsPanelHeader1}
+              article={news[0]}
+            />
+            <NewsArticle
+              backgroundColor={styles.newsPanelBackground2}
+              textColor={styles.newsPanelText2}
+              headerColor={styles.newsPanelHeader2}
+              article={news[1]}
+            />
+            <NewsArticle
+              backgroundColor={styles.newsPanelBackground3}
+              textColor={styles.newsPanelText3}
+              headerColor={styles.newsPanelHeader3}
+              article={news[2]}
+            />
           </View>
         )}
       </View>
-      <Footer backgroundColor={colors.landingFooterBackground} />
+      <Footer containerBackground={styles.footer} />
     </View>
   );
 };

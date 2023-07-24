@@ -21,7 +21,7 @@ const ControlPanel = ({
     Poppins_600SemiBold,
   });
 
-  const onLayoutRootView = useCallback(async () => {
+  useCallback(async () => {
     if (fontsLoaded) {
       await SplashScreen.hideAsync();
     }
@@ -75,6 +75,8 @@ const ControlPanel = ({
   );
 };
 
+const { background, primary, secondary, accent } = colors.menu;
+
 const styles = StyleSheet.create({
   container: {
     alignItems: "center",
@@ -94,22 +96,22 @@ const styles = StyleSheet.create({
     paddingHorizontal: 4,
     marginHorizontal: 12,
     borderBottomWidth: 2,
-    borderBottomColor: colors.background,
+    borderBottomColor: background,
     borderStyle: "solid",
   },
   icon: {
-    color: colors.primaryShade1,
+    color: primary,
     width: 32,
     height: 32,
   },
   active: {
-    color: colors.primary,
+    color: accent,
   },
   activeBorder: {
-    borderBottomColor: colors.primary,
+    borderBottomColor: accent,
   },
   typeLabel: {
-    color: colors.primaryShade1,
+    color: secondary,
     fontFamily: fonts.body,
     fontSize: 16,
     paddingTop: 12,
@@ -117,7 +119,7 @@ const styles = StyleSheet.create({
   categoryTitle: {
     fontFamily: fonts.categoryTitle,
     fontSize: 16,
-    color: colors.primary,
+    color: primary,
     alignSelf: "flex-start",
   },
 });

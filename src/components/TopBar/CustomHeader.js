@@ -6,14 +6,7 @@ import LocationPin from "./LocationPin";
 
 const CustomHeader = ({ backgroundColor = null }) => {
   return (
-    <View
-      style={[
-        styles.topBar,
-        backgroundColor && {
-          backgroundColor: backgroundColor,
-        },
-      ]}
-    >
+    <View style={[styles.topBar, backgroundColor && backgroundColor]}>
       <BurgerMenu />
       <BrandName />
       <LocationPin />

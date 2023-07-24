@@ -61,10 +61,11 @@ const CategoryDropdown = ({ type, selectedCategory, setSelectedCategory }) => {
 
 export default CategoryDropdown;
 
+const { background, primary, text } = colors.menu;
 const styles = StyleSheet.create({
   container: {
     width: "100%",
-    backgroundColor: colors.background,
+    backgroundColor: background,
     padding: 16,
   },
   dropdown: {
@@ -80,7 +81,7 @@ const styles = StyleSheet.create({
   },
   label: {
     position: "absolute",
-    backgroundColor: colors.background,
+    backgroundColor: background,
     left: 22,
     top: 8,
     zIndex: 999,
@@ -94,9 +95,10 @@ const styles = StyleSheet.create({
   },
   selectedTextStyle: {
     fontFamily: fonts.body,
+    color: text,
     fontSize: 18,
   },
   focusStyle: {
-    borderColor: colors.primary,
+    borderColor: primary,
   },
 });

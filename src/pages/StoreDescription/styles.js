@@ -1,11 +1,15 @@
 import { StyleSheet } from "react-native";
 import { colors, fonts } from "../../variables";
 
+const { background, secondary, text, open, closed } = colors.storeDesc;
+
 const styles = StyleSheet.create({
   container: {
     alignItems: "flex-start",
     justifyContent: "flex-start",
     paddingTop: 74,
+    backgroundColor: background,
+    flex: 1,
   },
   goBackBtnContainer: {
     width: "100%",
@@ -24,7 +28,7 @@ const styles = StyleSheet.create({
   icon: {
     height: 24,
     width: 24,
-    color: colors.bottomTabIcon,
+    color: secondary,
     marginRight: 12,
   },
   clock: {
@@ -56,6 +60,12 @@ const styles = StyleSheet.create({
   statusMessage: {
     color: colors.text,
   },
+  open: {
+    color: open,
+  },
+  closed: {
+    color: closed,
+  },
   businessHoursTable: {
     width: "100%",
   },
@@ -68,12 +78,12 @@ const styles = StyleSheet.create({
   text: {
     fontFamily: fonts.body,
     fontSize: 14,
-    color: colors.text,
+    color: text,
   },
   textBold: {
     fontFamily: fonts.bottomTabBold,
     fontSize: 16,
-    color: colors.text,
+    color: text,
   },
   serviceItem: {
     flexDirection: "row",

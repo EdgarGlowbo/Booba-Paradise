@@ -20,7 +20,7 @@ import { Poppins_400Regular } from "@expo-google-fonts/poppins";
 import { Poppins_600SemiBold } from "@expo-google-fonts/poppins";
 import * as SplashScreen from "expo-splash-screen";
 
-const Footer = ({ backgroundColor }) => {
+const Footer = ({ containerBackground }) => {
   const [fontsLoaded] = useFonts({
     Poppins_400Regular,
     Poppins_600SemiBold,
@@ -42,7 +42,7 @@ const Footer = ({ backgroundColor }) => {
     wa2: "https://wa.link/hjm53f",
   };
   return (
-    <View style={[styles.container, { backgroundColor: backgroundColor }]}>
+    <View style={[styles.container, containerBackground]}>
       <Text style={styles.footerTitle}>¡Síguenos!</Text>
       <View style={styles.socialsContainer}>
         <TouchableOpacity
@@ -86,6 +86,7 @@ const Footer = ({ backgroundColor }) => {
   );
 };
 
+const { text, hyperlink } = colors.footer;
 const styles = StyleSheet.create({
   container: {
     width: Dimensions.get("screen").width,
@@ -97,8 +98,7 @@ const styles = StyleSheet.create({
   },
   footerTitle: {
     fontFamily: fonts.footerTitle,
-    color: colors.background,
-    // alignSelf: "flex-start",
+    color: text,
     fontSize: 18,
   },
   socialsContainer: {
@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
     rowGap: 12,
   },
   icon: {
-    color: colors.background,
+    color: text,
     width: 32,
     height: 32,
   },
@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
     columnGap: 12,
   },
   hyperlink: {
-    color: colors.hyperlink,
+    color: hyperlink,
     fontFamily: fonts.body,
     fontSize: 14,
   },

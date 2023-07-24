@@ -1,6 +1,7 @@
 import { StyleSheet, Dimensions } from "react-native";
 import { colors, fonts } from "../../variables";
 
+const { background, primaryS1 } = colors.menu;
 const styles = StyleSheet.create({
   container: {
     flexDirection: "column",
@@ -13,7 +14,6 @@ const styles = StyleSheet.create({
   backgroundImg: {
     flex: 1,
     paddingTop: 74,
-    // backgroundPosition: "center",
     resizeMethod: "resize",
     justifyContent: "flex-start",
     alignItems: "center",
@@ -27,12 +27,12 @@ const styles = StyleSheet.create({
   headerTitle: {
     fontFamily: fonts.headings,
     fontSize: 32,
-    color: colors.background,
+    color: background,
   },
   headerDesc: {
     fontFamily: fonts.body,
     fontSize: 18,
-    color: colors.background,
+    color: background,
     textAlign: "center",
   },
   headerImg: {
@@ -43,8 +43,11 @@ const styles = StyleSheet.create({
     bottom: -130,
   },
   menuContainer: {
-    backgroundColor: colors.background,
+    backgroundColor: background,
     paddingHorizontal: 8,
+  },
+  footer: {
+    backgroundColor: primaryS1,
   },
 });
 
