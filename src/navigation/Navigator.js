@@ -5,7 +5,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import CustomDrawer from "../components/CustomDrawer";
 import CustomHeader from "../components/TopBar/CustomHeader";
-import { colors, fontSizes, fonts } from "../variables";
+import { colors, dimensions, fontSizes, fonts, spacing } from "../variables";
 import { Dimensions, StyleSheet } from "react-native";
 import { useFonts } from "@expo-google-fonts/poppins/useFonts";
 import { Poppins_700Bold } from "@expo-google-fonts/poppins";
@@ -110,13 +110,15 @@ const storeDescColors = colors.storeDesc;
 
 const { h1Text } = fonts;
 const { large550 } = fontSizes;
+const { size5175 } = dimensions;
+const { space150 } = spacing;
 const styles = StyleSheet.create({
   drawerStyles: {
-    width: Dimensions.get("window").width,
+    width: size5175,
     backgroundColor: background,
   },
   drawerItemStyles: {
-    padding: 12,
+    padding: space150,
     borderRadius: 0,
     width: "100%",
     marginHorizontal: 0,

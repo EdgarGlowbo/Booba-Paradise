@@ -121,6 +121,7 @@ export const dimensions = {
   size1800: moderateScale(spacingUnit * 18, spacingFactor),
   size1900: moderateScale(spacingUnit * 19, spacingFactor),
   size3050: moderateScale(spacingUnit * 30.5, spacingFactor),
+  size5175: moderateScale(spacingUnit * 51.75, spacingFactor),
 };
 
 const radiusUnit = 4;
