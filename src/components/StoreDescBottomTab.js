@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faStore } from "@fortawesome/free-solid-svg-icons/faStore";
 import { faBagShopping } from "@fortawesome/free-solid-svg-icons/faBagShopping";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons/faChevronRight";
-import { colors, fontSizes, fonts } from "../variables";
+import { colors, dimensions, fontSizes, fonts, spacing } from "../variables";
 import { Pressable } from "react-native";
 import { useFonts } from "expo-font";
 import {
@@ -73,18 +73,19 @@ const StoreDescBottomTab = ({ details: { name, address, opening_hours } }) => {
 
 const { background, secondary, text, open, closed } = colors.storeLocator;
 const { h1Text, bodyText } = fonts;
-const { small300 } = fontSizes;
-
+const { small350 } = fontSizes;
+const { space50, space100 } = spacing;
+const { size200 } = dimensions;
 const styles = StyleSheet.create({
   container: {
     position: "absolute",
     bottom: 0,
-    paddingHorizontal: 5,
-    paddingVertical: 5,
+    paddingHorizontal: space50,
+    paddingVertical: space50,
     alignItems: "flex-start",
     justifyContent: "center",
     backgroundColor: background,
-    width: Dimensions.get("screen").width,
+    width: "100%",
   },
   detailsContainer: {
     width: "100%",
@@ -100,17 +101,17 @@ const styles = StyleSheet.create({
   },
   businessName: {
     fontFamily: h1Text,
-    fontSize: small300,
+    fontSize: small350,
     color: text,
   },
   address: {
     fontFamily: bodyText,
-    fontSize: small300,
+    fontSize: small350,
     color: text,
   },
   status: {
     fontFamily: bodyText,
-    fontSize: small300,
+    fontSize: small350,
   },
   statusMessage: {
     color: text,
@@ -123,15 +124,15 @@ const styles = StyleSheet.create({
   },
 
   icon: {
-    height: 16,
-    width: 16,
+    height: size200,
+    width: size200,
     color: secondary,
   },
   services: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "flex-start",
-    columnGap: 8,
+    columnGap: space100,
   },
   serviceItem: {
     flexDirection: "row",
@@ -140,8 +141,8 @@ const styles = StyleSheet.create({
   },
   serviceLabel: {
     fontFamily: bodyText,
-    fontSize: small300,
-    marginLeft: 5,
+    fontSize: small350,
+    marginLeft: space50,
   },
 });
 

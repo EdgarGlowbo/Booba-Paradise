@@ -1,6 +1,6 @@
 import React from "react";
 import { View, StyleSheet, Pressable } from "react-native";
-import { colors } from "../../variables";
+import { colors, dimensions } from "../../variables";
 
 // Icons
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
@@ -22,10 +22,11 @@ const LocationPin = () => {
   );
 };
 const { text } = colors.topBar;
+const { size300 } = dimensions;
 const styles = StyleSheet.create({
   icon: {
-    height: 24,
-    width: 24,
+    height: size300,
+    width: size300,
     color: text,
   },
 });

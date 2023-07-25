@@ -2,7 +2,14 @@ import React from "react";
 import { View, StyleSheet, Text } from "react-native";
 import axiosInstance from "../apis/api_instance";
 import useAxios from "../hooks/useAxios";
-import { colors, fontSizes, fonts } from "../variables";
+import {
+  colors,
+  dimensions,
+  fontSizes,
+  fonts,
+  radius,
+  spacing,
+} from "../variables";
 import { Pressable } from "react-native";
 import ImageResponsive from "./ImageResponsive";
 
@@ -159,12 +166,26 @@ const MenuGrid = ({ selectedCategory, type }) => {
 
 const { background, primary, accent, text } = colors.menu;
 const { h1Text } = fonts;
-const { large600, large450, large500, small300 } = fontSizes;
+const { large600, large450, large500 } = fontSizes;
+const { space50, space100, space150, space200, space300 } = spacing;
+const { size1800, size3050 } = dimensions;
+const { radius400 } = radius;
 const styles = StyleSheet.create({
   menuGrid: {
-    marginHorizontal: "12%",
+    maxWidth: 1280,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  categoryList: {
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  subcategoryList: {
+    justifyContent: "center",
+    alignItems: "center",
   },
   categoryHeader: {
+    alignSelf: "flex-start",
     fontFamily: h1Text,
     fontSize: large500,
     color: primary,
@@ -172,48 +193,48 @@ const styles = StyleSheet.create({
   limitedEdition: {
     backgroundColor: accent,
     alignItems: "center",
-    paddingHorizontal: 16,
-    paddingVertical: 24,
+    paddingHorizontal: space200,
+    paddingVertical: space300,
+    borderRadius: radius400,
   },
   limitedEditionSubcategoryHeader: {
     fontFamily: h1Text,
     fontSize: large600,
     color: background,
-    marginHorizontal: 12,
+    marginHorizontal: space150,
     textAlign: "center",
   },
   subcategoryHeader: {
     fontFamily: h1Text,
     fontSize: large450,
     color: text,
-    marginHorizontal: 12,
+    marginHorizontal: space150,
+    alignSelf: "flex-start",
   },
   productList: {
     flexDirection: "row",
     flexWrap: "wrap",
     alignItems: "center",
-    justifyContent: "flex-start",
-    maxWidth: 304,
-    alignSelf: "center",
+    justifyContent: "center",
   },
   productItem: {
-    width: 144,
-    minHeight: 244,
+    width: size1800,
+    minHeight: size3050,
     justifyContent: "center",
     alignItems: "center",
   },
   limitedEditionProduct: {
     backgroundColor: background,
-    borderRadius: 16,
-    marginHorizontal: 12,
-    marginVertical: 5,
+    borderRadius: radius400,
+    marginHorizontal: space150,
+    marginVertical: space50,
   },
   productName: {
     fontFamily: h1Text,
     color: primary,
     textAlign: "center",
-    marginBottom: 5,
-    paddingHorizontal: 8,
+    marginBottom: space50,
+    paddingHorizontal: space100,
   },
 });
 

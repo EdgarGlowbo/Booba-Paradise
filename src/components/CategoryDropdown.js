@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { Dropdown } from "react-native-element-dropdown";
-import { colors, fonts, fontSizes } from "../variables";
+import { colors, dimensions, fonts, fontSizes, spacing } from "../variables";
 import { useFonts } from "expo-font";
 import { Poppins_400Regular } from "@expo-google-fonts/poppins";
 
@@ -42,6 +42,7 @@ const CategoryDropdown = ({ type, selectedCategory, setSelectedCategory }) => {
         placeholderStyle={styles.placeholderStyle}
         selectedTextStyle={styles.selectedTextStyle}
         itemTextStyle={styles.selectedTextStyle}
+        iconStyle={styles.icon}
         data={categories}
         maxHeight={300}
         labelField="label"
@@ -64,30 +65,34 @@ export default CategoryDropdown;
 const { background, primary, text } = colors.menu;
 const { bodyText } = fonts;
 const { regular400 } = fontSizes;
+const { space50, space100, space150, space200, space300 } = spacing;
+const { size200, size600 } = dimensions;
 const styles = StyleSheet.create({
   container: {
     width: "100%",
     backgroundColor: background,
-    padding: 16,
+    padding: space200,
   },
   dropdown: {
-    height: 50,
+    height: size600,
     width: "100%",
     borderColor: "#6d6d6d",
-    borderWidth: 1,
-    borderRadius: 24,
-    paddingHorizontal: 12,
+    borderWidth: 2,
+    borderRadius: 48,
+    paddingHorizontal: space150,
   },
   icon: {
-    marginRight: 5,
+    marginRight: space50,
+    height: size200,
+    width: size200,
   },
   label: {
     position: "absolute",
     backgroundColor: background,
-    left: 22,
-    top: 8,
+    left: space300,
+    top: space100,
     zIndex: 999,
-    paddingHorizontal: 8,
+    paddingHorizontal: space100,
     fontFamily: bodyText,
     fontSize: regular400,
   },

@@ -1,13 +1,6 @@
 import { StyleSheet } from "react-native";
 import { useWindowDimensions } from "react-native";
-import {
-  colors,
-  fonts,
-  fontSizes,
-  spacing,
-  dimensions,
-  levels,
-} from "../../variables";
+import { colors, fonts, fontSizes, spacing } from "../../variables";
 
 const { background, primaryS1 } = colors.menu;
 const { cursiveHeader, bodyText } = fonts;

@@ -1,10 +1,10 @@
 import React, { useState, useCallback } from "react";
 import { View, Text, Pressable, Image, Linking } from "react-native";
-import styles from "./styles";
+import useStyles from "./useStyles";
 import useAxios from "../../hooks/useAxios";
 import axiosInstance from "../../apis/api_instance";
 import useBusinessStatus from "../../hooks/useBusinessStatus";
-import { colors, fonts } from "../../variables";
+import { colors } from "../../variables";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faClock } from "@fortawesome/free-solid-svg-icons/faClock";
 import { faXmark } from "@fortawesome/free-solid-svg-icons/faXmark";
@@ -52,7 +52,7 @@ const StoreDescription = () => {
       await SplashScreen.hideAsync();
     }
   }, [fontsLoaded]);
-
+  const styles = useStyles();
   if (!fontsLoaded) {
     return null;
   }
@@ -66,17 +66,19 @@ const StoreDescription = () => {
 
   return (
     <View style={styles.container}>
-      <Pressable
-        onPress={() => {
-          navigation.goBack();
-        }}
-        style={styles.goBackBtnContainer}
-      >
-        <FontAwesomeIcon
-          icon={faXmark}
-          style={[styles.icon, styles.crossGoBack]}
-        />
-      </Pressable>
+      <View style={styles.goBackBtnContainer}>
+        <Pressable
+          onPress={() => {
+            navigation.goBack();
+          }}
+        >
+          <FontAwesomeIcon
+            icon={faXmark}
+            style={[styles.icon, styles.crossGoBack]}
+          />
+        </Pressable>
+      </View>
+
       <View style={[styles.businessNameContainer, styles.row]}>
         <Image
           source={require("../../../assets/boobaPin.png")}
@@ -140,9 +142,7 @@ const StoreDescription = () => {
           )}
         </View>
       </View>
-      <Text style={[styles.servicesTitle, styles.textBold, styles.row]}>
-        Servicios
-      </Text>
+      <Text style={[styles.servicesTitle, styles.row]}>Servicios</Text>
       <View style={[styles.servicesContainer, styles.row]}>
         <View style={styles.serviceItem}>
           <FontAwesomeIcon icon={faStore} style={styles.icon} />

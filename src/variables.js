@@ -70,6 +70,7 @@ export const fontSizes = {
   small100: moderateScale(fontUnit, fontSizeFactor),
   small200: moderateScale(fontUnit * 2, fontSizeFactor),
   small300: moderateScale(fontUnit * 3, fontSizeFactor),
+  small350: moderateScale(fontUnit * 3.5, fontSizeFactor),
   regular400: moderateScale(fontUnit * 4, fontSizeFactor),
   large450: moderateScale(fontUnit * (9 / 2), fontSizeFactor),
   large500: moderateScale(fontUnit * 5, fontSizeFactor),
@@ -85,6 +86,7 @@ export const imagePaths = {
   mobileMenuWavyBackground: require("../assets/mobileMenuWavyBackground.jpg"),
   desktopMenuWavyBackground: require("../assets/desktopMenuWavyBackground.jpg"),
   boobaPin: require("../assets/boobaPin.png"),
+  boobaTypo: require("../assets/brandName.png"),
 };
 
 const spacingUnit = 8;
@@ -95,9 +97,12 @@ export const spacing = {
   space100: moderateScale(spacingUnit, spacingFactor),
   space150: moderateScale(spacingUnit * (3 / 2), spacingFactor),
   space200: moderateScale(spacingUnit * 2, spacingFactor),
+  space250: moderateScale(spacingUnit * 2.5, spacingFactor),
+  space300: moderateScale(spacingUnit * 3, spacingFactor),
   space400: moderateScale(spacingUnit * 4, spacingFactor),
   space500: moderateScale(spacingUnit * 5, spacingFactor),
   space600: moderateScale(spacingUnit * 6, spacingFactor),
+  space800: moderateScale(spacingUnit * 8, spacingFactor),
   space900: moderateScale(spacingUnit * 9, spacingFactor),
   space1000: moderateScale(spacingUnit * 10, spacingFactor),
 };
@@ -106,13 +111,27 @@ const dimensionsFactor = 1 / 3;
 
 export const dimensions = {
   size100: moderateScale(spacingUnit, dimensionsFactor),
+  size200: moderateScale(spacingUnit * 2, dimensionsFactor),
   size300: moderateScale(spacingUnit * 3, dimensionsFactor),
   size400: moderateScale(spacingUnit * 4, dimensionsFactor),
+  size600: moderateScale(spacingUnit * 6, dimensionsFactor),
   size800: moderateScale(spacingUnit * 8, dimensionsFactor),
   size900: moderateScale(spacingUnit * 9, dimensionsFactor),
   size1000: moderateScale(spacingUnit * 10, dimensionsFactor),
+  size1800: moderateScale(spacingUnit * 18, spacingFactor),
+  size1900: moderateScale(spacingUnit * 19, spacingFactor),
+  size3050: moderateScale(spacingUnit * 30.5, spacingFactor),
 };
 
+const radiusUnit = 4;
+const radiusFactor = 1 / 3;
+export const radius = {
+  radius100: moderateScale(radiusUnit, radiusFactor),
+  radius200: moderateScale(radiusUnit * 2, radiusFactor),
+  radius300: moderateScale(radiusUnit * 3, radiusFactor),
+  radius400: moderateScale(radiusUnit * 4, radiusFactor),
+  radius800: moderateScale(radiusUnit * 8, radiusFactor),
+};
 export const levels = {
   level1: 1,
 };

@@ -4,7 +4,7 @@ import { View, StyleSheet, Pressable, Text } from "react-native";
 import { faMugHot } from "@fortawesome/free-solid-svg-icons/faMugHot";
 import { faIceCream } from "@fortawesome/free-solid-svg-icons/faIceCream";
 import CategoryDropdown from "./CategoryDropdown";
-import { colors, fonts, fontSizes } from "../variables";
+import { colors, fonts, fontSizes, spacing, dimensions } from "../variables";
 import { useFonts } from "expo-font";
 import { Poppins_400Regular } from "@expo-google-fonts/poppins";
 import { Poppins_600SemiBold } from "@expo-google-fonts/poppins";
@@ -77,34 +77,36 @@ const ControlPanel = ({
 
 const { background, primary, secondary, accent } = colors.menu;
 const { bodyText, h1Text } = fonts;
-const { small300 } = fontSizes;
+const { regular400 } = fontSizes;
+const { space50, space150, space200, space400, space800 } = spacing;
+const { size400 } = dimensions;
 
 const styles = StyleSheet.create({
   container: {
     alignItems: "center",
     justifyContent: "center",
-    paddingVertical: 64,
+    paddingVertical: space800,
   },
   typeContainer: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    paddingBottom: 32,
+    paddingBottom: space400,
   },
   typeBtn: {
     justifyContent: "center",
     alignItems: "center",
-    paddingVertical: 14,
-    paddingHorizontal: 4,
-    marginHorizontal: 12,
+    paddingVertical: space200,
+    paddingHorizontal: space50,
+    marginHorizontal: space150,
     borderBottomWidth: 2,
     borderBottomColor: background,
     borderStyle: "solid",
   },
   icon: {
     color: primary,
-    width: 32,
-    height: 32,
+    width: size400,
+    height: size400,
   },
   active: {
     color: accent,
@@ -115,12 +117,12 @@ const styles = StyleSheet.create({
   typeLabel: {
     color: secondary,
     fontFamily: bodyText,
-    fontSize: small300,
-    paddingTop: 12,
+    fontSize: regular400,
+    paddingTop: space150,
   },
   categoryTitle: {
     fontFamily: h1Text,
-    fontSize: small300,
+    fontSize: regular400,
     color: primary,
     alignSelf: "flex-start",
   },

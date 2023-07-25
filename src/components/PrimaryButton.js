@@ -41,7 +41,7 @@ const PrimaryButton = ({ title, screenName, backgroundColor, textColor }) => {
 };
 
 const { h2Text } = fonts;
-const { small300 } = fontSizes;
+const { regular400 } = fontSizes;
 const { space150, space200 } = spacing;
 const { size300 } = dimensions;
 const styles = StyleSheet.create({
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
   },
   txt: {
     fontFamily: h2Text,
-    fontSize: small300,
+    fontSize: regular400,
   },
 });
 

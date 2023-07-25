@@ -1,6 +1,6 @@
 import React, { useMemo, useCallback } from "react";
 import { View, Pressable, Text, Linking } from "react-native";
-import styles from "./styles";
+import useStyles from "./useStyles";
 import { useLoadScript, GoogleMap, MarkerF } from "@react-google-maps/api";
 import { GOOGLE_MAPS_API_KEY } from "../../apis/apiKeys";
 import useAxios from "../../hooks/useAxios";
@@ -51,7 +51,7 @@ const StoreLocator = () => {
       await SplashScreen.hideAsync();
     }
   }, [fontsLoaded]);
-
+  const styles = useStyles();
   if (!fontsLoaded) {
     return null;
   }
