@@ -18,7 +18,8 @@ const styles = StyleSheet.create({
   topBar: {
     flexDirection: "row",
     alignItems: "center",
-    width: Dimensions.get("screen").width,
+    width: "100%",
+    height: 80,
     justifyContent: "space-between",
     padding: 12,
     backgroundColor: "transparent",

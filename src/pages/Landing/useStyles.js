@@ -1,12 +1,21 @@
 import { StyleSheet } from "react-native";
 import { useWindowDimensions } from "react-native";
-import { colors, fonts, fontSizes } from "../../variables";
+import {
+  colors,
+  fonts,
+  fontSizes,
+  spacing,
+  dimensions,
+  levels,
+} from "../../variables";
 
 const { background, primary, accent, text, primaryS1, secondaryT1 } =
   colors.landing;
 
 const { cursiveHeader, bodyText, h2Text } = fonts;
 const { regular400, large600 } = fontSizes;
+const { space150, space200, space500, space600, space1000 } = spacing;
+const { level1 } = levels;
 const useStyles = () => {
   const { width, height } = useWindowDimensions();
 
@@ -19,7 +28,7 @@ const useStyles = () => {
       width: width,
       height: height * (2 / 3),
       resizeMode: "cover",
-      paddingTop: 74,
+      paddingTop: space1000,
     },
     presentationHeading: {
       fontFamily: cursiveHeader,
@@ -31,40 +40,33 @@ const useStyles = () => {
       fontSize: regular400,
       color: background,
       textAlign: "center",
-      marginBottom: 12,
+      marginBottom: space150,
     },
     presentationContainer: {
       justifyContent: "center",
       alignItems: "center",
-      marginTop: 16,
-      marginHorizontal: 12,
-    },
-    image: {
-      position: "relative",
-      width: 400,
-      height: 400,
-      bottom: -50,
+      marginTop: space200,
+      marginHorizontal: space150,
     },
     newsContainer: {
       backgroundColor: secondaryT1,
-      width: width,
-      minHeight: 400,
+      width: "100%",
       alignItems: "center",
       justifyContent: "center",
-      paddingVertical: 50,
+      paddingVertical: space600,
     },
     transition: {
-      zIndex: 1,
-      marginTop: -40,
+      zIndex: level1,
+      marginTop: -space500,
     },
     newsFeed: {
-      gap: 16,
+      gap: space200,
     },
     newsFeedHeader: {
       fontFamily: h2Text,
       color: primary,
-      fontSize: 24,
-      marginBottom: 50,
+      fontSize: large600,
+      marginBottom: space600,
     },
     newsPanelBackground1: {
       backgroundColor: primary,

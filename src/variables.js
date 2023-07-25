@@ -64,17 +64,18 @@ export const fonts = {
   h2Text: "Poppins_500Medium",
   cursiveHeader: "Damion_400Regular",
 };
-
+const fontUnit = 4;
+const fontSizeFactor = 1 / 3;
 export const fontSizes = {
-  small100: moderateScale(10),
-  small200: moderateScale(12),
-  small300: moderateScale(14),
-  regular400: moderateScale(16),
-  large450: moderateScale(22),
-  large500: moderateScale(24),
-  large550: moderateScale(28),
-  large600: moderateScale(32),
-  large900: moderateScale(48),
+  small100: moderateScale(fontUnit, fontSizeFactor),
+  small200: moderateScale(fontUnit * 2, fontSizeFactor),
+  small300: moderateScale(fontUnit * 3, fontSizeFactor),
+  regular400: moderateScale(fontUnit * 4, fontSizeFactor),
+  large450: moderateScale(fontUnit * (9 / 2), fontSizeFactor),
+  large500: moderateScale(fontUnit * 5, fontSizeFactor),
+  large550: moderateScale(fontUnit * (11 / 2), fontSizeFactor),
+  large600: moderateScale(fontUnit * 6, fontSizeFactor),
+  large900: moderateScale(fontUnit * 9, fontSizeFactor),
 };
 
 // Preload image modules
@@ -84,4 +85,31 @@ export const imagePaths = {
   mobileMenuWavyBackground: require("../assets/mobileMenuWavyBackground.jpg"),
   desktopMenuWavyBackground: require("../assets/desktopMenuWavyBackground.jpg"),
   boobaPin: require("../assets/boobaPin.png"),
+};
+
+const spacingUnit = 8;
+
+export const spacing = {
+  space50: moderateScale(spacingUnit * (1 / 2)),
+  space100: moderateScale(spacingUnit),
+  space150: moderateScale(spacingUnit * (3 / 2)),
+  space200: moderateScale(spacingUnit * 2),
+  space400: moderateScale(spacingUnit * 4),
+  space500: moderateScale(spacingUnit * 5),
+  space600: moderateScale(spacingUnit * 6),
+  space900: moderateScale(spacingUnit * 9),
+  space1000: moderateScale(spacingUnit * 10),
+};
+
+export const dimensions = {
+  size100: moderateScale(spacingUnit),
+  size300: moderateScale(spacingUnit * 3),
+  size400: moderateScale(spacingUnit * 4),
+  size800: moderateScale(spacingUnit * 8),
+  size900: moderateScale(spacingUnit * 9),
+  size1000: moderateScale(spacingUnit * 10),
+};
+
+export const levels = {
+  level1: 1,
 };

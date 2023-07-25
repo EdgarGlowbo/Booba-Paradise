@@ -14,7 +14,7 @@ import {
   Dimensions,
 } from "react-native";
 
-import { colors, fontSizes, fonts } from "../variables";
+import { colors, dimensions, fontSizes, fonts, spacing } from "../variables";
 import { useFonts } from "expo-font";
 import { Poppins_400Regular } from "@expo-google-fonts/poppins";
 import { Poppins_600SemiBold } from "@expo-google-fonts/poppins";
@@ -88,15 +88,17 @@ const Footer = ({ containerBackground }) => {
 
 const { text, hyperlink } = colors.footer;
 const { h1Text, bodyText } = fonts;
-const { regular400, small200 } = fontSizes;
+const { regular400, small300 } = fontSizes;
+const { space150, space200, space400 } = spacing;
+const { size400 } = dimensions;
 const styles = StyleSheet.create({
   container: {
-    width: Dimensions.get("screen").width,
+    width: "100%",
     alignItems: "flex-start",
     justifyContent: "center",
-    paddingVertical: 32,
-    paddingHorizontal: 16,
-    rowGap: 12,
+    paddingVertical: space400,
+    paddingHorizontal: space200,
+    rowGap: space150,
   },
   footerTitle: {
     fontFamily: h1Text,
@@ -105,29 +107,29 @@ const styles = StyleSheet.create({
   },
   socialsContainer: {
     flexDirection: "row",
-    margin: 16,
-    columnGap: 12,
+    margin: space200,
+    columnGap: space150,
   },
   contactContainer: {
-    margin: 16,
-    rowGap: 12,
+    margin: space200,
+    rowGap: space150,
   },
   icon: {
     color: text,
-    width: 32,
-    height: 32,
+    width: size400,
+    height: size400,
   },
   waContainer: {
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    columnGap: 12,
+    columnGap: space150,
   },
   hyperlink: {
     color: hyperlink,
     fontFamily: bodyText,
-    fontSize: small200,
+    fontSize: small300,
   },
 });
 export default Footer;

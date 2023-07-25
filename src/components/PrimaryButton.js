@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 import { View, StyleSheet, Pressable, Text } from "react-native";
-import { fontSizes, fonts } from "../variables";
+import { dimensions, fontSizes, fonts, spacing } from "../variables";
 import { useFonts } from "expo-font";
 import { Poppins_600SemiBold } from "@expo-google-fonts/poppins";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
@@ -42,20 +42,21 @@ const PrimaryButton = ({ title, screenName, backgroundColor, textColor }) => {
 
 const { h2Text } = fonts;
 const { small300 } = fontSizes;
+const { space150, space200 } = spacing;
+const { size300 } = dimensions;
 const styles = StyleSheet.create({
   btn: {
     flexDirection: "row",
     borderRadius: 30,
-    paddingHorizontal: 12,
-    paddingVertical: 14,
-    width: "content",
+    paddingHorizontal: space150,
+    paddingVertical: space200,
     alignItems: "center",
     justifyContent: "center",
     alignSelf: "flex-start",
   },
   icon: {
-    height: 24,
-    width: 24,
+    height: size300,
+    width: size300,
   },
   txt: {
     fontFamily: h2Text,
