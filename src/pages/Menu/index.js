@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from "react";
 import { View, Text } from "react-native";
-import styles from "./styles";
+import useStyles from "./useStyles";
 import { ImageBackground } from "react-native";
 import { useFonts } from "expo-font";
 import { Damion_400Regular } from "@expo-google-fonts/damion";
@@ -27,7 +27,7 @@ const Menu = () => {
       await SplashScreen.hideAsync();
     }
   }, [fontsLoaded]);
-
+  const styles = useStyles();
   if (!fontsLoaded) {
     return null;
   }

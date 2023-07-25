@@ -1,13 +1,6 @@
 import { StyleSheet } from "react-native";
 import { useWindowDimensions } from "react-native";
-import {
-  colors,
-  fonts,
-  fontSizes,
-  spacing,
-  dimensions,
-  levels,
-} from "../../variables";
+import { colors, fonts, fontSizes, spacing, levels } from "../../variables";
 
 const { background, primary, accent, text, primaryS1, secondaryT1 } =
   colors.landing;

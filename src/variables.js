@@ -88,26 +88,29 @@ export const imagePaths = {
 };
 
 const spacingUnit = 8;
+const spacingFactor = 1 / 3;
 
 export const spacing = {
-  space50: moderateScale(spacingUnit * (1 / 2)),
-  space100: moderateScale(spacingUnit),
-  space150: moderateScale(spacingUnit * (3 / 2)),
-  space200: moderateScale(spacingUnit * 2),
-  space400: moderateScale(spacingUnit * 4),
-  space500: moderateScale(spacingUnit * 5),
-  space600: moderateScale(spacingUnit * 6),
-  space900: moderateScale(spacingUnit * 9),
-  space1000: moderateScale(spacingUnit * 10),
+  space50: moderateScale(spacingUnit * (1 / 2), spacingFactor),
+  space100: moderateScale(spacingUnit, spacingFactor),
+  space150: moderateScale(spacingUnit * (3 / 2), spacingFactor),
+  space200: moderateScale(spacingUnit * 2, spacingFactor),
+  space400: moderateScale(spacingUnit * 4, spacingFactor),
+  space500: moderateScale(spacingUnit * 5, spacingFactor),
+  space600: moderateScale(spacingUnit * 6, spacingFactor),
+  space900: moderateScale(spacingUnit * 9, spacingFactor),
+  space1000: moderateScale(spacingUnit * 10, spacingFactor),
 };
 
+const dimensionsFactor = 1 / 3;
+
 export const dimensions = {
-  size100: moderateScale(spacingUnit),
-  size300: moderateScale(spacingUnit * 3),
-  size400: moderateScale(spacingUnit * 4),
-  size800: moderateScale(spacingUnit * 8),
-  size900: moderateScale(spacingUnit * 9),
-  size1000: moderateScale(spacingUnit * 10),
+  size100: moderateScale(spacingUnit, dimensionsFactor),
+  size300: moderateScale(spacingUnit * 3, dimensionsFactor),
+  size400: moderateScale(spacingUnit * 4, dimensionsFactor),
+  size800: moderateScale(spacingUnit * 8, dimensionsFactor),
+  size900: moderateScale(spacingUnit * 9, dimensionsFactor),
+  size1000: moderateScale(spacingUnit * 10, dimensionsFactor),
 };
 
 export const levels = {
