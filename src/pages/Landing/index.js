@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 import { View, Text, ImageBackground } from "react-native";
-import styles from "./styles";
+// import styles from "./styles";
 import PrimaryButton from "../../components/PrimaryButton";
 import { useFonts } from "expo-font";
 import { imagePaths } from "../../variables";
@@ -15,6 +15,7 @@ import NewsArticle from "../../components/NewsArticle";
 import useAxios from "../../hooks/useAxios";
 import axiosInstance from "../../apis/api_instance";
 import Footer from "../../components/Footer";
+import useStyles from "./useStyles";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -41,6 +42,7 @@ const Landing = () => {
       await SplashScreen.hideAsync();
     }
   }, [fontsLoaded]);
+  const styles = useStyles();
 
   if (!fontsLoaded) {
     return null;
@@ -48,7 +50,6 @@ const Landing = () => {
   const news = responses.length > 0 ? responses[0] : [];
   const { mobileLandingWavyBackground, desktopLandingWavyBackground } =
     imagePaths;
-
   return (
     <View style={styles.container}>
       <ImageBackground
