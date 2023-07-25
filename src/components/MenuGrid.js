@@ -2,7 +2,7 @@ import React from "react";
 import { View, StyleSheet, Text } from "react-native";
 import axiosInstance from "../apis/api_instance";
 import useAxios from "../hooks/useAxios";
-import { colors, fonts } from "../variables";
+import { colors, fontSizes, fonts } from "../variables";
 import { Pressable } from "react-native";
 import ImageResponsive from "./ImageResponsive";
 
@@ -158,14 +158,15 @@ const MenuGrid = ({ selectedCategory, type }) => {
 };
 
 const { background, primary, accent, text } = colors.menu;
-
+const { h1Text } = fonts;
+const { large600, large450, large500, small300 } = fontSizes;
 const styles = StyleSheet.create({
   menuGrid: {
     marginHorizontal: "12%",
   },
   categoryHeader: {
-    fontFamily: fonts.categoryTitle,
-    fontSize: 22,
+    fontFamily: h1Text,
+    fontSize: large500,
     color: primary,
   },
   limitedEdition: {
@@ -175,15 +176,15 @@ const styles = StyleSheet.create({
     paddingVertical: 24,
   },
   limitedEditionSubcategoryHeader: {
-    fontFamily: fonts.categoryTitle,
-    fontSize: 32,
+    fontFamily: h1Text,
+    fontSize: large600,
     color: background,
     marginHorizontal: 12,
     textAlign: "center",
   },
   subcategoryHeader: {
-    fontFamily: fonts.categoryTitle,
-    fontSize: 18,
+    fontFamily: h1Text,
+    fontSize: large450,
     color: text,
     marginHorizontal: 12,
   },
@@ -208,7 +209,7 @@ const styles = StyleSheet.create({
     marginVertical: 5,
   },
   productName: {
-    fontFamily: fonts.categoryTitle,
+    fontFamily: h1Text,
     color: primary,
     textAlign: "center",
     marginBottom: 5,

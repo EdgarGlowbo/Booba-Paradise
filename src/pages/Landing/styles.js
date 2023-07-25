@@ -1,9 +1,12 @@
 import { Dimensions } from "react-native";
 import { StyleSheet } from "react-native";
-import { colors, fonts } from "../../variables";
+import { colors, fontSizes, fonts } from "../../variables";
 
-const { background, primary, secondary, accent, text, primaryS1, secondaryT1 } =
+const { background, primary, accent, text, primaryS1, secondaryT1 } =
   colors.landing;
+
+const { cursiveHeader, bodyText, h2Text } = fonts;
+const { regular400, large600 } = fontSizes;
 const styles = StyleSheet.create({
   container: {
     justifyContent: "center",
@@ -16,13 +19,13 @@ const styles = StyleSheet.create({
     paddingTop: 74,
   },
   presentationHeading: {
-    fontFamily: fonts.headings,
-    fontSize: 32,
+    fontFamily: cursiveHeader,
+    fontSize: large600,
     color: background,
   },
   presentationBody: {
-    fontFamily: fonts.body,
-    fontSize: 18,
+    fontFamily: bodyText,
+    fontSize: regular400,
     color: background,
     textAlign: "center",
     marginBottom: 12,
@@ -55,7 +58,7 @@ const styles = StyleSheet.create({
     gap: 16,
   },
   newsFeedHeader: {
-    fontFamily: fonts.newsFeedHeader,
+    fontFamily: h2Text,
     color: primary,
     fontSize: 24,
     marginBottom: 50,

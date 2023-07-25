@@ -1,10 +1,8 @@
 import React, { useCallback } from "react";
 import { View, StyleSheet, Pressable, Text } from "react-native";
-import { colors, fonts } from "../variables";
+import { fontSizes, fonts } from "../variables";
 import { useFonts } from "expo-font";
 import { Poppins_600SemiBold } from "@expo-google-fonts/poppins";
-
-// Icons
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faCaretRight } from "@fortawesome/free-solid-svg-icons/faCaretRight";
 import * as SplashScreen from "expo-splash-screen";
@@ -19,7 +17,7 @@ const PrimaryButton = ({ title, screenName, backgroundColor, textColor }) => {
     Poppins_600SemiBold,
   });
 
-  const onLayoutRootView = useCallback(async () => {
+  useCallback(async () => {
     if (fontsLoaded) {
       await SplashScreen.hideAsync();
     }
@@ -42,6 +40,8 @@ const PrimaryButton = ({ title, screenName, backgroundColor, textColor }) => {
   );
 };
 
+const { h2Text } = fonts;
+const { small300 } = fontSizes;
 const styles = StyleSheet.create({
   btn: {
     flexDirection: "row",
@@ -58,8 +58,8 @@ const styles = StyleSheet.create({
     width: 24,
   },
   txt: {
-    fontFamily: fonts.primaryBtn,
-    fontSize: 16,
+    fontFamily: h2Text,
+    fontSize: small300,
   },
 });
 

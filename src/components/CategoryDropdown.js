@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { Dropdown } from "react-native-element-dropdown";
-import { colors, fonts } from "../variables";
+import { colors, fonts, fontSizes } from "../variables";
 import { useFonts } from "expo-font";
 import { Poppins_400Regular } from "@expo-google-fonts/poppins";
 
@@ -62,6 +62,8 @@ const CategoryDropdown = ({ type, selectedCategory, setSelectedCategory }) => {
 export default CategoryDropdown;
 
 const { background, primary, text } = colors.menu;
+const { bodyText } = fonts;
+const { regular400 } = fontSizes;
 const styles = StyleSheet.create({
   container: {
     width: "100%",
@@ -86,17 +88,17 @@ const styles = StyleSheet.create({
     top: 8,
     zIndex: 999,
     paddingHorizontal: 8,
-    fontFamily: fonts.body,
-    fontSize: 18,
+    fontFamily: bodyText,
+    fontSize: regular400,
   },
   placeholderStyle: {
-    fontFamily: fonts.body,
-    fontSize: 18,
+    fontFamily: bodyText,
+    fontSize: regular400,
   },
   selectedTextStyle: {
-    fontFamily: fonts.body,
+    fontFamily: bodyText,
     color: text,
-    fontSize: 18,
+    fontSize: regular400,
   },
   focusStyle: {
     borderColor: primary,

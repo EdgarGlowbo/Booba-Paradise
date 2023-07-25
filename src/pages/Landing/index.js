@@ -3,6 +3,7 @@ import { View, Text, ImageBackground } from "react-native";
 import styles from "./styles";
 import PrimaryButton from "../../components/PrimaryButton";
 import { useFonts } from "expo-font";
+import { imagePaths } from "../../variables";
 import { Damion_400Regular } from "@expo-google-fonts/damion";
 import {
   Poppins_400Regular,
@@ -18,7 +19,7 @@ import Footer from "../../components/Footer";
 SplashScreen.preventAutoHideAsync();
 
 const Landing = () => {
-  const { responses, errors, isLoading } = useAxios({
+  const { responses } = useAxios({
     axiosInstance: axiosInstance,
     method: "GET",
     urls: ["/"],
@@ -45,11 +46,13 @@ const Landing = () => {
     return null;
   }
   const news = responses.length > 0 ? responses[0] : [];
+  const { mobileLandingWavyBackground, desktopLandingWavyBackground } =
+    imagePaths;
 
   return (
     <View style={styles.container}>
       <ImageBackground
-        source={require("../../../assets/LandingBackground.jpg")}
+        source={mobileLandingWavyBackground}
         style={styles.headerContent}
       >
         <View style={styles.presentationContainer}>

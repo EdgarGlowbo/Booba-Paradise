@@ -1,6 +1,7 @@
 import React from "react";
-import { View, StyleSheet, Pressable, Image } from "react-native";
+import { View, Pressable } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import ImageResponsive from "../ImageResponsive";
 
 const BrandName = () => {
   const navigation = useNavigation();
@@ -11,20 +12,16 @@ const BrandName = () => {
   return (
     <Pressable onPress={handlePress}>
       <View>
-        <Image
-          source={require("../../../assets/brandName.png")}
-          style={styles.boobaTypo}
+        <ImageResponsive
+          source={{
+            sourceWidth: 152,
+            uri: require("../../../assets/brandName.png"),
+          }}
+          aspectRatio={76 / 29}
         />
       </View>
     </Pressable>
   );
 };
-
-const styles = StyleSheet.create({
-  boobaTypo: {
-    width: 131,
-    height: 50,
-  },
-});
 
 export default BrandName;

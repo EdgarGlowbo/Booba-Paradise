@@ -5,7 +5,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import CustomDrawer from "../components/CustomDrawer";
 import CustomHeader from "../components/TopBar/CustomHeader";
-import { colors, fonts } from "../variables";
+import { colors, fontSizes, fonts } from "../variables";
 import { Dimensions, StyleSheet } from "react-native";
 import { useFonts } from "@expo-google-fonts/poppins/useFonts";
 import { Poppins_700Bold } from "@expo-google-fonts/poppins";
@@ -104,9 +104,12 @@ const Navigator = () => {
 };
 
 const { background, text } = colors.drawer;
+// Special backgroundColor as prop
 const storeLocatorColors = colors.storeLocator;
 const storeDescColors = colors.storeDesc;
 
+const { h1Text } = fonts;
+const { large550 } = fontSizes;
 const styles = StyleSheet.create({
   drawerStyles: {
     width: Dimensions.get("window").width,
@@ -120,8 +123,8 @@ const styles = StyleSheet.create({
     marginVertical: 0,
   },
   drawerLabelStyles: {
-    fontFamily: fonts.drawerItem,
-    fontSize: 28,
+    fontFamily: h1Text,
+    fontSize: large550,
     color: text,
   },
   storeLocatorHeaderColor: {

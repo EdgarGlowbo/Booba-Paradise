@@ -14,7 +14,7 @@ import {
   Dimensions,
 } from "react-native";
 
-import { colors, fonts } from "../variables";
+import { colors, fontSizes, fonts } from "../variables";
 import { useFonts } from "expo-font";
 import { Poppins_400Regular } from "@expo-google-fonts/poppins";
 import { Poppins_600SemiBold } from "@expo-google-fonts/poppins";
@@ -26,7 +26,7 @@ const Footer = ({ containerBackground }) => {
     Poppins_600SemiBold,
   });
 
-  const onLayoutRootView = useCallback(async () => {
+  useCallback(async () => {
     if (fontsLoaded) {
       await SplashScreen.hideAsync();
     }
@@ -87,6 +87,8 @@ const Footer = ({ containerBackground }) => {
 };
 
 const { text, hyperlink } = colors.footer;
+const { h1Text, bodyText } = fonts;
+const { regular400, small200 } = fontSizes;
 const styles = StyleSheet.create({
   container: {
     width: Dimensions.get("screen").width,
@@ -97,9 +99,9 @@ const styles = StyleSheet.create({
     rowGap: 12,
   },
   footerTitle: {
-    fontFamily: fonts.footerTitle,
+    fontFamily: h1Text,
     color: text,
-    fontSize: 18,
+    fontSize: regular400,
   },
   socialsContainer: {
     flexDirection: "row",
@@ -124,8 +126,8 @@ const styles = StyleSheet.create({
   },
   hyperlink: {
     color: hyperlink,
-    fontFamily: fonts.body,
-    fontSize: 14,
+    fontFamily: bodyText,
+    fontSize: small200,
   },
 });
 export default Footer;

@@ -1,3 +1,5 @@
+import { scale, moderateScale } from "react-native-size-matters";
+
 export const colors = {
   landing: {
     text: "#292321",
@@ -57,15 +59,29 @@ export const colors = {
 };
 
 export const fonts = {
-  boobaText: "Allison_400Regular",
-  headings: "Damion_400Regular",
-  body: "Poppins_400Regular",
-  drawerItem: "Poppins_700Bold",
-  newsFeedHeader: "Poppins_600SemiBold",
-  newsHeader: "Poppins_500Medium",
-  categoryTitle: "Poppins_600SemiBold",
-  footerTitle: "Poppins_600SemiBold",
-  primaryBtn: "Poppins_600SemiBold",
-  bottomTab: "Poppins_400Regular",
-  bottomTabBold: "Poppins_600SemiBold",
+  bodyText: "Poppins_400Regular",
+  h1Text: "Poppins_600SemiBold",
+  h2Text: "Poppins_500Medium",
+  cursiveHeader: "Damion_400Regular",
+};
+
+export const fontSizes = {
+  small100: moderateScale(10),
+  small200: moderateScale(12),
+  small300: moderateScale(14),
+  regular400: moderateScale(16),
+  large450: moderateScale(22),
+  large500: moderateScale(24),
+  large550: moderateScale(28),
+  large600: moderateScale(32),
+  large900: moderateScale(48),
+};
+
+// Preload image modules
+export const imagePaths = {
+  mobileLandingWavyBackground: require("../assets/mobileLandingWavyBackground.jpg"),
+  desktopLandingWavyBackground: require("../assets/desktopLandingWavyBackground.jpg"),
+  mobileMenuWavyBackground: require("../assets/mobileMenuWavyBackground.jpg"),
+  desktopMenuWavyBackground: require("../assets/desktopMenuWavyBackground.jpg"),
+  boobaPin: require("../assets/boobaPin.png"),
 };

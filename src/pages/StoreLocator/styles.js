@@ -1,8 +1,10 @@
 import { Dimensions } from "react-native";
 import { StyleSheet } from "react-native";
-import { colors, fonts } from "../../variables";
+import { colors, fontSizes, fonts } from "../../variables";
 
-const { background, text, primary } = colors.storeLocator;
+const { background, primary } = colors.storeLocator;
+const { bodyText } = fonts;
+const { large450 } = fontSizes;
 const styles = StyleSheet.create({
   container: {
     flexDirection: "column",
@@ -31,8 +33,8 @@ const styles = StyleSheet.create({
     width: 32,
   },
   text: {
-    fontFamily: fonts.body,
-    fontSize: 18,
+    fontFamily: bodyText,
+    fontSize: large450,
     color: background,
   },
 });

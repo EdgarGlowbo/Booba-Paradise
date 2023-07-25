@@ -22,7 +22,7 @@ const ImageResponsive = ({ source: { sourceWidth, uri }, aspectRatio }) => {
         height: height,
         width: width,
       }}
-      style={{ resizeMode: "contain", marginTop: 15 }}
+      style={{ resizeMode: "contain" }}
     />
   );
 };

@@ -74,7 +74,7 @@ const StoreDescription = () => {
       >
         <FontAwesomeIcon
           icon={faXmark}
-          style={[styles.icon, { color: colors.headerBackground, margin: 0 }]}
+          style={[styles.icon, styles.crossGoBack]}
         />
       </Pressable>
       <View style={[styles.businessNameContainer, styles.row]}>
@@ -98,12 +98,7 @@ const StoreDescription = () => {
               setIsShown(!isShown);
             }}
           >
-            <Text
-              style={[
-                styles.text,
-                isOpen ? { color: colors.open } : { color: colors.closed },
-              ]}
-            >
+            <Text style={[styles.text, isOpen ? styles.open : styles.closed]}>
               {status}:{" "}
               <Text style={[styles.text, styles.statusMessage]}>{message}</Text>
             </Text>
@@ -125,9 +120,7 @@ const StoreDescription = () => {
                       style={[
                         styles.weekday,
                         styles.text,
-                        weekdayIndex === weekday.id
-                          ? { fontFamily: fonts.bottomTabBold }
-                          : null,
+                        weekdayIndex === weekday.id ? styles.today : null,
                       ]}
                     >
                       {weekday.name}
@@ -136,9 +129,7 @@ const StoreDescription = () => {
                       style={[
                         styles.hours,
                         styles.text,
-                        weekdayIndex === weekday.id
-                          ? { fontFamily: fonts.bottomTabBold }
-                          : null,
+                        weekdayIndex === weekday.id ? styles.today : null,
                       ]}
                     >
                       {weekday.businessHours}
@@ -174,7 +165,7 @@ const StoreDescription = () => {
           <Text style={styles.text}>Cómo llegar</Text>
           <FontAwesomeIcon
             icon={faCaretRight}
-            style={[styles.icon, { color: colors.headerBackground }]}
+            style={[styles.icon, styles.caretRight]}
           />
         </Pressable>
       </View>

@@ -4,7 +4,7 @@ import { View, StyleSheet, Pressable, Text } from "react-native";
 import { faMugHot } from "@fortawesome/free-solid-svg-icons/faMugHot";
 import { faIceCream } from "@fortawesome/free-solid-svg-icons/faIceCream";
 import CategoryDropdown from "./CategoryDropdown";
-import { colors, fonts } from "../variables";
+import { colors, fonts, fontSizes } from "../variables";
 import { useFonts } from "expo-font";
 import { Poppins_400Regular } from "@expo-google-fonts/poppins";
 import { Poppins_600SemiBold } from "@expo-google-fonts/poppins";
@@ -76,6 +76,8 @@ const ControlPanel = ({
 };
 
 const { background, primary, secondary, accent } = colors.menu;
+const { bodyText, h1Text } = fonts;
+const { small300 } = fontSizes;
 
 const styles = StyleSheet.create({
   container: {
@@ -112,13 +114,13 @@ const styles = StyleSheet.create({
   },
   typeLabel: {
     color: secondary,
-    fontFamily: fonts.body,
-    fontSize: 16,
+    fontFamily: bodyText,
+    fontSize: small300,
     paddingTop: 12,
   },
   categoryTitle: {
-    fontFamily: fonts.categoryTitle,
-    fontSize: 16,
+    fontFamily: h1Text,
+    fontSize: small300,
     color: primary,
     alignSelf: "flex-start",
   },

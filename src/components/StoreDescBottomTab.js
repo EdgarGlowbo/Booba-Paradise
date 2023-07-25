@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faStore } from "@fortawesome/free-solid-svg-icons/faStore";
 import { faBagShopping } from "@fortawesome/free-solid-svg-icons/faBagShopping";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons/faChevronRight";
-import { colors, fonts } from "../variables";
+import { colors, fontSizes, fonts } from "../variables";
 import { Pressable } from "react-native";
 import { useFonts } from "expo-font";
 import {
@@ -72,6 +72,8 @@ const StoreDescBottomTab = ({ details: { name, address, opening_hours } }) => {
 };
 
 const { background, secondary, text, open, closed } = colors.storeLocator;
+const { h1Text, bodyText } = fonts;
+const { small300 } = fontSizes;
 
 const styles = StyleSheet.create({
   container: {
@@ -97,18 +99,18 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   businessName: {
-    fontFamily: fonts.bottomTabBold,
-    fontSize: 16,
+    fontFamily: h1Text,
+    fontSize: small300,
     color: text,
   },
   address: {
-    fontFamily: fonts.bottomTab,
-    fontSize: 16,
+    fontFamily: bodyText,
+    fontSize: small300,
     color: text,
   },
   status: {
-    fontFamily: fonts.bottomTab,
-    fontSize: 16,
+    fontFamily: bodyText,
+    fontSize: small300,
   },
   statusMessage: {
     color: text,
@@ -137,8 +139,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   serviceLabel: {
-    fontFamily: fonts.bottomTab,
-    fontSize: 14,
+    fontFamily: bodyText,
+    fontSize: small300,
     marginLeft: 5,
   },
 });

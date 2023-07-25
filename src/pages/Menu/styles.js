@@ -1,9 +1,16 @@
 import { StyleSheet, Dimensions } from "react-native";
-import { colors, fonts } from "../../variables";
+import { colors, fontSizes, fonts } from "../../variables";
 
 const { background, primaryS1 } = colors.menu;
+const { cursiveHeader, bodyText } = fonts;
+const { regular400, large600 } = fontSizes;
+
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
+    backgroundColor: background,
+    alignItems: "center",
+    justifyContent: "center",
     flexDirection: "column",
   },
   header: {
@@ -25,13 +32,13 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   headerTitle: {
-    fontFamily: fonts.headings,
-    fontSize: 32,
+    fontFamily: cursiveHeader,
+    fontSize: large600,
     color: background,
   },
   headerDesc: {
-    fontFamily: fonts.body,
-    fontSize: 18,
+    fontFamily: bodyText,
+    fontSize: regular400,
     color: background,
     textAlign: "center",
   },

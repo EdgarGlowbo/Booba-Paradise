@@ -1,7 +1,9 @@
 import { StyleSheet } from "react-native";
-import { colors, fonts } from "../../variables";
+import { colors, fontSizes, fonts } from "../../variables";
 
 const { background, secondary, text, open, closed } = colors.storeDesc;
+const { h1Text, bodyText } = fonts;
+const { regular400, large450, small300 } = fontSizes;
 
 const styles = StyleSheet.create({
   container: {
@@ -31,16 +33,23 @@ const styles = StyleSheet.create({
     color: secondary,
     marginRight: 12,
   },
+  caretRight: {
+    color: text,
+  },
   clock: {
     alignSelf: "flex-start",
+  },
+  crossGoBack: {
+    color: text,
+    margin: 0,
   },
   boobaPin: {
     height: 48,
     width: 48,
   },
   businessName: {
-    fontFamily: fonts.bottomTabBold,
-    fontSize: 22,
+    fontFamily: h1Text,
+    fontSize: large450,
   },
   businessHoursContainer: {
     alignItems: "center",
@@ -76,14 +85,19 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   text: {
-    fontFamily: fonts.body,
-    fontSize: 14,
+    fontFamily: bodyText,
+    fontSize: regular400,
     color: text,
   },
   textBold: {
-    fontFamily: fonts.bottomTabBold,
-    fontSize: 16,
+    fontFamily: h1Text,
+    fontSize: small300,
     color: text,
+  },
+  today: {
+    textShadowColor: "black",
+    textShadowOffset: 0,
+    textShadowRadius: 1,
   },
   serviceItem: {
     flexDirection: "row",

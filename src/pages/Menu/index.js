@@ -10,6 +10,7 @@ import * as SplashScreen from "expo-splash-screen";
 import ControlPanel from "../../components/ControlPanel";
 import MenuGrid from "../../components/MenuGrid";
 import Footer from "../../components/Footer";
+import { imagePaths } from "../../variables";
 
 const Menu = () => {
   const [selectedCategory, setSelectedCategory] = useState(0);
@@ -30,12 +31,12 @@ const Menu = () => {
   if (!fontsLoaded) {
     return null;
   }
-
+  const { mobileMenuWavyBackground } = imagePaths;
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <ImageBackground
-          source={require("../../../assets/wavyBackground.jpg")}
+          source={mobileMenuWavyBackground}
           style={styles.backgroundImg}
         >
           <View style={styles.headerTextContainer}>

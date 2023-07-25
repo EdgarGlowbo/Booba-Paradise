@@ -7,7 +7,7 @@ import {
   Poppins_500Medium,
 } from "@expo-google-fonts/poppins";
 import * as SplashScreen from "expo-splash-screen";
-import { colors, fonts } from "../variables";
+import { colors, fontSizes, fonts } from "../variables";
 
 const NewsArticle = ({
   backgroundColor,
@@ -66,7 +66,9 @@ const NewsArticle = ({
   );
 };
 
-const { background, primary, secondary, text, accent } = colors.landing;
+const { primary, text } = colors.landing;
+const { h2Text, bodyText } = fonts;
+const { regular400, large500 } = fontSizes;
 const styles = StyleSheet.create({
   container: {
     flexBasis: 550.5,
@@ -83,16 +85,16 @@ const styles = StyleSheet.create({
   },
   title: {
     marginHorizontal: 12,
-    fontFamily: fonts.newsHeader,
-    fontSize: 24,
+    fontFamily: h2Text,
+    fontSize: large500,
     color: primary,
     textAlign: "center",
   },
   content: {
     marginVertical: 8,
     marginHorizontal: 32,
-    fontFamily: fonts.body,
-    fontSize: 18,
+    fontFamily: bodyText,
+    fontSize: regular400,
     color: text,
     textAlign: "center",
   },

@@ -14,6 +14,7 @@ import {
 } from "@expo-google-fonts/poppins";
 import * as SplashScreen from "expo-splash-screen";
 import StoreDescBottomTab from "../../components/StoreDescBottomTab";
+import { imagePaths } from "../../variables";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -39,7 +40,6 @@ const StoreLocator = () => {
 
   const center = useMemo(() => {
     if (responses.length > 0) {
-      console.log(responses);
       return {
         lat: parseFloat(responses[0][0].latitude),
         lng: parseFloat(responses[0][0].longitude),
@@ -55,6 +55,7 @@ const StoreLocator = () => {
   if (!fontsLoaded) {
     return null;
   }
+  const { boobaPin } = imagePaths;
   return (
     <View style={styles.container}>
       {isLoaded && responses.length > 0 && (
@@ -83,7 +84,7 @@ const StoreLocator = () => {
             <MarkerF
               position={center}
               icon={{
-                url: require("../../../assets/boobaPin.png"),
+                url: boobaPin,
                 scaledSize: new google.maps.Size(64, 64),
               }}
             />
