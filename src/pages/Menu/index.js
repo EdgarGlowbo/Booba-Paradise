@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from "react";
-import { View, Text } from "react-native";
+import { View, Text, ScrollView } from "react-native";
 import useStyles from "./useStyles";
 import { ImageBackground } from "react-native";
 import { useFonts } from "expo-font";
@@ -11,6 +11,7 @@ import ControlPanel from "../../components/ControlPanel";
 import MenuGrid from "../../components/MenuGrid";
 import Footer from "../../components/Footer";
 import { imagePaths } from "../../variables";
+import CustomHeader from "../../components/TopBar/CustomHeader";
 
 const Menu = () => {
   const [selectedCategory, setSelectedCategory] = useState(0);
@@ -33,32 +34,35 @@ const Menu = () => {
   }
   const { mobileMenuWavyBackground } = imagePaths;
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <ImageBackground
-          source={mobileMenuWavyBackground}
-          style={styles.backgroundImg}
-        >
-          <View style={styles.headerTextContainer}>
-            <Text style={styles.headerTitle}>Menú</Text>
-            <Text style={styles.headerDesc}>
-              Un boba frappé, un refresher, waffles, lo que sea que se te
-              antoje, hay suficiente para escoger.
-            </Text>
-          </View>
-        </ImageBackground>
+    <ScrollView>
+      <CustomHeader />
+      <View style={styles.container}>
+        <View style={styles.header}>
+          <ImageBackground
+            source={mobileMenuWavyBackground}
+            style={styles.backgroundImg}
+          >
+            <View style={styles.headerTextContainer}>
+              <Text style={styles.headerTitle}>Menú</Text>
+              <Text style={styles.headerDesc}>
+                Un boba frappé, un refresher, waffles, lo que sea que se te
+                antoje, hay suficiente para escoger.
+              </Text>
+            </View>
+          </ImageBackground>
+        </View>
+        <View style={styles.menuContainer}>
+          <ControlPanel
+            type={type}
+            setType={setType}
+            selectedCategory={selectedCategory}
+            setSelectedCategory={setSelectedCategory}
+          />
+          <MenuGrid selectedCategory={selectedCategory} type={type} />
+        </View>
+        <Footer containerBackground={styles.footer} />
       </View>
-      <View style={styles.menuContainer}>
-        <ControlPanel
-          type={type}
-          setType={setType}
-          selectedCategory={selectedCategory}
-          setSelectedCategory={setSelectedCategory}
-        />
-        <MenuGrid selectedCategory={selectedCategory} type={type} />
-      </View>
-      <Footer containerBackground={styles.footer} />
-    </View>
+    </ScrollView>
   );
 };
 

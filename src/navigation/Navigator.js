@@ -6,7 +6,7 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import CustomDrawer from "../components/CustomDrawer";
 import CustomHeader from "../components/TopBar/CustomHeader";
 import { colors, dimensions, fontSizes, fonts, spacing } from "../variables";
-import { Dimensions, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 import { useFonts } from "@expo-google-fonts/poppins/useFonts";
 import { Poppins_700Bold } from "@expo-google-fonts/poppins";
 import * as SplashScreen from "expo-splash-screen";
@@ -36,7 +36,7 @@ const Navigator = () => {
       Poppins_700Bold,
     });
 
-    const onLayoutRootView = useCallback(async () => {
+    useCallback(async () => {
       if (fontsLoaded) {
         await SplashScreen.hideAsync();
       }
@@ -70,7 +70,7 @@ const Navigator = () => {
         <Drawer.Screen
           name="Menu"
           component={Menu}
-          options={{ drawerLabel: "Nuestro Menú" }}
+          options={{ drawerLabel: "Nuestro Menú", headerShown: false }}
         />
         <Drawer.Screen
           name="LocationStack"
@@ -111,7 +111,7 @@ const storeDescColors = colors.storeDesc;
 const { h1Text } = fonts;
 const { large550 } = fontSizes;
 const { size5175 } = dimensions;
-const { space150 } = spacing;
+const { space150, space1000 } = spacing;
 const styles = StyleSheet.create({
   drawerStyles: {
     width: size5175,

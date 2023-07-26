@@ -3,7 +3,7 @@ import { View, StyleSheet } from "react-native";
 import BurgerMenu from "./BurgerMenu";
 import BrandName from "./BrandName";
 import LocationPin from "./LocationPin";
-import { dimensions, spacing } from "../../variables";
+import { dimensions, levels, spacing } from "../../variables";
 
 const CustomHeader = ({ backgroundColor = null }) => {
   return (
@@ -17,8 +17,11 @@ const CustomHeader = ({ backgroundColor = null }) => {
 
 const { size1000 } = dimensions;
 const { space150 } = spacing;
+const { level1 } = levels;
 const styles = StyleSheet.create({
   topBar: {
+    position: "absolute",
+    top: 0,
     flexDirection: "row",
     alignItems: "center",
     width: "100%",
@@ -26,6 +29,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     padding: space150,
     backgroundColor: "transparent",
+    zIndex: level1,
   },
 });
 
