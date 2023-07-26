@@ -1,17 +1,24 @@
 import * as React from "react";
-const NewsTransition = (props) => (
-  <svg
+import Svg, { G, Path, Defs, ClipPath } from "react-native-svg";
+const SvgComponent = (props) => (
+  <Svg
     xmlns="http://www.w3.org/2000/svg"
-    data-name="Layer 1"
+    fill="none"
     preserveAspectRatio="none"
-    viewBox="0 0 1200 120"
+    viewBox="0 0 320 536.395"
     {...props}
   >
-    <path
-      fill="#e0d5e3"
-      d="M985.66 92.83C906.67 72 823.78 31 743.84 14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84 11.73-114 31.07-172 41.86A600.21 600.21 0 0 1 0 27.35V120h1200V95.8c-67.81 23.12-144.29 15.51-214.34-2.97Z"
-      className="shape-fill"
-    />
-  </svg>
+    <G clipPath="url(#a)">
+      <Path
+        fill="#AEDCD0"
+        d="M0 536.395V6.156C21.954 2.863 45.274 0 73.493 0c34.289 0 61.351 4.23 87.525 8.32 21.562 3.37 42.136 6.582 66.27 7.592h31.228c22.342-.936 41.632-3.76 61.484-6.85v527.333H0Z"
+      />
+    </G>
+    <Defs>
+      <ClipPath id="a">
+        <Path fill="#fff" d="M0 0h320v536.395H0z" />
+      </ClipPath>
+    </Defs>
+  </Svg>
 );
-export default NewsTransition;
+export default SvgComponent;

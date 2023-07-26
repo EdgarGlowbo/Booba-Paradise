@@ -54,6 +54,7 @@ const useStyles = () => {
     businessName: {
       fontFamily: h1Text,
       fontSize: large450,
+      marginLeft: space50,
     },
     businessHoursContainer: {
       alignItems: "center",

@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import { View, Text, ImageBackground } from "react-native";
 // import styles from "./styles";
 import PrimaryButton from "../../components/PrimaryButton";
@@ -30,6 +30,8 @@ const Landing = () => {
       },
     },
   });
+  const [newsFeedHeight, setNewsFeedHeight] = useState(0);
+  const [newsFeedWidth, setNewsFeedWidth] = useState(0);
 
   const [fontsLoaded] = useFonts({
     Damion_400Regular,
@@ -42,8 +44,13 @@ const Landing = () => {
       await SplashScreen.hideAsync();
     }
   }, [fontsLoaded]);
-  const styles = useStyles();
+  const styles = useStyles(newsFeedHeight);
 
+  const onLayout = (event) => {
+    const { height, width } = event.nativeEvent.layout;
+    setNewsFeedHeight(height + Math.abs(styles.transition.marginTop));
+    setNewsFeedWidth(width);
+  };
   if (!fontsLoaded) {
     return null;
   }
@@ -71,8 +78,13 @@ const Landing = () => {
           />
         </View>
       </ImageBackground>
-      <NewsTransition style={styles.transition} />
-      <View style={styles.newsContainer}>
+      {/* Set height of the newsContainer to the SVG background. Add the negative margin (used to overlap the header) */}
+      <NewsTransition
+        style={styles.transition}
+        height={newsFeedHeight}
+        width={newsFeedWidth}
+      />
+      <View style={styles.newsContainer} onLayout={onLayout}>
         <Text style={styles.newsFeedHeader}>Lo nuevo este verano</Text>
         {responses.length > 0 && (
           <View style={styles.newsFeed}>

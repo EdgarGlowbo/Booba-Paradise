@@ -7,8 +7,8 @@ const { background, primary, accent, text, primaryS1, secondaryT1 } =
 
 const { cursiveHeader, bodyText, h2Text } = fonts;
 const { regular400, large600 } = fontSizes;
-const { space150, space200, space500, space600, space1000 } = spacing;
-const { level1 } = levels;
+const { space150, space200, space500, space600, space850, space1000 } = spacing;
+const { level1, level2 } = levels;
 const useStyles = () => {
   const { width, height } = useWindowDimensions();
 
@@ -22,6 +22,7 @@ const useStyles = () => {
       height: height * (2 / 3),
       resizeMode: "cover",
       paddingTop: space1000,
+      zIndex: -level2,
     },
     presentationHeading: {
       fontFamily: cursiveHeader,
@@ -42,15 +43,17 @@ const useStyles = () => {
       marginHorizontal: space150,
     },
     newsContainer: {
-      backgroundColor: secondaryT1,
+      backgroundColor: "transparent",
       width: "100%",
       alignItems: "center",
       justifyContent: "center",
       paddingVertical: space600,
     },
     transition: {
-      zIndex: level1,
-      marginTop: -space500,
+      position: "absolute",
+      top: height * (2 / 3),
+      marginTop: -space850,
+      zIndex: -level1,
     },
     newsFeed: {
       gap: space200,

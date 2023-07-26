@@ -9,6 +9,7 @@ export const colors = {
     secondary: "#652e72",
     secondaryT1: "#e0d5e3",
     accent: "#35a78a",
+    accentT60: "#aedcd0",
   },
   // menu: {
   //   background: "#fffcf9",
@@ -103,6 +104,7 @@ export const spacing = {
   space500: moderateScale(spacingUnit * 5, spacingFactor),
   space600: moderateScale(spacingUnit * 6, spacingFactor),
   space800: moderateScale(spacingUnit * 8, spacingFactor),
+  space850: moderateScale(spacingUnit * 8.5, spacingFactor),
   space900: moderateScale(spacingUnit * 9, spacingFactor),
   space1000: moderateScale(spacingUnit * 10, spacingFactor),
 };
@@ -135,4 +137,5 @@ export const radius = {
 };
 export const levels = {
   level1: 1,
+  level2: 2,
 };

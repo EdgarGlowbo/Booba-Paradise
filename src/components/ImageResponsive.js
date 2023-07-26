@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Image, Dimensions } from "react-native";
+import { Image } from "react-native";
 
 const ImageResponsive = ({ source: { sourceWidth, uri }, aspectRatio }) => {
   const [width, setWidth] = useState(null);

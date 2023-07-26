@@ -226,7 +226,7 @@ const styles = StyleSheet.create({
   limitedEditionProduct: {
     backgroundColor: background,
     borderRadius: radius400,
-    marginHorizontal: space150,
+    marginHorizontal: space100,
     marginVertical: space50,
   },
   productName: {

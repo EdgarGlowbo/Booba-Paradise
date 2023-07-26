@@ -1,7 +1,12 @@
 import React, { useMemo, useCallback } from "react";
 import { View, Pressable, Text, Linking } from "react-native";
 import useStyles from "./useStyles";
-import { useLoadScript, GoogleMap, MarkerF } from "@react-google-maps/api";
+import {
+  useLoadScript,
+  GoogleMap,
+  Marker,
+  MarkerF,
+} from "@react-google-maps/api";
 import { GOOGLE_MAPS_API_KEY } from "../../apis/apiKeys";
 import useAxios from "../../hooks/useAxios";
 import axiosInstance from "../../apis/api_instance";
@@ -55,6 +60,7 @@ const StoreLocator = () => {
   if (!fontsLoaded) {
     return null;
   }
+
   const { boobaPin } = imagePaths;
   return (
     <View style={styles.container}>
@@ -85,7 +91,7 @@ const StoreLocator = () => {
               position={center}
               icon={{
                 url: boobaPin,
-                scaledSize: new google.maps.Size(64, 64),
+                scaledSize: new google.maps.Size(48, 48 * (85 / 64)),
               }}
             />
           </GoogleMap>

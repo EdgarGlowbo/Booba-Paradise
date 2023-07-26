@@ -38,6 +38,7 @@ const useStyles = () => {
       alignItems: "center",
       justifyContent: "center",
       top: space1000,
+      marginTop: space100,
       backgroundColor: primary,
       borderRadius: radius800,
       paddingVertical: space100,
@@ -53,6 +54,9 @@ const useStyles = () => {
       fontFamily: bodyText,
       fontSize: large450,
       color: background,
+    },
+    boobaPin: {
+      zIndex: level1,
     },
   });
 };

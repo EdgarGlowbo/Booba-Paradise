@@ -1,10 +1,11 @@
 import React, { useState, useCallback } from "react";
 import { View, Text, Pressable, Image, Linking } from "react-native";
+import ImageResponsive from "../../components/ImageResponsive";
 import useStyles from "./useStyles";
 import useAxios from "../../hooks/useAxios";
 import axiosInstance from "../../apis/api_instance";
 import useBusinessStatus from "../../hooks/useBusinessStatus";
-import { colors } from "../../variables";
+import { colors, imagePaths } from "../../variables";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faClock } from "@fortawesome/free-solid-svg-icons/faClock";
 import { faXmark } from "@fortawesome/free-solid-svg-icons/faXmark";
@@ -64,6 +65,8 @@ const StoreDescription = () => {
     ? useBusinessStatus(new Date(), opening_hours)
     : {};
 
+  const { boobaPin } = imagePaths;
+
   return (
     <View style={styles.container}>
       <View style={styles.goBackBtnContainer}>
@@ -80,9 +83,12 @@ const StoreDescription = () => {
       </View>
 
       <View style={[styles.businessNameContainer, styles.row]}>
-        <Image
-          source={require("../../../assets/boobaPin.png")}
-          style={styles.boobaPin}
+        <ImageResponsive
+          source={{
+            sourceWidth: 32,
+            uri: boobaPin,
+          }}
+          aspectRatio={64 / 85}
         />
         <Text style={styles.businessName}>Booba Paradise</Text>
       </View>
