@@ -55,4 +55,4 @@ web-build/
 dist/
 
 # API
-src/apis/apiKeys.js
+src/apis/credentials.js

@@ -7,7 +7,7 @@ import {
   Marker,
   MarkerF,
 } from "@react-google-maps/api";
-import { GOOGLE_MAPS_API_KEY } from "../../apis/apiKeys";
+import { GOOGLE_MAPS_API_KEY } from "../../apis/credentials";
 import useAxios from "../../hooks/useAxios";
 import axiosInstance from "../../apis/api_instance";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
