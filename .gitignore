@@ -55,4 +55,4 @@ web-build/
 dist/
 
 # API
-src/apis/credentials.js
+src/.env

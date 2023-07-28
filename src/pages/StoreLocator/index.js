@@ -1,13 +1,7 @@
-import React, { useMemo, useCallback } from "react";
+import React, { useMemo, useCallback, useEffect, useState } from "react";
 import { View, Pressable, Text, Linking } from "react-native";
 import useStyles from "./useStyles";
-import {
-  useLoadScript,
-  GoogleMap,
-  Marker,
-  MarkerF,
-} from "@react-google-maps/api";
-import { GOOGLE_MAPS_API_KEY } from "../../apis/credentials";
+import { useLoadScript, GoogleMap, MarkerF } from "@react-google-maps/api";
 import useAxios from "../../hooks/useAxios";
 import axiosInstance from "../../apis/api_instance";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
@@ -22,12 +16,17 @@ import StoreDescBottomTab from "../../components/StoreDescBottomTab";
 import { imagePaths } from "../../variables";
 
 SplashScreen.preventAutoHideAsync();
+// Tried to get api key from back-end
+// const fetchApiKey = async (data) => {
+//   const apiKey = await data.apiKey;
+//   const googleObj = useLoadScript({
+//     googleMapsApiKey: apiKey,
+//   });
+
+//   return googleObj;
+// };
 
 const StoreLocator = () => {
-  const { isLoaded } = useLoadScript({
-    googleMapsApiKey: GOOGLE_MAPS_API_KEY,
-  });
-
   const { responses } = useAxios({
     axiosInstance: axiosInstance,
     method: "GET",
@@ -37,6 +36,12 @@ const StoreLocator = () => {
         "Content-Language": "en-US",
       },
     },
+  });
+  // Tried to get api key from back-end
+  // const { isLoaded } =
+  //   responses.length > 0 ? fetchApiKey(responses[1]) : { isLoaded: false };
+  const { isLoaded } = useLoadScript({
+    googleMapsApiKey: "AIzaSyDjSbuciCG_WhfljJSQp1jMtRKYKKGkACI",
   });
   const [fontsLoaded] = useFonts({
     Poppins_400Regular,
@@ -56,7 +61,9 @@ const StoreLocator = () => {
       await SplashScreen.hideAsync();
     }
   }, [fontsLoaded]);
+
   const styles = useStyles();
+
   if (!fontsLoaded) {
     return null;
   }

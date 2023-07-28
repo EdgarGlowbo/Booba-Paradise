@@ -1,6 +1,8 @@
+require("dotenv").config({ path: "../.env" });
 const express = require("express");
 const db = require("./db");
 const drinksRouter = require("./routes/drinks");
+const mapsApiKeyRouter = require("./routes/mapsApiKeyRouter");
 const categoryRouter = require("./routes/category");
 const subcategoryRouter = require("./routes/subcategory");
 const foodRouter = require("./routes/food");
@@ -10,6 +12,7 @@ const newsRouter = require("./routes/newsFeed");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
 const checkConnection = async () => {
   try {
     await db.query("SELECT 1");
@@ -35,4 +38,5 @@ app.use("/subcategory", subcategoryRouter);
 app.use("/menu", menuRouter);
 app.use("/food", foodRouter);
 app.use("/location", locationRouter);
+app.use("/mapsApiKey", mapsApiKeyRouter);
 app.use("/", newsRouter);
