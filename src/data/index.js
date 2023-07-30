@@ -32,11 +32,11 @@ app.use((req, res, next) => {
   res.header("Access-Control-Allow-Headers", "X-Requested-With");
   next();
 });
-app.use("/drinks", drinksRouter);
+
 app.use("/category", categoryRouter);
 app.use("/subcategory", subcategoryRouter);
 app.use("/menu", menuRouter);
-app.use("/food", foodRouter);
+
 app.use("/location", locationRouter);
 app.use("/mapsApiKey", mapsApiKeyRouter);
 app.use("/", newsRouter);

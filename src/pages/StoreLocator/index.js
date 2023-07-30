@@ -14,6 +14,7 @@ import {
 import * as SplashScreen from "expo-splash-screen";
 import StoreDescBottomTab from "../../components/StoreDescBottomTab";
 import { imagePaths } from "../../variables";
+import useDump from "../../hooks/useDump";
 
 SplashScreen.preventAutoHideAsync();
 // Tried to get api key from back-end
@@ -47,6 +48,9 @@ const StoreLocator = () => {
     Poppins_400Regular,
     Poppins_600SemiBold,
   });
+  // const store = responses.length > 0 ? responses[0] : [];
+
+  // useDump(store, "store");
 
   const center = useMemo(() => {
     if (responses.length > 0) {
@@ -67,7 +71,6 @@ const StoreLocator = () => {
   if (!fontsLoaded) {
     return null;
   }
-
   const { boobaPin } = imagePaths;
   return (
     <View style={styles.container}>

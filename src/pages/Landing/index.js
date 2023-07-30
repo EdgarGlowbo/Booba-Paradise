@@ -1,5 +1,7 @@
 import React, { useCallback, useState } from "react";
 import { View, Text, ImageBackground } from "react-native";
+import db from "../../data/firestore";
+import { addDoc, collection } from "firebase/firestore";
 // import styles from "./styles";
 import PrimaryButton from "../../components/PrimaryButton";
 import { useFonts } from "expo-font";
@@ -16,6 +18,8 @@ import useAxios from "../../hooks/useAxios";
 import axiosInstance from "../../apis/api_instance";
 import Footer from "../../components/Footer";
 import useStyles from "./useStyles";
+import useDump from "../../hooks/useDump";
+import { deleteAllButOneByTitle } from "../../data/sandbox";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -55,6 +59,8 @@ const Landing = () => {
     return null;
   }
   const news = responses.length > 0 ? responses[0] : [];
+  // deleteAllButOneByTitle();
+  // useDump(news);
   const { mobileLandingWavyBackground, desktopLandingWavyBackground } =
     imagePaths;
   return (

@@ -2,6 +2,7 @@ import React from "react";
 import { View, StyleSheet, Text } from "react-native";
 import axiosInstance from "../apis/api_instance";
 import useAxios from "../hooks/useAxios";
+import useDump from "../hooks/useDump";
 import {
   colors,
   dimensions,
@@ -56,7 +57,7 @@ const MenuGrid = ({ selectedCategory, type }) => {
 
   const menuItems = responses.length > 0 ? filterMenuItems(responses[0]) : [];
   const categories = responses.length > 0 ? filterCategories(responses[1]) : [];
-
+  // useDump(subcategories, "subcategory");
   return (
     <View style={styles.menuGrid}>
       {!isLoading &&
