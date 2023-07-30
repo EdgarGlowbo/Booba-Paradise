@@ -32,7 +32,6 @@ const MenuGrid = ({ selectedCategory, type }) => {
     const data = snapshot.map((doc) => {
       return doc.data();
     });
-    console.log();
     return data.filter((item) => item.type === type);
   };
   const filterCategories = (snapshot) => {

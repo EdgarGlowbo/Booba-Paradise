@@ -14,6 +14,7 @@ import NewsArticle from "../../components/NewsArticle";
 import Footer from "../../components/Footer";
 import useStyles from "./useStyles";
 import useFetch from "../../hooks/useFetch";
+import { updateDoc } from "firebase/firestore";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -22,7 +23,7 @@ const Landing = () => {
     {
       url: "news_feed",
       orderParam: ["created", "desc"],
-      lim: 3,
+      lim: 6,
     },
   ]);
   const [newsFeedHeight, setNewsFeedHeight] = useState(0);
@@ -50,7 +51,10 @@ const Landing = () => {
     return null;
   }
   const getData = (snapshots) => {
-    const result = snapshots.map((doc) => doc.data());
+    const result = snapshots.map((doc) => {
+      return doc.data();
+    });
+
     return result;
   };
   const news = responses.length > 0 ? getData(responses[0]) : [];
