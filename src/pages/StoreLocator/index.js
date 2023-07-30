@@ -1,9 +1,7 @@
-import React, { useMemo, useCallback, useEffect, useState } from "react";
+import React, { useMemo, useCallback } from "react";
 import { View, Pressable, Text, Linking } from "react-native";
 import useStyles from "./useStyles";
 import { useLoadScript, GoogleMap, MarkerF } from "@react-google-maps/api";
-import useAxios from "../../hooks/useAxios";
-import axiosInstance from "../../apis/api_instance";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faCaretRight } from "@fortawesome/free-solid-svg-icons/faCaretRight";
 import { useFonts } from "expo-font";
@@ -14,33 +12,17 @@ import {
 import * as SplashScreen from "expo-splash-screen";
 import StoreDescBottomTab from "../../components/StoreDescBottomTab";
 import { imagePaths } from "../../variables";
-import useDump from "../../hooks/useDump";
+import useFetch from "../../hooks/useFetch";
 
 SplashScreen.preventAutoHideAsync();
-// Tried to get api key from back-end
-// const fetchApiKey = async (data) => {
-//   const apiKey = await data.apiKey;
-//   const googleObj = useLoadScript({
-//     googleMapsApiKey: apiKey,
-//   });
-
-//   return googleObj;
-// };
 
 const StoreLocator = () => {
-  const { responses } = useAxios({
-    axiosInstance: axiosInstance,
-    method: "GET",
-    urls: ["location"],
-    requestConfig: {
-      headers: {
-        "Content-Language": "en-US",
-      },
+  const { responses } = useFetch([
+    {
+      url: "store",
     },
-  });
-  // Tried to get api key from back-end
-  // const { isLoaded } =
-  //   responses.length > 0 ? fetchApiKey(responses[1]) : { isLoaded: false };
+  ]);
+
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: "AIzaSyDjSbuciCG_WhfljJSQp1jMtRKYKKGkACI",
   });
@@ -48,15 +30,13 @@ const StoreLocator = () => {
     Poppins_400Regular,
     Poppins_600SemiBold,
   });
-  // const store = responses.length > 0 ? responses[0] : [];
-
-  // useDump(store, "store");
 
   const center = useMemo(() => {
     if (responses.length > 0) {
+      const store = responses[0].map((doc) => doc.data());
       return {
-        lat: parseFloat(responses[0][0].latitude),
-        lng: parseFloat(responses[0][0].longitude),
+        lat: parseFloat(store[0].latitude),
+        lng: parseFloat(store[0].longitude),
       };
     }
   }, [responses]);
@@ -71,6 +51,9 @@ const StoreLocator = () => {
   if (!fontsLoaded) {
     return null;
   }
+  const store =
+    responses.length > 0 ? responses[0].map((doc) => doc.data())[0] : [];
+
   const { boobaPin } = imagePaths;
   return (
     <View style={styles.container}>
@@ -105,7 +88,7 @@ const StoreLocator = () => {
               }}
             />
           </GoogleMap>
-          <StoreDescBottomTab details={responses[0][0]} />
+          <StoreDescBottomTab details={store} />
         </View>
       )}
     </View>

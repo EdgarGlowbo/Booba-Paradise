@@ -49,6 +49,7 @@ const useStyles = () => {
     },
     menuContainer: {
       backgroundColor: background,
+      width: "100%",
       paddingHorizontal: space100,
     },
     footer: {

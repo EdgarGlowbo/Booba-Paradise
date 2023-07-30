@@ -2,8 +2,6 @@ import React, { useState, useCallback } from "react";
 import { View, Text, Pressable, Image, Linking } from "react-native";
 import ImageResponsive from "../../components/ImageResponsive";
 import useStyles from "./useStyles";
-import useAxios from "../../hooks/useAxios";
-import axiosInstance from "../../apis/api_instance";
 import useBusinessStatus from "../../hooks/useBusinessStatus";
 import { colors, imagePaths } from "../../variables";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
@@ -22,26 +20,24 @@ import {
   Poppins_600SemiBold,
 } from "@expo-google-fonts/poppins";
 import * as SplashScreen from "expo-splash-screen";
+import useFetch from "../../hooks/useFetch";
 
 SplashScreen.preventAutoHideAsync();
 
 const StoreDescription = () => {
   const [isShown, setIsShown] = useState(false);
-  const { responses } = useAxios({
-    axiosInstance: axiosInstance,
-    method: "GET",
-    urls: ["location"],
-    requestConfig: {
-      headers: {
-        "Content-Language": "en-US",
-      },
+
+  const { responses } = useFetch([
+    {
+      url: "store",
     },
-  });
+  ]);
   const navigation = useNavigation();
-  const storeDetails = (data) => {
+  const storeDetails = (snapshot) => {
+    const data = snapshot.map((doc) => doc.data())[0];
     data.opening_hours.sort((a, b) => a.id - b.id);
 
-    return responses[0][0];
+    return data;
   };
   const [fontsLoaded] = useFonts({
     Poppins_400Regular,
@@ -59,7 +55,7 @@ const StoreDescription = () => {
   }
 
   const { name, address, opening_hours } =
-    responses.length > 0 ? storeDetails(responses[0][0]) : [];
+    responses.length > 0 ? storeDetails(responses[0]) : [];
 
   const { isOpen, status, message, weekdayIndex } = opening_hours
     ? useBusinessStatus(new Date(), opening_hours)
