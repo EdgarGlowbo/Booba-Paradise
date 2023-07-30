@@ -1,13 +1,15 @@
 {
   "files": {
-    "main.js": "/Booba-Paradise/static/js/main.455b4191.js",
-    "static/js/420.f1890ec6.js": "/Booba-Paradise/static/js/420.f1890ec6.js",
+    "main.js": "/Booba-Paradise/static/js/main.7d4ac931.js",
+    "static/js/598.aa900b1d.js": "/Booba-Paradise/static/js/598.aa900b1d.js",
+    "static/media/desktopLandingWavyBackground.jpg": "/Booba-Paradise/static/media/desktopLandingWavyBackground.c3af4928de32ad58abf4.jpg",
+    "static/media/desktopMenuWavyBackground.jpg": "/Booba-Paradise/static/media/desktopMenuWavyBackground.6d3bd41e5173789503aa.jpg",
     "static/media/Poppins_100Thin_Italic.ttf": "/Booba-Paradise/static/media/Poppins_100Thin_Italic.9d5e661e645ce9a32fe6.ttf",
     "static/media/Poppins_200ExtraLight_Italic.ttf": "/Booba-Paradise/static/media/Poppins_200ExtraLight_Italic.dbdfd398abcbbafc022b.ttf",
     "static/media/Poppins_300Light_Italic.ttf": "/Booba-Paradise/static/media/Poppins_300Light_Italic.4a7d59f898225cc2f2e7.ttf",
     "static/media/Poppins_400Regular_Italic.ttf": "/Booba-Paradise/static/media/Poppins_400Regular_Italic.e373f6163127e2d469af.ttf",
     "static/media/Poppins_500Medium_Italic.ttf": "/Booba-Paradise/static/media/Poppins_500Medium_Italic.89e040c6a64d18f620dc.ttf",
-    "static/media/LandingBackground.jpg": "/Booba-Paradise/static/media/LandingBackground.28ce24088145cc5f0f28.jpg",
+    "static/media/mobileLandingWavyBackground.jpg": "/Booba-Paradise/static/media/mobileLandingWavyBackground.28ce24088145cc5f0f28.jpg",
     "static/media/Poppins_600SemiBold_Italic.ttf": "/Booba-Paradise/static/media/Poppins_600SemiBold_Italic.3524ffc3226f4578e5c5.ttf",
     "static/media/Poppins_700Bold_Italic.ttf": "/Booba-Paradise/static/media/Poppins_700Bold_Italic.cfb635a5111b545f5598.ttf",
     "static/media/Poppins_800ExtraBold_Italic.ttf": "/Booba-Paradise/static/media/Poppins_800ExtraBold_Italic.73d4495be63ad83b25cc.ttf",
@@ -21,24 +23,18 @@
     "static/media/Poppins_700Bold.ttf": "/Booba-Paradise/static/media/Poppins_700Bold.cdb29a5d7ccf57ff05a3.ttf",
     "static/media/Poppins_800ExtraBold.ttf": "/Booba-Paradise/static/media/Poppins_800ExtraBold.01849ee091e1762a5dd5.ttf",
     "static/media/Poppins_900Black.ttf": "/Booba-Paradise/static/media/Poppins_900Black.d8b850b920a5ef49d752.ttf",
-    "static/media/wavyBackground.jpg": "/Booba-Paradise/static/media/wavyBackground.db538488ebd00e0e9f8c.jpg",
-    "static/media/news5.jpg": "/Booba-Paradise/static/media/news5.8571dc3b25a92c527b8c.jpg",
-    "static/media/boobaLogo.png": "/Booba-Paradise/static/media/boobaLogo.50a2e376f1095e94e35e.png",
+    "static/media/mobileMenuWavyBackground.jpg": "/Booba-Paradise/static/media/mobileMenuWavyBackground.db538488ebd00e0e9f8c.jpg",
+    "static/media/brandName.png": "/Booba-Paradise/static/media/brandName.3c480920b75c970ec011.png",
     "static/media/Damion_400Regular.ttf": "/Booba-Paradise/static/media/Damion_400Regular.2e24147a9bd31952d7e9.ttf",
-    "static/media/news2.jpg": "/Booba-Paradise/static/media/news2.4037ff050ef00eca9376.jpg",
-    "static/media/news1.jpg": "/Booba-Paradise/static/media/news1.fbfd29addd12f9e5bfaf.jpg",
-    "static/media/news3.jpg": "/Booba-Paradise/static/media/news3.d7c4d7447b17c4255f5d.jpg",
-    "static/media/news4.jpg": "/Booba-Paradise/static/media/news4.62845d81aaaea1c97f8c.jpg",
-    "static/media/brandName.png": "/Booba-Paradise/static/media/brandName.5eb045657d4246dad6fc.png",
-    "static/media/boobaPin.png": "/Booba-Paradise/static/media/boobaPin.3b067dabc3aaa0ae3fb0.png",
+    "static/media/boobaPin.png": "/Booba-Paradise/static/media/boobaPin.bbf5edf2e0ca48a80a5f.png",
     "index.html": "/Booba-Paradise/index.html",
     "serve.json": "/Booba-Paradise/serve.json",
     "manifest.json": "/Booba-Paradise/manifest.json",
-    "main.455b4191.js.map": "/Booba-Paradise/static/js/main.455b4191.js.map",
-    "420.f1890ec6.js.map": "/Booba-Paradise/static/js/420.f1890ec6.js.map"
+    "main.7d4ac931.js.map": "/Booba-Paradise/static/js/main.7d4ac931.js.map",
+    "598.aa900b1d.js.map": "/Booba-Paradise/static/js/598.aa900b1d.js.map"
   },
   "entrypoints": [
-    "static/js/420.f1890ec6.js",
-    "static/js/main.455b4191.js"
+    "static/js/598.aa900b1d.js",
+    "static/js/main.7d4ac931.js"
   ]
 }
