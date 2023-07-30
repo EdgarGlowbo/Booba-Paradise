@@ -9,7 +9,6 @@ class NewsArticle {
     const [res] = await db
       .query(query)
       .catch((err) => console.log(err.message));
-
     return res;
   }
 }
