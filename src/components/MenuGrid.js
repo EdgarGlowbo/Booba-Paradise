@@ -1,8 +1,6 @@
 import React from "react";
 import { View, StyleSheet, Text } from "react-native";
-import axiosInstance from "../apis/api_instance";
-import useAxios from "../hooks/useAxios";
-import useDump from "../hooks/useDump";
+
 import {
   colors,
   dimensions,
@@ -13,59 +11,46 @@ import {
 } from "../variables";
 import { Pressable } from "react-native";
 import ImageResponsive from "./ImageResponsive";
+import useFetch from "../hooks/useFetch";
 
 const MenuGrid = ({ selectedCategory, type }) => {
-  const { responses, isLoading } = useAxios({
-    axiosInstance: axiosInstance,
-    method: "GET",
-    urls: ["menu", "category", "subcategory"],
-    requestConfig: {
-      headers: {
-        "Content-Language": "en-US",
-      },
+  const { responses, isLoading } = useFetch([
+    {
+      url: "product",
+      orderParam: ["index"],
     },
-  });
+    {
+      url: "category",
+      orderParam: ["index"],
+    },
+    {
+      url: "subcategory",
+    },
+  ]);
 
-  const filterMenuItems = (data) => {
-    if (type === "drinks") {
-      return data.filter((item) => item.type === "drink");
-    } else if (type === "food") {
-      return data.filter((item) => item.type === "food");
-    }
-    return [];
+  const filterMenuItems = (snapshot) => {
+    const data = snapshot.map((doc) => doc.data());
+    return data.filter((item) => item.type === type);
   };
-  const filterCategories = (categories) => {
-    if (type === "drinks") {
-      const drinkCats = categories.filter(
-        (category) => category.type === "drink"
-      );
-      if (selectedCategory !== 0) {
-        return drinkCats.filter((category) => category.id === selectedCategory);
-      }
-      return drinkCats;
-    } else if (type === "food") {
-      const foodCats = categories.filter(
-        (category) => category.type === "food"
-      );
-      if (selectedCategory !== 0) {
-        return foodCats.filter((category) => category.id === selectedCategory);
-      }
-      return foodCats;
+  const filterCategories = (snapshot) => {
+    const categories = snapshot.map((doc) => doc.data());
+    if (selectedCategory !== 0) {
+      return categories.filter((category) => category.id === selectedCategory);
     }
-    return [];
+    return categories.filter((category) => category.type === type);
   };
 
   const menuItems = responses.length > 0 ? filterMenuItems(responses[0]) : [];
   const categories = responses.length > 0 ? filterCategories(responses[1]) : [];
-  // useDump(subcategories, "subcategory");
+
   return (
     <View style={styles.menuGrid}>
       {!isLoading &&
         // Category level
         categories.map((category) => {
-          const subcategories = responses[2].filter(
-            (subcategory) => subcategory.categoryID === category.id
-          );
+          const subcategories = responses[2]
+            .map((doc) => doc.data())
+            .filter((subcategory) => subcategory.categoryID === category.id);
           const hasSubcategories = subcategories.length > 0;
           return (
             <View style={styles.categoryList} key={category.id}>
@@ -77,7 +62,8 @@ const MenuGrid = ({ selectedCategory, type }) => {
                     <View
                       style={[
                         styles.subcategoryList,
-                        /* limited edition products */ subcategory.id === 3
+                        /* limited edition products */ subcategory.id ===
+                        "9FOMOZ1HyzxCHWxWlXdf"
                           ? styles.limitedEdition
                           : {},
                       ]}
@@ -86,7 +72,7 @@ const MenuGrid = ({ selectedCategory, type }) => {
                       <Text
                         style={[
                           styles.subcategoryHeader,
-                          subcategory.id === 3
+                          subcategory.id === "9FOMOZ1HyzxCHWxWlXdf"
                             ? styles.limitedEditionSubcategoryHeader
                             : {},
                         ]}
@@ -107,7 +93,7 @@ const MenuGrid = ({ selectedCategory, type }) => {
                                   style={[
                                     styles.productItem,
                                     /* limited edition product */ menuItem.subcategoryID ===
-                                    3
+                                    "9FOMOZ1HyzxCHWxWlXdf"
                                       ? styles.limitedEditionProduct
                                       : {},
                                   ]}
@@ -180,6 +166,7 @@ const styles = StyleSheet.create({
   categoryList: {
     justifyContent: "center",
     alignItems: "center",
+    width: "100%",
   },
   subcategoryList: {
     justifyContent: "center",

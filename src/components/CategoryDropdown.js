@@ -4,58 +4,65 @@ import { Dropdown } from "react-native-element-dropdown";
 import { colors, dimensions, fonts, fontSizes, spacing } from "../variables";
 import { useFonts } from "expo-font";
 import { Poppins_400Regular } from "@expo-google-fonts/poppins";
+import useFetch from "../hooks/useFetch";
 
 const CategoryDropdown = ({ type, selectedCategory, setSelectedCategory }) => {
   const [isFocus, setIsFocus] = useState(false);
-  const [categories, setCategories] = useState([
-    { label: "Todas las bebidas", value: 0 },
-    { label: "Sabores clásicos", value: 1 },
-    { label: "Sabores especiales", value: 2 },
-    { label: "Sabores de agua", value: 3 },
+
+  const { responses, isLoading } = useFetch([
+    {
+      url: "category",
+      orderParam: ["index"],
+    },
   ]);
-  const [fontsLoaded] = useFonts({
+  useFonts({
     Poppins_400Regular,
   });
 
-  useEffect(() => {
-    if (type === "drinks") {
-      setCategories([
-        { label: "Todas las bebidas", value: 0 },
-        { label: "Sabores clásicos", value: 1 },
-        { label: "Sabores especiales", value: 2 },
-        { label: "Sabores de agua", value: 3 },
-      ]);
+  const getData = (snapshots) => {
+    const categories = [];
+
+    // Adds ghost default category "All"
+    if (type === "drink") {
+      categories.push({ label: "Todas las bebidas", value: 0, type: "drink" });
     } else if (type === "food") {
-      setCategories([
-        { label: "Toda la comida", value: 0 },
-        { label: "Waffles", value: 4 },
-        { label: "Extras", value: 5 },
-        { label: "Nieves naturales", value: 6 },
-      ]);
+      categories.push({ label: "Toda la comida", value: 0, type: "food" });
     }
-  }, [type]);
+    snapshots.forEach((doc) => {
+      const data = doc.data();
+
+      const catObj = { label: data.name, value: doc.id, type: data.type };
+      if (catObj.type === type) {
+        categories.push(catObj);
+      }
+    });
+    return categories;
+  };
+  const categories = responses.length > 0 ? getData(responses[0]) : [];
 
   return (
     <View style={styles.container}>
-      <Dropdown
-        style={[styles.dropdown, isFocus && styles.focusStyle]}
-        placeholderStyle={styles.placeholderStyle}
-        selectedTextStyle={styles.selectedTextStyle}
-        itemTextStyle={styles.selectedTextStyle}
-        iconStyle={styles.icon}
-        data={categories}
-        maxHeight={300}
-        labelField="label"
-        valueField="value"
-        placeholder={!isFocus ? "Select item" : "..."}
-        value={selectedCategory}
-        onFocus={() => setIsFocus(true)}
-        onBlur={() => setIsFocus(false)}
-        onChange={(item) => {
-          setSelectedCategory(item.value);
-          setIsFocus(false);
-        }}
-      />
+      {!isLoading && (
+        <Dropdown
+          style={[styles.dropdown, isFocus && styles.focusStyle]}
+          placeholderStyle={styles.placeholderStyle}
+          selectedTextStyle={styles.selectedTextStyle}
+          itemTextStyle={styles.selectedTextStyle}
+          iconStyle={styles.icon}
+          data={categories}
+          maxHeight={300}
+          labelField="label"
+          valueField="value"
+          placeholder={!isFocus ? "Select item" : "..."}
+          value={selectedCategory}
+          onFocus={() => setIsFocus(true)}
+          onBlur={() => setIsFocus(false)}
+          onChange={(item) => {
+            setSelectedCategory(item.value);
+            setIsFocus(false);
+          }}
+        />
+      )}
     </View>
   );
 };

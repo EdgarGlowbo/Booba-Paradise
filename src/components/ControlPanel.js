@@ -35,16 +35,16 @@ const ControlPanel = ({
       <View style={styles.typeContainer}>
         <Pressable
           onPress={() => {
-            setType("drinks");
+            setType("drink");
             setSelectedCategory(0);
           }}
-          style={[styles.typeBtn, type === "drinks" && styles.activeBorder]}
+          style={[styles.typeBtn, type === "drink" && styles.activeBorder]}
         >
           <FontAwesomeIcon
             icon={faMugHot}
-            style={[styles.icon, type === "drinks" && styles.active]}
+            style={[styles.icon, type === "drink" && styles.active]}
           />
-          <Text style={[styles.typeLabel, type === "drinks" && styles.active]}>
+          <Text style={[styles.typeLabel, type === "drink" && styles.active]}>
             Bebidas
           </Text>
         </Pressable>

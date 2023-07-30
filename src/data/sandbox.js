@@ -5,6 +5,7 @@ import {
   query,
   where,
   getDocs,
+  updateDoc,
 } from "firebase/firestore";
 
 export function deleteAllButOneByTitle(params, fieldName, colName) {
@@ -29,5 +30,29 @@ export function deleteAllButOneByTitle(params, fieldName, colName) {
     console.error("Error deleting documents:", error);
   }
 }
+
+export const updateById = async () => {
+  const colRef = collection(db, "subcategory");
+
+  const querySnapshot = (await getDocs(colRef)).docs;
+
+  const data = querySnapshot.map((doc) => {
+    return { id: doc.id, index: doc.data().index };
+  });
+
+  data.forEach(async (idIndexPair) => {
+    const { id, index } = idIndexPair;
+    const q = query(
+      collection(db, "product"),
+      where("subcategoryID", "==", index)
+    );
+    const querySnapshot = (await getDocs(q)).docs;
+    querySnapshot.forEach(async (doc) => {
+      await updateDoc(doc.ref, {
+        subcategoryID: id,
+      });
+    });
+  });
+};
 
 // Usage: Call the function with the title you want to keep one of.

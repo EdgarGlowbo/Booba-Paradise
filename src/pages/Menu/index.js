@@ -15,7 +15,7 @@ import CustomHeader from "../../components/TopBar/CustomHeader";
 
 const Menu = () => {
   const [selectedCategory, setSelectedCategory] = useState(0);
-  const [type, setType] = useState("drinks");
+  const [type, setType] = useState("drink");
 
   const [fontsLoaded] = useFonts({
     Damion_400Regular,

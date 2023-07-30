@@ -1,8 +1,5 @@
 import React, { useCallback, useState } from "react";
 import { View, Text, ImageBackground } from "react-native";
-import db from "../../data/firestore";
-import { addDoc, collection } from "firebase/firestore";
-// import styles from "./styles";
 import PrimaryButton from "../../components/PrimaryButton";
 import { useFonts } from "expo-font";
 import { imagePaths } from "../../variables";
@@ -14,26 +11,20 @@ import {
 import NewsTransition from "../../../assets/NewsTransition";
 import * as SplashScreen from "expo-splash-screen";
 import NewsArticle from "../../components/NewsArticle";
-import useAxios from "../../hooks/useAxios";
-import axiosInstance from "../../apis/api_instance";
 import Footer from "../../components/Footer";
 import useStyles from "./useStyles";
-import useDump from "../../hooks/useDump";
-import { deleteAllButOneByTitle } from "../../data/sandbox";
+import useFetch from "../../hooks/useFetch";
 
 SplashScreen.preventAutoHideAsync();
 
 const Landing = () => {
-  const { responses } = useAxios({
-    axiosInstance: axiosInstance,
-    method: "GET",
-    urls: ["/"],
-    requestConfig: {
-      headers: {
-        "Content-Language": "en-US",
-      },
+  const { responses, isLoading } = useFetch([
+    {
+      url: "news_feed",
+      orderParam: ["created", "desc"],
+      lim: 3,
     },
-  });
+  ]);
   const [newsFeedHeight, setNewsFeedHeight] = useState(0);
   const [newsFeedWidth, setNewsFeedWidth] = useState(0);
 
@@ -58,9 +49,11 @@ const Landing = () => {
   if (!fontsLoaded) {
     return null;
   }
-  const news = responses.length > 0 ? responses[0] : [];
-  // deleteAllButOneByTitle();
-  // useDump(news);
+  const getData = (snapshots) => {
+    const result = snapshots.map((doc) => doc.data());
+    return result;
+  };
+  const news = responses.length > 0 ? getData(responses[0]) : [];
   const { mobileLandingWavyBackground, desktopLandingWavyBackground } =
     imagePaths;
   return (
@@ -92,7 +85,7 @@ const Landing = () => {
       />
       <View style={styles.newsContainer} onLayout={onLayout}>
         <Text style={styles.newsFeedHeader}>Lo nuevo este verano</Text>
-        {responses.length > 0 && (
+        {!isLoading && responses.length > 0 && (
           <View style={styles.newsFeed}>
             <NewsArticle
               backgroundColor={styles.newsPanelBackground1}
