@@ -14,7 +14,6 @@ import NewsArticle from "../../components/NewsArticle";
 import Footer from "../../components/Footer";
 import useStyles from "./useStyles";
 import useFetch from "../../hooks/useFetch";
-import { updateDoc } from "firebase/firestore";
 
 SplashScreen.preventAutoHideAsync();
 
