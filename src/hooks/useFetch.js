@@ -34,7 +34,6 @@ const useFetch = (configObjs) => {
         setIsLoading(false);
       }
     };
-
     fetchData();
   }, []);
 
