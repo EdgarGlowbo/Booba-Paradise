@@ -6,9 +6,6 @@ import {
   orderBy,
   limit,
   getDocsFromCache,
-  loadBundle,
-  addDoc,
-  getDoc,
   onSnapshot,
 } from "firebase/firestore";
 import { useEffect, useState } from "react";
@@ -33,15 +30,17 @@ const useFetch = (configObjs) => {
             } else if (!orderParam && !lim) {
               q = query(colRef);
             }
-            const querySnapshot = await getDocsFromCache(q);
-            if (!querySnapshot.empty > 0) {
-              console.log("From cache");
-              return querySnapshot.docs;
-            } else {
-              // const docs = onSnapshot()
-              const docs = (await getDocs(q)).docs;
-              console.log("From server");
 
+            const querySnapshot = await getDocsFromCache(q);
+
+            if (!querySnapshot.empty) {
+              // console.log("From cache");
+              const docs = querySnapshot.docs;
+              return docs;
+            } else {
+              const snapshot = await getDocs(q);
+              const docs = snapshot.docs;
+              // console.log("From server");
               return docs;
             }
           })
