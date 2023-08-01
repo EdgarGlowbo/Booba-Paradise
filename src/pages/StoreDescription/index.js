@@ -61,8 +61,6 @@ const StoreDescription = () => {
     ? useBusinessStatus(new Date(), opening_hours)
     : {};
 
-  console.log(`http://maps.apple.com/?daddr=${latitude},${longitude}`);
-
   const { boobaPin } = imagePaths;
 
   return (
