@@ -1,5 +1,5 @@
 import React, { useMemo, useCallback } from "react";
-import { View, Pressable, Text, Linking } from "react-native";
+import { View, Pressable, Text, Linking, Platform } from "react-native";
 import useStyles from "./useStyles";
 import { useLoadScript, GoogleMap, MarkerF } from "@react-google-maps/api";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
@@ -62,7 +62,11 @@ const StoreLocator = () => {
           <Pressable
             style={styles.directionsBtn}
             onPress={() =>
-              Linking.openURL("https://goo.gl/maps/HWgoVRhekFdWE6sP7")
+              Platform.OS === "ios"
+                ? Linking.openURL(
+                    `http://maps.apple.com/?daddr=${store.latitude},${store.longitude}`
+                  )
+                : Linking.openURL("https://goo.gl/maps/HWgoVRhekFdWE6sP7")
             }
           >
             <Text style={styles.text}>Cómo llegar</Text>

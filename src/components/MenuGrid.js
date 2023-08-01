@@ -183,7 +183,7 @@ const styles = StyleSheet.create({
   limitedEdition: {
     backgroundColor: accent,
     alignItems: "center",
-    paddingHorizontal: space200,
+    paddingHorizontal: space100,
     paddingVertical: space300,
     borderRadius: radius400,
   },

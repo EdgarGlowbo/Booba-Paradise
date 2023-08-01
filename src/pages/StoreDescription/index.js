@@ -54,9 +54,8 @@ const StoreDescription = () => {
     return null;
   }
 
-  const { name, address, opening_hours } =
+  const { name, address, opening_hours, latitude, longitude } =
     responses.length > 0 ? storeDetails(responses[0]) : [];
-
   const { isOpen, status, message, weekdayIndex } = opening_hours
     ? useBusinessStatus(new Date(), opening_hours)
     : {};
@@ -161,7 +160,11 @@ const StoreDescription = () => {
         <Pressable
           style={styles.directionsBtn}
           onPress={() =>
-            Linking.openURL("https://goo.gl/maps/HWgoVRhekFdWE6sP7")
+            Platform.OS === "ios"
+              ? Linking.openURL(
+                  `http://maps.apple.com/?daddr=${latitude},${longitude}`
+                )
+              : Linking.openURL("https://goo.gl/maps/HWgoVRhekFdWE6sP7")
           }
         >
           <Text style={styles.text}>Cómo llegar</Text>

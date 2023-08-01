@@ -22,7 +22,7 @@ const Landing = () => {
     {
       url: "news_feed",
       orderParam: ["created", "desc"],
-      lim: 6,
+      lim: 3,
     },
   ]);
   const [newsFeedHeight, setNewsFeedHeight] = useState(0);

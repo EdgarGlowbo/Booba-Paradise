@@ -1,5 +1,16 @@
 import db from "../data/firestore";
-import { getDocs, collection, query, orderBy, limit } from "firebase/firestore";
+import {
+  getDocs,
+  collection,
+  query,
+  orderBy,
+  limit,
+  getDocsFromCache,
+  loadBundle,
+  addDoc,
+  getDoc,
+  onSnapshot,
+} from "firebase/firestore";
 import { useEffect, useState } from "react";
 
 const useFetch = (configObjs) => {
@@ -22,9 +33,17 @@ const useFetch = (configObjs) => {
             } else if (!orderParam && !lim) {
               q = query(colRef);
             }
-            const querySnapshot = (await getDocs(q)).docs;
+            const querySnapshot = await getDocsFromCache(q);
+            if (!querySnapshot.empty > 0) {
+              console.log("From cache");
+              return querySnapshot.docs;
+            } else {
+              // const docs = onSnapshot()
+              const docs = (await getDocs(q)).docs;
+              console.log("From server");
 
-            return querySnapshot;
+              return docs;
+            }
           })
         );
         setResponses(results);
