@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from "react";
-import { View, Text, Pressable, Image, Linking } from "react-native";
+import { View, Text, Pressable, Linking } from "react-native";
 import ImageResponsive from "../../components/ImageResponsive";
 import useStyles from "./useStyles";
 import useBusinessStatus from "../../hooks/useBusinessStatus";
@@ -21,6 +21,7 @@ import {
 } from "@expo-google-fonts/poppins";
 import * as SplashScreen from "expo-splash-screen";
 import useFetch from "../../hooks/useFetch";
+import useOS from "../../hooks/useOS";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -43,7 +44,7 @@ const StoreDescription = () => {
     Poppins_400Regular,
     Poppins_600SemiBold,
   });
-
+  const platform = useOS();
   useCallback(async () => {
     if (fontsLoaded) {
       await SplashScreen.hideAsync();
@@ -59,6 +60,8 @@ const StoreDescription = () => {
   const { isOpen, status, message, weekdayIndex } = opening_hours
     ? useBusinessStatus(new Date(), opening_hours)
     : {};
+
+  console.log(`http://maps.apple.com/?daddr=${latitude},${longitude}`);
 
   const { boobaPin } = imagePaths;
 
@@ -160,7 +163,7 @@ const StoreDescription = () => {
         <Pressable
           style={styles.directionsBtn}
           onPress={() =>
-            Platform.OS === "ios"
+            platform === "iOS"
               ? Linking.openURL(
                   `http://maps.apple.com/?daddr=${latitude},${longitude}`
                 )

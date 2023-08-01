@@ -1,5 +1,5 @@
 import React, { useMemo, useCallback } from "react";
-import { View, Pressable, Text, Linking, Platform } from "react-native";
+import { View, Pressable, Text, Linking } from "react-native";
 import useStyles from "./useStyles";
 import { useLoadScript, GoogleMap, MarkerF } from "@react-google-maps/api";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
@@ -13,6 +13,7 @@ import * as SplashScreen from "expo-splash-screen";
 import StoreDescBottomTab from "../../components/StoreDescBottomTab";
 import { imagePaths } from "../../variables";
 import useFetch from "../../hooks/useFetch";
+import useOS from "../../hooks/useOS";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -26,11 +27,12 @@ const StoreLocator = () => {
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: "AIzaSyDjSbuciCG_WhfljJSQp1jMtRKYKKGkACI",
   });
+
   const [fontsLoaded] = useFonts({
     Poppins_400Regular,
     Poppins_600SemiBold,
   });
-
+  const platform = useOS();
   const center = useMemo(() => {
     if (responses.length > 0) {
       const store = responses[0].map((doc) => doc.data());
@@ -62,7 +64,7 @@ const StoreLocator = () => {
           <Pressable
             style={styles.directionsBtn}
             onPress={() =>
-              Platform.OS === "ios"
+              platform === "iOS"
                 ? Linking.openURL(
                     `http://maps.apple.com/?daddr=${store.latitude},${store.longitude}`
                   )
