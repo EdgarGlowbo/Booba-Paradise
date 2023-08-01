@@ -15,6 +15,8 @@ const ControlPanel = ({
   setType,
   selectedCategory,
   setSelectedCategory,
+  responses,
+  isLoading,
 }) => {
   const [fontsLoaded] = useFonts({
     Poppins_400Regular,
@@ -70,6 +72,8 @@ const ControlPanel = ({
         type={type}
         selectedCategory={selectedCategory}
         setSelectedCategory={setSelectedCategory}
+        responses={responses}
+        isLoading={isLoading}
       />
     </View>
   );

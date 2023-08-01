@@ -6,7 +6,10 @@ import {
   orderBy,
   limit,
   getDocsFromCache,
-  onSnapshot,
+  doc,
+  Timestamp,
+  setDoc,
+  getDoc,
 } from "firebase/firestore";
 import { useEffect, useState } from "react";
 
@@ -14,10 +17,12 @@ const useFetch = (configObjs) => {
   const [responses, setResponses] = useState([]);
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const updatesRef = doc(db, "control", "updates");
 
   useEffect(() => {
     const fetchData = async () => {
       try {
+        const { pendingUpdate } = (await getDoc(updatesRef)).data();
         const results = await Promise.all(
           configObjs.map(async (obj) => {
             const { url, orderParam, lim } = obj;
@@ -30,17 +35,20 @@ const useFetch = (configObjs) => {
             } else if (!orderParam && !lim) {
               q = query(colRef);
             }
-
             const querySnapshot = await getDocsFromCache(q);
-
-            if (!querySnapshot.empty) {
-              // console.log("From cache");
+            if (!querySnapshot.empty && !pendingUpdate[url]) {
               const docs = querySnapshot.docs;
               return docs;
             } else {
               const snapshot = await getDocs(q);
+              setDoc(updatesRef, {
+                lastUpdate: Timestamp.now(),
+                pendingUpdate: {
+                  ...pendingUpdate,
+                  [url]: false,
+                },
+              });
               const docs = snapshot.docs;
-              // console.log("From server");
               return docs;
             }
           })

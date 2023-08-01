@@ -11,23 +11,8 @@ import {
 } from "../variables";
 import { Pressable } from "react-native";
 import ImageResponsive from "./ImageResponsive";
-import useFetch from "../hooks/useFetch";
 
-const MenuGrid = ({ selectedCategory, type }) => {
-  const { responses, isLoading } = useFetch([
-    {
-      url: "product",
-      orderParam: ["index"],
-    },
-    {
-      url: "category",
-      orderParam: ["index"],
-    },
-    {
-      url: "subcategory",
-    },
-  ]);
-
+const MenuGrid = ({ selectedCategory, type, responses, isLoading }) => {
   const filterMenuItems = (snapshot) => {
     const data = snapshot.map((doc) => {
       return doc.data();

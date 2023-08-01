@@ -4,17 +4,17 @@ import { Dropdown } from "react-native-element-dropdown";
 import { colors, dimensions, fonts, fontSizes, spacing } from "../variables";
 import { useFonts } from "expo-font";
 import { Poppins_400Regular } from "@expo-google-fonts/poppins";
-import useFetch from "../hooks/useFetch";
+// import useFetch from "../hooks/useFetch";
 
-const CategoryDropdown = ({ type, selectedCategory, setSelectedCategory }) => {
+const CategoryDropdown = ({
+  type,
+  selectedCategory,
+  setSelectedCategory,
+  responses,
+  isLoading,
+}) => {
   const [isFocus, setIsFocus] = useState(false);
 
-  const { responses, isLoading } = useFetch([
-    {
-      url: "category",
-      orderParam: ["index"],
-    },
-  ]);
   useFonts({
     Poppins_400Regular,
   });
@@ -38,7 +38,7 @@ const CategoryDropdown = ({ type, selectedCategory, setSelectedCategory }) => {
     });
     return categories;
   };
-  const categories = responses.length > 0 ? getData(responses[0]) : [];
+  const categories = responses.length > 0 ? getData(responses[1]) : [];
 
   return (
     <View style={styles.container}>

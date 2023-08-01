@@ -12,10 +12,24 @@ import MenuGrid from "../../components/MenuGrid";
 import Footer from "../../components/Footer";
 import { imagePaths } from "../../variables";
 import CustomHeader from "../../components/TopBar/CustomHeader";
+import useFetch from "../../hooks/useFetch";
 
 const Menu = () => {
   const [selectedCategory, setSelectedCategory] = useState(0);
   const [type, setType] = useState("drink");
+  const { responses, isLoading } = useFetch([
+    {
+      url: "product",
+      orderParam: ["index"],
+    },
+    {
+      url: "category",
+      orderParam: ["index"],
+    },
+    {
+      url: "subcategory",
+    },
+  ]);
 
   const [fontsLoaded] = useFonts({
     Damion_400Regular,
@@ -57,8 +71,15 @@ const Menu = () => {
             setType={setType}
             selectedCategory={selectedCategory}
             setSelectedCategory={setSelectedCategory}
+            responses={responses}
+            isLoading={isLoading}
           />
-          <MenuGrid selectedCategory={selectedCategory} type={type} />
+          <MenuGrid
+            selectedCategory={selectedCategory}
+            type={type}
+            responses={responses}
+            isLoading={isLoading}
+          />
         </View>
         <Footer containerBackground={styles.footer} />
       </View>
