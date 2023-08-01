@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/Booba-Paradise/static/js/main.f0160811.js",
+    "main.js": "/Booba-Paradise/static/js/main.51970a3b.js",
     "static/js/598.aa900b1d.js": "/Booba-Paradise/static/js/598.aa900b1d.js",
     "static/media/desktopLandingWavyBackground.jpg": "/Booba-Paradise/static/media/desktopLandingWavyBackground.c3af4928de32ad58abf4.jpg",
     "static/media/desktopMenuWavyBackground.jpg": "/Booba-Paradise/static/media/desktopMenuWavyBackground.6d3bd41e5173789503aa.jpg",
@@ -30,11 +30,11 @@
     "index.html": "/Booba-Paradise/index.html",
     "serve.json": "/Booba-Paradise/serve.json",
     "manifest.json": "/Booba-Paradise/manifest.json",
-    "main.f0160811.js.map": "/Booba-Paradise/static/js/main.f0160811.js.map",
+    "main.51970a3b.js.map": "/Booba-Paradise/static/js/main.51970a3b.js.map",
     "598.aa900b1d.js.map": "/Booba-Paradise/static/js/598.aa900b1d.js.map"
   },
   "entrypoints": [
     "static/js/598.aa900b1d.js",
-    "static/js/main.f0160811.js"
+    "static/js/main.51970a3b.js"
   ]
 }
